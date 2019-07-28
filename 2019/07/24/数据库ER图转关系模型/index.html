@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
-  <title>Ratton</title>
+  <title>数据库ER图转关系模型 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ratton">
-<meta property="og:url" content="https://rattonlzh.github.io/index.html">
+  <meta name="description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库ER图转关系模型">
+<meta property="og:url" content="https://rattonlzh.github.io/2019/07/24/数据库ER图转关系模型/index.html">
 <meta property="og:site_name" content="Ratton">
+<meta property="og:description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-28T06:53:20.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ratton">
+<meta name="twitter:title" content="数据库ER图转关系模型">
+<meta name="twitter:description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -53,9 +58,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/homepage/homepage.html">主页</a></li>
+				<li><a href="../../../../homepage/homepage.html">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="../../../../tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,9 +134,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/homepage/homepage.html">主页</a></li>
+					<li style="width: 50%"><a href="../../../../homepage/homepage.html">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="../../../../tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -146,21 +151,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数据库ER图转关系模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-数据库ER图转关系模型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/24/数据库ER图转关系模型/">数据库ER图转关系模型</a>
+    <h1 class="article-title" itemprop="name">
+      数据库ER图转关系模型
     </h1>
   
 
         
-        <a href="2019/07/24/数据库ER图转关系模型/" class="archive-article-date">
+        <a href="" class="archive-article-date">
   	<time datetime="2019-07-24T00:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
 </a>
         
@@ -169,11 +172,52 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点</p>
-        
-          <a class="article-more-a" href="2019/07/24/数据库ER图转关系模型/#more">more >></a>
-        
+<a id="more"></a>
+<h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1><h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h2><p><strong>实体</strong>:现实世界中区别于其他所有对象的一个对象.</p>
+<p><strong>联系</strong>:多个实体间的相互关联</p>
+<p><strong>实体集</strong>:具有相同属性的实体的集合</p>
+<p><strong>联系集</strong>:相同类型联系的集合<br><strong>映射基数</strong>：一个实体通过一个联系能关联的实体的数目<br><strong>一对一联系</strong>：每个实体最多只能与一个实体关联<br><strong>一对多联系</strong>：实体集A的一个实体能与其他实体集的多个实体关联，其他实体集的实体却只能与实体集A的一个实体关联<br><strong>多对多联系</strong>：任意实体能与任意数目的实体关联<br><strong>弱实体集</strong>:没有足够属性形成主码的实体集.弱实体集依赖于标识实体集<br><strong>分辨符</strong>:即弱实体集的部分码,与标识实体集的主码共同构成弱实体集的主码<br><strong>多值属性</strong>:允许一个实体有多个值的属性</p>
+<h2 id="ER图的图形含义"><a href="#ER图的图形含义" class="headerlink" title="ER图的图形含义"></a>ER图的图形含义</h2><p><strong>矩形</strong>：表示实体集，用水平线将矩形分成两部分，上方表示实体集的名称，下方表示属性集，属性集中带下划线的是主码，如果下划线是虚线，则代表分辨符，该实体集是弱实体集<br><strong>菱形</strong>：表示联系集。连接线全部带箭头代表一对一联系，部分带箭头代表被箭头指向的实体到其他实体是一对多联系，不带箭头代表多对多联系。双实线代表连接的实体集全部参与。<br><strong>双菱形</strong>：表示弱实体集和标识实体集的联系。<br><strong>l..h</strong>:用在实体集和联系集的连线上，表示映射基数的范围。l表示最小值，h表示最大值，取值可取0，1，2，···，<em>。</em>表示任意值</p>
+<h2 id="转换方式"><a href="#转换方式" class="headerlink" title="转换方式"></a>转换方式</h2><ol>
+<li><strong>实体集</strong>:直接转换</li>
+<li><strong>联系集</strong>:属性集=所有实体的主码+联系集的描述性属性,主码视映射基数而定<ol>
+<li>一对一:主码=任一实体的主码</li>
+<li>一对多or多对一:主码=映射基数不为1的所有实体的主码</li>
+<li>多对多:所有实体的主码</li>
+</ol>
+</li>
+<li><strong>多值属性</strong>:属性集=实体主码+一个多值属性,主码=实体主码,如果实体集只有主码和多值属性,则不必特别把多值属性单独转为一个模式</li>
+<li><strong>弱实体集</strong>:属性集=弱实体集的所有属性+标识实体集的主码,主码=分辨符+标识实体集的主码。连接弱实体集的联系集是冗余的，不必给出</li>
+</ol>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬的打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wepay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -193,16 +237,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/24/数据库ER图转关系模型/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://rattonlzh.github.io/2019/07/24/数据库ER图转关系模型/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="../../17/第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -222,161 +325,14 @@
 
 
 
-
   
-    <article id="post-第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/17/第一篇博客/">第一篇博客</a>
-    </h1>
   
 
-        
-        <a href="2019/07/17/第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T15:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="提高工作效率的快捷键技巧"><a href="#提高工作效率的快捷键技巧" class="headerlink" title="提高工作效率的快捷键技巧"></a>提高工作效率的快捷键技巧</h1><h2 id="win10桌面模式常用快捷键"><a href="#win10桌面模式常用快捷键" class="headerlink" title="win10桌面模式常用快捷键"></a>win10桌面模式常用快捷键</h2><ol>
-<li><kbd>win</kbd>+<kbd>方向键</kbd>:分屏,未分屏时向上是窗口最大化,向下是隐藏当前窗口,向左或右是当前窗口占1/2屏,1/2屏状态下向下是占1/4屏,具体效果亲测便知</li>
-<li><kbd>win</kbd>+<kbd>q或s</kbd>:搜索
-        
-          <a class="article-more-a" href="2019/07/17/第一篇博客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快捷键</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/17/第一篇博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/17/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="2019/07/17/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-17T12:37:32.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/17/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -399,8 +355,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
