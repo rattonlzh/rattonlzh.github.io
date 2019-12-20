@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
   <title>数据库ER图转关系模型 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
+  <meta name="description" content="E-R图转关系模型的要点ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点 相关定义实体:现实世界中区别于其他所有对象的一个对象. 联系:多个实体间的相互关联 实体集:具有相同属性的实体的集合 联系集:相同类型联系的集合映射基数：一个实体通过一个联系能关联的实体的数目一对一联系">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库ER图转关系模型">
 <meta property="og:url" content="https://rattonlzh.github.io/2019/07/24/数据库ER图转关系模型/index.html">
 <meta property="og:site_name" content="Ratton">
-<meta property="og:description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
+<meta property="og:description" content="E-R图转关系模型的要点ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点 相关定义实体:现实世界中区别于其他所有对象的一个对象. 联系:多个实体间的相互关联 实体集:具有相同属性的实体的集合 联系集:相同类型联系的集合映射基数：一个实体通过一个联系能关联的实体的数目一对一联系">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-07-28T06:53:20.229Z">
+<meta property="og:updated_time" content="2019-12-20T05:19:51.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库ER图转关系模型">
-<meta name="twitter:description" content="ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点">
+<meta name="twitter:description" content="E-R图转关系模型的要点ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点 相关定义实体:现实世界中区别于其他所有对象的一个对象. 联系:多个实体间的相互关联 实体集:具有相同属性的实体的集合 联系集:相同类型联系的集合映射基数：一个实体通过一个联系能关联的实体的数目一对一联系">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -165,9 +165,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点</p>
-<a id="more"></a>
-<h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1><h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h2><p><strong>实体</strong>:现实世界中区别于其他所有对象的一个对象.</p>
+        <a id="more"></a>
+
+
+
+<h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1><p>ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点</p>
+<h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h2><p><strong>实体</strong>:现实世界中区别于其他所有对象的一个对象.</p>
 <p><strong>联系</strong>:多个实体间的相互关联</p>
 <p><strong>实体集</strong>:具有相同属性的实体的集合</p>
 <p><strong>联系集</strong>:相同类型联系的集合<br><strong>映射基数</strong>：一个实体通过一个联系能关联的实体的数目<br><strong>一对一联系</strong>：每个实体最多只能与一个实体关联<br><strong>一对多联系</strong>：实体集A的一个实体能与其他实体集的多个实体关联，其他实体集的实体却只能与实体集A的一个实体关联<br><strong>多对多联系</strong>：任意实体能与任意数目的实体关联<br><strong>弱实体集</strong>:没有足够属性形成主码的实体集.弱实体集依赖于标识实体集<br><strong>分辨符</strong>:即弱实体集的部分码,与标识实体集的主码共同构成弱实体集的主码<br><strong>多值属性</strong>:允许一个实体有多个值的属性</p>
@@ -458,11 +461,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
