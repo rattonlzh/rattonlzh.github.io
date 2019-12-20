@@ -162,69 +162,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="git使用流程"><a href="#git使用流程" class="headerlink" title="git使用流程"></a>git使用流程</h1><blockquote>
-<p>[TOC]</p>
-</blockquote>
-<h2 id="1-配置全局用户名和邮箱"><a href="#1-配置全局用户名和邮箱" class="headerlink" title="1. 配置全局用户名和邮箱"></a>1. 配置全局用户名和邮箱</h2><p>配置全局用户名：    <code>git config --global user.name &quot;yourname&quot;</code></p>
-<p>配置邮箱：<code>git config --global user.email &quot;youremail@xx.com&quot;</code></p>
-<p>配置完全局用户名和邮箱后，在git仓库进行提交后，在版本日志上可以显示提交者的用户名和邮箱名，建议用户名和邮箱名与github上的账号一致。</p>
-<h2 id="2-初始化仓库"><a href="#2-初始化仓库" class="headerlink" title="2. 初始化仓库"></a>2. 初始化仓库</h2><p>在项目文件夹下初始化仓库：<code>git init</code></p>
-<h2 id="3-添加远程仓库"><a href="#3-添加远程仓库" class="headerlink" title="3. 添加远程仓库"></a>3. 添加远程仓库</h2><p>建立仓库大多数是为了更好地与他人协作，所以应该有一个远程仓库，大家都把提交推送到远程仓库或从远程仓库拉取新变更。</p>
-<p>添加远程仓库origin：<code>git remote add origin &lt;repo-url&gt;</code>.</p>
-<p>请将 <code>&lt;repo-url&gt;</code>替换为远程仓库的url地址。</p>
-<p>origin是默认的名字，可以换成其他有意义的名字。</p>
-<p> 在github的仓库页面，有个名为<kbd>Clone or download</kbd>的按钮，点击可以看到仓库的url（此url不是该仓库页面的url），复制下来，假设为 <code>https://github.com/rattonlzh/rattonlzh.github.io.git</code>，添加远程仓库并命名为github的命令：<code>git remote add github https://github.com/rattonlzh/rattonlzh.github.io.git</code>。下文提到的github都代指使用git新添加的远程仓库。</p>
-<h2 id="4-克隆仓库"><a href="#4-克隆仓库" class="headerlink" title="4. 克隆仓库"></a>4. 克隆仓库</h2><p>在当前文件夹下克隆远程仓库到本地：<code>git clone &lt;repo-url&gt;</code></p>
-<p>该操作相当于<code>git init</code>+  <code>git remote add origin &lt;repo-url&gt;</code> + <code>git branch set-upstream-to=origin/master</code> + <code>git pull</code>. </p>
-<h2 id="5-添加提交"><a href="#5-添加提交" class="headerlink" title="5. 添加提交"></a>5. 添加提交</h2><p>将所有变更添加到暂存区:<code>git add .</code></p>
-<p>将暂存区的变更提交到本地仓库并编写提交注释：<code>git commit -m “提交信息”</code></p>
-<p>一步到位，直接将变更提交：<code>git add . &amp; git commit -m “提交信息”</code></p>
-<p>一般来说，做了变更就将变更添加到暂存区，当暂存区的变更足够多时，再考虑提交，因为每次提交都是记录在版本历史中的，为了版本历史的每次提交都是有意义的，应该尽量避免只是修改了几个单词等鸡肋的提交。</p>
-<h2 id="6-关联远程分支"><a href="#6-关联远程分支" class="headerlink" title="6. 关联远程分支"></a>6. 关联远程分支</h2><p>设置本地master分支的上游分支为github的master分支的命令：<code>git branch –-set-upstream-to=github/master  master</code></p>
-<h2 id="7-从远程分支拉取内容"><a href="#7-从远程分支拉取内容" class="headerlink" title="7. 从远程分支拉取内容"></a>7. 从远程分支拉取内容</h2><p>假设添加了远程仓库并命名为github，拉取github的master分支内容合并到本地仓库当前分支的命令：<code>git pull github master</code></p>
-<p>如果设置了上游分支，可以直接使用 <code>git pull</code>命令从上游分支拉取内容。</p>
-<h2 id="8-推送到远程分支"><a href="#8-推送到远程分支" class="headerlink" title="8. 推送到远程分支"></a>8. 推送到远程分支</h2><p>推送本地的local分支到远程仓库github的master分支的命令：<code>git push github local:master</code></p>
-<p>如果设置了上游分支，可以直接使用 <code>git push</code>命令。</p>
-<p>第一次push时指定上游分支为github的master分支（该分支必须是已存在）的命令： <code>git push -u github master</code></p>
-<h2 id="9-推送远程分支失败的原因"><a href="#9-推送远程分支失败的原因" class="headerlink" title="9. 推送远程分支失败的原因"></a>9. 推送远程分支失败的原因</h2><ol>
-<li>没有该远程仓库的写权限，需要通知该仓库的拥有者分配写权限</li>
-<li>本地的版本历史落后于远程仓库的版本历史，这是在协作时你的同伴推送了新内容到远程仓库上而你没有及时同步导致的。此时在push前先 <code>git pull</code>一下就可以了。</li>
-<li>网络连接有问题</li>
-</ol>
-<h2 id="10-创建本地新分支"><a href="#10-创建本地新分支" class="headerlink" title="10. 创建本地新分支"></a>10. 创建本地新分支</h2><p>创建dev分支并切换到dev分支： <code>git checkout -b dev</code></p>
-<p>重新切换到master分支： <code>git checkout master</code></p>
-<p>查看本地分支： <code>git branch</code>. *前缀表示该分支为正在使用的分支</p>
-<p>查看所有分支（包括远程分支和HEAD指向的分支）： <code>git branch -a</code></p>
-<h2 id="11-删除本地分支"><a href="#11-删除本地分支" class="headerlink" title="11. 删除本地分支"></a>11. 删除本地分支</h2><p>删除dev分支：<code>git branch -d dev</code></p>
-<h2 id="12-创建新远程分支"><a href="#12-创建新远程分支" class="headerlink" title="12. 创建新远程分支"></a>12. 创建新远程分支</h2><p>新建本地分支newbranch并推送到远程仓库的newbranch分支上，远程仓库如果没有该分支，则会新建一个： <code>git push github newbranch:newbranch</code> </p>
-<h2 id="13-删除远程分支"><a href="#13-删除远程分支" class="headerlink" title="13. 删除远程分支"></a>13. 删除远程分支</h2><p>当临时创建的分支合并到master分支后，就没有存在的价值了，则对其删除。</p>
-<p>删除远程github仓库的dev分支的命令：<code>git push github --delete dev</code>或 <code>git push github :dev</code></p>
-<h2 id="14-版本回溯"><a href="#14-版本回溯" class="headerlink" title="14. 版本回溯"></a>14. 版本回溯</h2><p>查看提交历史： <code>git log</code></p>
-<p>回退到最近的提交版本： <code>git reset HEAD .</code></p>
-<p>回退到上一次提交版本：<code>git reset ^HEAD</code></p>
-<p>回退到指定版本：</p>
-<ul>
-<li>查看版本历史：<code>git log</code></li>
-<li>每个提交都有一个SHA值作为其唯一标识，回退到指定版本：<code>git checkout &lt;sha值&gt;</code>(只需SHA值可唯一标识该提交的前几位即可)</li>
-</ul>
-<p>撤销暂存区的修改（回退到上一个 <code>git commit</code> 或 <code>git add</code> 前的状态）：<code>git checkout –- .</code></p>
-<h2 id="15-臭名昭著的强制推送"><a href="#15-臭名昭著的强制推送" class="headerlink" title="15. 臭名昭著的强制推送"></a>15. 臭名昭著的强制推送</h2><p>非常不建议使用的命令：<code>git push -f</code></p>
-<p>该命令会将本地分支强制提交到远程仓库，导致远程分支的版本历史被本地的版本历史代替，也就是说如果你的同伴在远程分支上新增了内容，你没有pull下来，直接来个<code>git push -f</code>，那么远程分支上你的同伴做的新更改就消失了，等于让别人白干，且无法撤销。</p>
-<h2 id="16-git协作方法"><a href="#16-git协作方法" class="headerlink" title="16.git协作方法"></a>16.git协作方法</h2><p>分支的管理原则：</p>
-<ul>
-<li><p>每个开发人员创建一个分支 ，每人在各自的分支工作</p>
-</li>
-<li><p>针对某个bug临时创建分支</p>
-</li>
-<li><p>实验性功能临时创建一个分支</p>
-</li>
-<li><p>经过测试、功能稳定的分支合并到master分支，master分支是最终的项目成果</p>
-</li>
-</ul>
-<h2 id="17-git合并冲突"><a href="#17-git合并冲突" class="headerlink" title="17.git合并冲突"></a>17.git合并冲突</h2><p><code>git diff</code>将文件的不同部分标记出来，手动删除冲突的代码和标记</p>
-<p><code>git mergetool</code></p>
-
+        <h1 id="git使用流程"><a href="#git使用流程" class="headerlink" title="git使用流程"></a>git使用流程</h1>
+        
+          <a class="article-more-a" href="2019/12/20/git使用流程/#more">more >></a>
+        
       
 
       
@@ -458,26 +399,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<h1 id="配置tensorflow-gpu"><a href="#配置tensorflow-gpu" class="headerlink" title="配置tensorflow-gpu"></a>配置tensorflow-gpu</h1><p>如果你需要在自己的电脑上运行tensorflow框架的代码,而同时又觉得你自己的gpu还行(比如我家游戏本的独显 GTX 1050Ti),可以配置成使用gpu运行tensorflow提高运行速度.<br></p>
-<h2 id="四件套：python，cuda，cudnn，tensorflow-gpu"><a href="#四件套：python，cuda，cudnn，tensorflow-gpu" class="headerlink" title="四件套：python，cuda，cudnn，tensorflow-gpu"></a>四件套：python，cuda，cudnn，tensorflow-gpu</h2><blockquote>
-<p><strong>CUDA</strong>（Compute Unified Device Architecture），是显卡厂商NVIDIA推出的运算平台。 <strong>CUDA</strong>™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。 它包含了<strong>CUDA</strong>指令集架构（ISA）以及GPU内部的并行计算引擎。</p>
-</blockquote>
-<h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>推荐安装<a href="https://www.anaconda.com/distribution/#download-section" target="_blank" rel="noopener">anaconda</a>环境，自带python，同时包含python编辑器，notebook及与一些有用的依赖包。</p>
-<h2 id="安装CUDA和cudnn"><a href="#安装CUDA和cudnn" class="headerlink" title="安装CUDA和cudnn"></a>安装CUDA和cudnn</h2><p>一般来说你电脑预装的显卡驱动并不支持gpu计算,你需要到nvidia官网下载用来科学计算的<a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal" target="_blank" rel="noopener">CUDA</a>驱动以及补充包<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">cudnn</a>（下载需要注册nvidia developer账户，问题不大）。<br></p>
-<p>根据你的操作系统选择合适的安装文件。例如我的win10 64位系统，需要安装的cuda是<a href="https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.168_425.25_win10.exe" target="_blank" rel="noopener">cuda_10.1.168_425.25_win10.exe</a>，对应的cudnn为<a href="https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.6.1.34/prod/10.1_20190620/cudnn-10.1-windows10-x64-v7.6.1.34.zip" target="_blank" rel="noopener">cudnn-10.1-windows10-x64-v7.6.1.34.zip</a><br><br><strong>安装完cuda后，将cudnn的压缩包解压，有bin，include，lib三个文件夹，将文件夹里的文件分别拷贝到CUDA安装目录的对应文件夹下。我的CUDA安装目录为C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1</strong></p>
-<h2 id="安装tensorflow-gpu"><a href="#安装tensorflow-gpu" class="headerlink" title="安装tensorflow-gpu"></a>安装tensorflow-gpu</h2><p>安装的tensorflow-gpu版本需要跟你的python，cuda，cudnn的版本对应，具体参考<a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">fo40225的tensorflow-windows-wheel仓库</a>,根据对应版本在相应文件夹找到合适的tensorflow-gpu的whl文件。比如我的cuda版本是10.1.168，cudnn版本是7.6.1，python版本是python3.7，则我将下载<a href="https://github.com/fo40225/tensorflow-windows-wheel/raw/master/1.14.0/py37/GPU/cuda101cudnn76sse2/tensorflow_gpu-1.14.0-cp37-cp37m-win_amd64.whl" target="_blank" rel="noopener">tensorflow_gpu-1.14.0-cp37-cp37m-win_amd64.whl</a>。</p>
-<p>下载好whl文件后在该文件同一个目录下打开cmd，运行命令<code>pip install --ignored-uninstalled tensorflow_gpu-1.14.0-cp37-cp37m-win_amd64.whl</code>（tensorflow_gpu-1.14.0-cp37-cp37m-win_amd64.whl是我实际下载的whl文件的名字）。<br><strong>建议启用虚拟环境安装,否则可能出现已存在某些包需要卸载重装却无法用pip卸载的情况</strong></p>
-<p><img src="E:%5CDocuments%5Chexo%5Csource_posts%5C%E8%BF%90%E8%A1%8Ctensorflow%E4%BD%BF%E7%94%A8gpu%E5%8A%A0%E9%80%9F%5C1564302059365.png" alt="错误提示截图"></p>
-<h2 id="使用anaconda启用虚拟环境的方法"><a href="#使用anaconda启用虚拟环境的方法" class="headerlink" title="使用anaconda启用虚拟环境的方法"></a>使用anaconda启用虚拟环境的方法</h2><ol>
-<li>创建虚拟环境：<code>conda  create -n tensorflow-gpu python=3.7</code></li>
-<li>激活虚拟环境: <code>activate tensorflow-gpu</code></li>
-<li>退出虚拟环境: <code>deactivate</code></li>
-</ol>
-<hr>
-<p>理论上做完以上步骤后便能成功运行启用gpu加速的tensorflow了</p>
-
+        <h1 id="配置tensorflow-gpu"><a href="#配置tensorflow-gpu" class="headerlink" title="配置tensorflow-gpu"></a>配置tensorflow-gpu</h1>
+        
+          <a class="article-more-a" href="2019/07/28/运行tensorflow使用gpu加速/#more">more >></a>
+        
       
 
       
@@ -539,28 +464,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-
-
-<h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1><p>ER图有助于直观地描述业务中的实体的属性以及实体间的联系,辅助我们构建良好的数据库,ER图的最终目的是转为数据库的关系模型,下面我们将指出ER图转关系模型的几个要点</p>
-<h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h2><p><strong>实体</strong>:现实世界中区别于其他所有对象的一个对象.</p>
-<p><strong>联系</strong>:多个实体间的相互关联</p>
-<p><strong>实体集</strong>:具有相同属性的实体的集合</p>
-<p><strong>联系集</strong>:相同类型联系的集合<br><strong>映射基数</strong>：一个实体通过一个联系能关联的实体的数目<br><strong>一对一联系</strong>：每个实体最多只能与一个实体关联<br><strong>一对多联系</strong>：实体集A的一个实体能与其他实体集的多个实体关联，其他实体集的实体却只能与实体集A的一个实体关联<br><strong>多对多联系</strong>：任意实体能与任意数目的实体关联<br><strong>弱实体集</strong>:没有足够属性形成主码的实体集.弱实体集依赖于标识实体集<br><strong>分辨符</strong>:即弱实体集的部分码,与标识实体集的主码共同构成弱实体集的主码<br><strong>多值属性</strong>:允许一个实体有多个值的属性</p>
-<h2 id="ER图的图形含义"><a href="#ER图的图形含义" class="headerlink" title="ER图的图形含义"></a>ER图的图形含义</h2><p><strong>矩形</strong>：表示实体集，用水平线将矩形分成两部分，上方表示实体集的名称，下方表示属性集，属性集中带下划线的是主码，如果下划线是虚线，则代表分辨符，该实体集是弱实体集<br><strong>菱形</strong>：表示联系集。连接线全部带箭头代表一对一联系，部分带箭头代表被箭头指向的实体到其他实体是一对多联系，不带箭头代表多对多联系。双实线代表连接的实体集全部参与。<br><strong>双菱形</strong>：表示弱实体集和标识实体集的联系。<br><strong>l..h</strong>:用在实体集和联系集的连线上，表示映射基数的范围。l表示最小值，h表示最大值，取值可取0，1，2，···，<em>。</em>表示任意值</p>
-<h2 id="转换方式"><a href="#转换方式" class="headerlink" title="转换方式"></a>转换方式</h2><ol>
-<li><strong>实体集</strong>:直接转换</li>
-<li><strong>联系集</strong>:属性集=所有实体的主码+联系集的描述性属性,主码视映射基数而定<ol>
-<li>一对一:主码=任一实体的主码</li>
-<li>一对多or多对一:主码=映射基数不为1的所有实体的主码</li>
-<li>多对多:所有实体的主码</li>
-</ol>
-</li>
-<li><strong>多值属性</strong>:属性集=实体主码+一个多值属性,主码=实体主码,如果实体集只有主码和多值属性,则不必特别把多值属性单独转为一个模式</li>
-<li><strong>弱实体集</strong>:属性集=弱实体集的所有属性+标识实体集的主码,主码=分辨符+标识实体集的主码。连接弱实体集的联系集是冗余的，不必给出</li>
-</ol>
-
+        <h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1>
+        
+          <a class="article-more-a" href="2019/07/24/数据库ER图转关系模型/#more">more >></a>
+        
       
 
       
@@ -633,88 +540,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="提高工作效率的快捷键技巧"><a href="#提高工作效率的快捷键技巧" class="headerlink" title="提高工作效率的快捷键技巧"></a>提高工作效率的快捷键技巧</h1><h2 id="win10桌面模式常用快捷键"><a href="#win10桌面模式常用快捷键" class="headerlink" title="win10桌面模式常用快捷键"></a>win10桌面模式常用快捷键</h2><ol>
-<li><p><kbd>win</kbd>+<kbd>方向键</kbd>:分屏,未分屏时向上是窗口最大化,向下是隐藏当前窗口,向左或右是当前窗口占1/2屏,1/2屏状态下向下是占1/4屏,具体效果亲测便知</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>q或s</kbd>:搜索</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>e</kbd>:打开资源管理器</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>r</kbd>:打开”运行”</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>t</kbd>:在任务栏中切换</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>d</kbd>:隐藏当前窗口</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>f</kbd>:反馈中心</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>g</kbd>:游戏录制工具,事实上可以录制任何应用程序的屏幕,只要标记该应用程序为一个游戏</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>k</kbd>: 蓝牙连接</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>l</kbd>: 锁屏</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>v</kbd>: 打开剪切版</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>n</kbd>: 打开OneNote的快速笔记</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>tab</kbd>: 显示已打开程序的界面预览图</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>prtsc</kbd>: 截全屏,图片保存在”屏幕截图”文件夹</p>
-</li>
-<li><p><kbd>win</kbd>+<kbd>shift</kbd>+<kbd>s</kbd>: 截任意尺寸屏幕到剪切板</p>
-</li>
-<li><p><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>esc</kbd>: 打开任务管理器</p>
-</li>
-<li><p><kbd>alt</kbd>+<kbd>tab</kbd>: 在当前窗口与上一个窗口之间切换</p>
-</li>
-<li><p><kbd>alt</kbd>+<kbd>f4</kbd>:关闭当前窗口</p>
-</li>
-<li><p><kbd>alt</kbd>+<kbd>prtsc</kbd>:截当前窗口屏幕到剪切板</p>
-</li>
-</ol>
-<h2 id="修改常用文件夹位置"><a href="#修改常用文件夹位置" class="headerlink" title="修改常用文件夹位置"></a>修改常用文件夹位置</h2><p>文档,图片,视频,音乐,下载，桌面等文件夹默认都在c盘的用户文件夹里,由于是一般情况下c盘是放操作系统的系统文件的, 剩余容量一般也不多,一般不建议吧这些文件夹放在C盘。修改这些文件夹位置的方法是：找到该文件夹，可以通过<kbd>win</kbd>+<kbd>s</kbd>搜索找到，打开文件所在位置，右击文件夹选择属性，选择位置，点击移动，选择修改后位置，确定，应用，完事。</p>
-<h2 id="IDE快捷键"><a href="#IDE快捷键" class="headerlink" title="IDE快捷键"></a>IDE快捷键</h2><p>敲代码的IDE有很多种，其中键盘快捷键映射方式比较常见的有vim，eclipse，jetbrains系列三种（即使没有也可通过插件的方式添加)。vim的操作比较复杂，且windows系统下不能从其他地方复制内容到编辑器里，很麻烦，暂不予考虑。现介绍原生应用eclipse快捷键和jetbrains pycharm的常用快捷键,部分快捷键可能在其他IDE通过插件实现的快捷键方案中不适用。</p>
-<h3 id="eclipse"><a href="#eclipse" class="headerlink" title="eclipse"></a>eclipse</h3><ol>
-<li><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>r</kbd>:在当前工程中快捷搜索文件</li>
-<li><kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>down</kbd>:复制当前行到下一行</li>
-<li><kbd>ctrl</kbd>+<kbd>o</kbd>:在当前文件定位类</li>
-<li><kbd>ctrl</kbd>+<kbd>f</kbd>:查找/替换</li>
-<li><kbd>ctrl</kbd>+<kbd>.</kbd>:跳转到报错处</li>
-<li><kbd>ctrl</kbd>+<kbd>1</kbd>:选择错误处理方案</li>
-<li><kbd>ctrl</kbd>+<kbd>e</kbd>:在已打开的选项卡之间通过方向键切换</li>
-<li><kbd>ctrl</kbd>+<kbd>/</kbd>:注释/取消注释</li>
-<li><kbd>ctrl</kbd>+<kbd>l</kbd>:定位到第n行</li>
-<li><kbd>ctrl</kbd>+<kbd>d</kbd>:删除当前行</li>
-<li><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd>:代码格式化</li>
-<li><kbd>shift</kbd>+<kbd>enter</kbd>:在当前行下方创建空行,不论光标是否在当前行行末(但亲测在vscode上的eclipse keymap插件实现该功能的快捷键其实是(ctrl+enter)</li>
-<li><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>enter</kbd>:在当前行上方创建空行</li>
-<li><kbd>alt</kbd>+<kbd>up或down</kbd>:将当前行移动到上移或下移</li>
-<li><kbd>alt</kbd>+<kbd>/</kbd>:代码补全</li>
-</ol>
-<h3 id="pycharm"><a href="#pycharm" class="headerlink" title="pycharm"></a>pycharm</h3><ol>
-<li><kbd>f2</kbd>:跳转到错误处</li>
-<li><kbd>alt</kbd>+<kbd>enter</kbd>:快速修正</li>
-<li><kbd>shift</kbd>+<kbd>shift</kbd>:全局搜索(不支持正则表达式)</li>
-<li><kbd>ctrl</kbd>+<kbd>f</kbd>:查找</li>
-<li><kbd>ctrl</kbd>+<kbd>r</kbd>:替换</li>
-<li><kbd>ctrl</kbd>+<kbd>y</kbd>:删除当前行</li>
-<li><kbd>ctrl</kbd>+<kbd>d</kbd>:复制当前行到下一行</li>
-<li><kbd>ctrl</kbd>+<kbd>g</kbd>:定位到指定行</li>
-<li><kbd>ctrl</kbd>+<kbd>/</kbd>:注释当前行并把光标移到下一行</li>
-<li><kbd>shift</kbd>+<kbd>enter</kbd>:在当前行下方创建空行,光标移到新建行</li>
-<li><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>up或down</kbd>:将当前行上移或下移</li>
-<li><kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>l</kbd>:代码格式化</li>
-</ol>
-<h2 id="下期博客预告"><a href="#下期博客预告" class="headerlink" title="下期博客预告"></a>下期博客预告</h2><ol>
-<li>数据库ER模型转关系模式</li>
-<li>echarts常用API</li>
-<li>matplotlib及scipy常用API</li>
-<li>latex写论文用到的语法</li>
-<li>tensorflow框架实现gpu加速</li>
-</ol>
-
+        <h1 id="提高工作效率的快捷键技巧"><a href="#提高工作效率的快捷键技巧" class="headerlink" title="提高工作效率的快捷键技巧"></a>提高工作效率的快捷键技巧</h1>
+        
+          <a class="article-more-a" href="2019/07/17/第一篇博客/#more">more >></a>
+        
       
 
       
@@ -787,22 +616,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>hexo官网： <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br>hexo文档：k <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a><br>问题反馈： <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a>或 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub的issue</a>.</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><p>自定义主题入门：<a href="https://www.cnblogs.com/mmzuo-798/p/10451385.html" target="_blank" rel="noopener">https://www.cnblogs.com/mmzuo-798/p/10451385.html</a></p>
-<h3 id="创建新博客"><a href="#创建新博客" class="headerlink" title="创建新博客"></a>创建新博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="在本地运行"><a href="#在本地运行" class="headerlink" title="在本地运行"></a>在本地运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="产生静态网页"><a href="#产生静态网页" class="headerlink" title="产生静态网页"></a>产生静态网页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="部署到远程仓库（如github等）"><a href="#部署到远程仓库（如github等）" class="headerlink" title="部署到远程仓库（如github等）"></a>部署到远程仓库（如github等）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>hexo官网： <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br>hexo文档：k <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a><br>问题反馈： <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a>或 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub的issue</a>.</p>
+        
+          <a class="article-more-a" href="2019/07/17/hello-world/#more">more >></a>
+        
       
 
       
@@ -958,11 +775,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
+                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
