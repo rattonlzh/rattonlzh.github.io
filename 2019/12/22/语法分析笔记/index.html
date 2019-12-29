@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
-  <title>Archives: 2019 | Ratton</title>
+  <title>语法分析笔记 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ratton">
-<meta property="og:url" content="https://rattonlzh.github.io/archives/2019/index.html">
+  <meta name="description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
+<meta name="keywords" content="编译原理语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法分析笔记">
+<meta property="og:url" content="https://rattonlzh.github.io/2019/12/22/语法分析笔记/index.html">
 <meta property="og:site_name" content="Ratton">
+<meta property="og:description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-12-22T12:28:49.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ratton">
+<meta name="twitter:title" content="语法分析笔记">
+<meta name="twitter:description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -53,7 +58,7 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="../../homepage/homepage.html">主页</a></li>
+				<li><a href="../../../../homepage/homepage.html">主页</a></li>
 	        
 			</ul>
 		</nav>
@@ -125,7 +130,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="../../homepage/homepage.html">主页</a></li>
+					<li style="width: 100%"><a href="../../../../homepage/homepage.html">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -140,175 +145,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-语法分析笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/26/数据库应用复习/" class="archive-article-date">
-  	<time datetime="2019-12-26T13:27:53.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/25/2019-12-25-qt资源文件的使用/" class="archive-article-date">
-  	<time datetime="2019-12-25T09:20:09.691Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/24/编译原理tiny扩充文法实验/" class="archive-article-date">
-  	<time datetime="2019-12-24T12:51:43.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/23/2019-12-23-如何做一个代码搬运工/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/23/2019-12-23-如何做一个代码搬运工/">如何做一个代码搬运工</a>
+    <h1 class="article-title" itemprop="name">
+      语法分析笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android 项目开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/22/2019-12-22-数字图像处理知识点/" class="archive-article-date">
-  	<time datetime="2019-12-22T08:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/22/2019-12-22-数字图像处理知识点/">数字图像处理知识点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">数字图像处理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/22/语法分析笔记/" class="archive-article-date">
+        
+        <a href="" class="archive-article-date">
   	<time datetime="2019-12-22T03:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/22/语法分析笔记/">语法分析笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><h2 id="消除二义性"><a href="#消除二义性" class="headerlink" title="消除二义性"></a>消除二义性</h2><p>可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。</p>
+<h3 id="处理运算优先权和消除"><a href="#处理运算优先权和消除" class="headerlink" title="处理运算优先权和消除"></a>处理运算优先权和消除</h3><p>构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一个）</p>
+<p>未消除二义性的文法<br>$$<br>\begin{align<em>}<br>exp &amp;\rightarrow exp\ addop\ exp\ |\ term\<br>addop &amp;\rightarrow +|-\<br>term &amp;\rightarrow exp\ mulop\ exp\ |\ number\<br>mulop &amp; \rightarrow \times|\div<br>\end{align</em>}<br>$$</p>
+<p>消除二义性后的文法<br>$$<br>\begin{align<em>}<br>exp &amp; \rightarrow exp \ addop \ term \ | \ term \<br>addop &amp; \rightarrow + | - \<br>term &amp; \rightarrow term \ mulop \ exp \ | \ number\<br>mulop &amp; \rightarrow \times | \div<br>\end{align</em>}<br>$$</p>
+<h2 id="悬挂else的消除"><a href="#悬挂else的消除" class="headerlink" title="悬挂else的消除"></a>悬挂else的消除</h2><p>文法右边的表达式同时是该文法的另一条表达式的前缀。<br>$$<br>\begin{align<em>}<br>statement &amp;\rightarrow \text{if-stmt} \ | \ other \<br>\text{if-stmt} &amp;\rightarrow if(exp) \ statement \<br>&amp; | \ if(exp) \ statement \ else \ statement \<br>exp &amp; \rightarrow 0 \ | \ 1<br>\end{align</em>}<br>$$<br>最近嵌套规则消除悬挂else,要求出现else之前的语句必须是已匹配的<br>$$<br>\begin{align<em>}<br>statement &amp; \rightarrow \ \text{matched-stmt} \ | \ \text{unmatched-stmt} \<br>\text{matched-stmt} &amp; \rightarrow \ if(exp) \ \text{matched-stmt} \ else \ \text{matched-stmt}\ |\ other\<br>\text{unmatched-stmt} &amp; \rightarrow \ if(exp) \ statement \<br>&amp; | if(exp) \text{matched-stmt} \ else \ \text{unmatched-stmt}\<br>exp &amp; \rightarrow 0|1<br>\end{align</em>}<br>$$</p>
+<h2 id="无关紧要的二义性"><a href="#无关紧要的二义性" class="headerlink" title="无关紧要的二义性"></a>无关紧要的二义性</h2><p>某些文法总是存在二义性且总生成唯一的抽象语法树。由于相结合的语义不必依赖于使用的是哪种消除二义性的规则， 所以可将这样的二义性称作无关紧要的二义性（ inessential ambiguity）。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬的打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wepay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -320,174 +216,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://rattonlzh.github.io/2019/12/22/语法分析笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/20/脑残实录/" class="archive-article-date">
-  	<time datetime="2019-12-20T13:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="../2019-12-22-数字图像处理知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数字图像处理知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../20/脑残实录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">脑残实录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/20/脑残实录/">脑残实录</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/20/android实战/" class="archive-article-date">
-  	<time datetime="2019-12-20T11:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/20/android实战/">android实战</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/12/20/git使用流程/" class="archive-article-date">
-  	<time datetime="2019-12-20T02:54:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/12/20/git使用流程/">git使用流程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">git工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2019/08/11/latex常用代码/" class="archive-article-date">
-  	<time datetime="2019-08-11T03:51:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2019/08/11/latex常用代码/">latex常用代码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -511,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

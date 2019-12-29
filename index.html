@@ -142,6 +142,848 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据库应用复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库应用复习"><a href="#数据库应用复习" class="headerlink" title="数据库应用复习"></a>数据库应用复习</h1><h2 id="商用服务器总类"><a href="#商用服务器总类" class="headerlink" title="商用服务器总类"></a>商用服务器总类</h2><ol>
+<li>对称多处理结构 SMP</li>
+<li>非一致存储访问结构 NUMA</li>
+<li>海量并行处理结构  MPP</li>
+</ol>
+<h2 id="大型数据库的架构设计方法"><a href="#大型数据库的架构设计方法" class="headerlink" title="大型数据库的架构设计方法"></a>大型数据库的架构设计方法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li>可扩展性（可伸缩性）：系统适应不断增长的用户数的能力</li>
+<li>高可用性：某些服务在任何时间都可以访问并在可预期的合理时间周期内有响应</li>
+<li>负载均衡：集群技术将请求分发到不同的服务器上以获得较好高可用性和较好的性能</li>
+</ol>
+<p>容错（Fault tolerance）：不管有多少错误，容错的服务能确保有严格正确的行为</p>
+<p>失效转移（Failover）：当一个结点失效时，通过选择集群的另一个结点，使处理继续进行</p>
+<p>等幂方法（idempotent methods）：重复相同的参数调用可以得到相同的结果</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p>原子性-atomicity：要么不做，要么全做</p>
+<p>完整性-consistency：写入的数据满足定义的约束规则</p>
+<p>隔离性-isolation：并发执行的事务如同串行执行，保证 系统状态的一致性</p>
+<p>持久性-duration：一旦提交，即便断电、crash也不会丢失数据</p>
+<h3 id="数据库的扩展性Scalable"><a href="#数据库的扩展性Scalable" class="headerlink" title="数据库的扩展性Scalable"></a>数据库的扩展性Scalable</h3><ol>
+<li>Scale up：纵向扩展：提高单体性能， 高端设备升级成本高，受当前科技影响和厂家限制，设备和数据集中，发生故障影响较大</li>
+<li>Scale out：横向扩展：增加机器数量，成本低，容易实现，集群维护难度高</li>
+</ol>
+<h3 id="扩展性好的数据库设计原则"><a href="#扩展性好的数据库设计原则" class="headerlink" title="扩展性好的数据库设计原则"></a>扩展性好的数据库设计原则</h3><ol>
+<li>事务相关性最小原则：设计合理切分规则，尽可能让一个事务所需数据在同一个服务器上，避免分布式事务</li>
+<li>数据一致性：在保证扩展性的前提下保证数据可用性。使用BASE模型，基本可用，柔软状态和最终一致</li>
+<li>高可用及数据安全原则：支持可扩展的前提下保证高可用和数据安全</li>
+</ol>
+<h3 id="并行计算体系结构"><a href="#并行计算体系结构" class="headerlink" title="并行计算体系结构"></a>并行计算体系结构</h3><p>share memory：多cpu共享内存，通过内部通讯机制（interconnection network）通讯</p>
+<p>share disk：多cpu有各自私自的内存，通过内部通讯机制访问所有磁盘系统</p>
+<p>share nothing：每个cpu有各自的内存和磁盘，通过网络连接通讯</p>
+<h3 id="SHARDING策略"><a href="#SHARDING策略" class="headerlink" title="SHARDING策略"></a>SHARDING策略</h3><p>垂直策略：不同的表切分到不同的数据库</p>
+<p>横向：同一张表的记录按某种逻辑关系切分到不同的数据库1</p>
+<h4 id="垂直策略的优点："><a href="#垂直策略的优点：" class="headerlink" title="垂直策略的优点："></a>垂直策略的优点：</h4><ol>
+<li><p>拆分规则明确</p>
+</li>
+<li><p>应用程序模块清晰，整合容易</p>
+</li>
+<li><p>数据维护容易</p>
+</li>
+</ol>
+<h4 id="垂直策略的缺点："><a href="#垂直策略的缺点：" class="headerlink" title="垂直策略的缺点："></a>垂直策略的缺点：</h4><ol>
+<li>部分表关联无法在数据库中完成</li>
+<li>对访问频繁且数据量大的表仍存在性能瓶颈</li>
+<li>事务处理复杂</li>
+<li>切分到一定程度，扩展性会受到限制</li>
+<li>过渡切分会使系统过渡复杂难以维护</li>
+</ol>
+<h4 id="横向切分优点"><a href="#横向切分优点" class="headerlink" title="横向切分优点"></a>横向切分优点</h4><ol>
+<li>表关联基本能在数据库级别完成</li>
+<li>不存在高数据量的表遇到瓶颈的问题</li>
+<li>只要切分合理，基本难以限制扩展性</li>
+<li>事务处理简单</li>
+<li>对应用端的程序架构改动较少</li>
+</ol>
+<h4 id="横向切分缺点"><a href="#横向切分缺点" class="headerlink" title="横向切分缺点"></a>横向切分缺点</h4><ol>
+<li>切分规则复杂，很难抽象出一个满足整个数据库的切分规则</li>
+<li>后期数据维护困难</li>
+<li>应用系统各模块耦合度较大，对后期数据迁移拆分造成困难</li>
+</ol>
+<h2 id="业务连续性"><a href="#业务连续性" class="headerlink" title="业务连续性"></a>业务连续性</h2><p>根据预定义的服务级别协议正常连续地经营重要服务</p>
+<p>包括高可用性和灾难恢复性。</p>
+<p>灾难恢复性：抵御所有中断，为重要程序提供连续处理能力，最终目标让中断时间少于总服务时间的0.001%</p>
+<p>高可用性：更苛刻的恢复时间目标（几秒到数分钟）和恢复点目标（零用户中断）</p>
+<h2 id="系统可用性"><a href="#系统可用性" class="headerlink" title="系统可用性"></a>系统可用性</h2><p>在特定时间和特定条件系统的正常工作程度</p>
+<p>测量方式：可用性的平均值=MTBF/(MTBF+MTTP),</p>
+<p>MTBF：平均故障间隔时间</p>
+<p>MTTP：平均故障修复时间</p>
+<h3 id="完美性与避错技术"><a href="#完美性与避错技术" class="headerlink" title="完美性与避错技术"></a>完美性与避错技术</h3><p>完美性追求一种避错技术，即避免出错。要求组成系统的各个部件、 器件具有高可用性，不允许出错，或者出错率降至最低。<br>•硬件的可用性与完美性 • 指元器件的完美性、部件的完美性、整机与系统的完美性 •软件的可用性与完美性 • 指软件的正确性、完美性、兼容性</p>
+<h3 id="容错性与容错技术"><a href="#容错性与容错技术" class="headerlink" title="容错性与容错技术"></a>容错性与容错技术</h3><p>• 容错技术：在一定程度上容忍故障的技术 • 容错系统：采用容错技术的系统 • 当系统因某种原因出错或者失效，系统能够继续工作，程序 能够继续运行，不会因计算机故障而中止或被修改，执行结 果也不包含系统中故障引起的差错。<br>• 容错技术也称为故障掩盖技术(fault masking)。</p>
+<p>冗余技术是容错技术的重要结构，它以增加资源的办法换取可 用性。由于资源的不同，冗余技术分为硬件冗余、软件冗余、 时间冗余和信息冗余。资源与成本按线性增加，而故障概率则 可按对数规律下降。<br>• 冗余要消耗资源，应当在可用性与资源消耗之间进行权衡和折 衷。</p>
+<h3 id="REPLICATION-机制的实现原理"><a href="#REPLICATION-机制的实现原理" class="headerlink" title="REPLICATION 机制的实现原理"></a>REPLICATION 机制的实现原理</h3><p>• MySQL的 Replication 是一个异步的复制过程，从一个 MySQL instance（我们称之为 Master）复制到另一个 MySQL instance（我们称之 Slave）。在 Master 与 Slave 之 间的实现整个复制过程主要由三个线程来完成，其中两个线程 （SQL线程和IO线程）在 Slave 端，另外一个线程（IO线程） 在 Master 端。<br>• 首先必须打开 Master 端的Binary Log（mysql-bin.xxxxxx） 功能</p>
+<h3 id="MYSQL-复制的基本过程"><a href="#MYSQL-复制的基本过程" class="headerlink" title="MYSQL 复制的基本过程"></a>MYSQL 复制的基本过程</h3><ol>
+<li>Slave 上面的IO线程连接上 Master，并请求从指定日志文件的指定位置（或者 从最开始的日志）之后的日志内容；</li>
+<li>Master 接收到来自 Slave 的 IO 线程的请求后，通过负责复制的 IO 线程根据 请求信息读取指定日志指定位置之后的日志信息，返回给 Slave 端的 IO 线程。 返回信息中除了日志所包含的信息之外，还包括本次返回的信息在 Master 端 的 Binary Log 文件的名称以及在 Binary Log 中的位置； </li>
+<li>Slave 的 IO 线程接收到信息后，将接收到的日志内容依次写入到 Slave 端的 Relay Log文件(mysql-relay-bin.xxxxxx)的最末端，并将读取到的Master端的 bin-log的文件名和位置记录到master-info文件中，以便在下一次读取的时候 能够清楚的告诉Master“我需要从某个bin-log的哪个位置开始往后的日志内容， 请发给我” </li>
+<li>Slave 的 SQL 线程检测到 Relay Log 中新增加了内容后，会马上解析该 Log 文件中的内容成为在 Master 端真实执行时候的那些可执行的 Query 语句，并 在自身执行这些 Query。这样，实际上就是在 Master 端和 Slave 端执行了同 样的 Query，所以两端的数据是完全一样的。</li>
+</ol>
+<h3 id="常见复制架构"><a href="#常见复制架构" class="headerlink" title="常见复制架构"></a>常见复制架构</h3><p>对于数据实时性要求不是特 别 Critical 的应用，只需要 通过廉价的pc server来扩 展 Slave 的数量，将读压 力分散到多台 Slave 的机 器上面，即可通过分散单台 数据库服务器的读压力来解 决数据库端的读性能瓶颈</p>
+<h3 id="DUAL-MASTER-复制架构-MASTER-MASTER"><a href="#DUAL-MASTER-复制架构-MASTER-MASTER" class="headerlink" title="DUAL MASTER 复制架构(MASTER - MASTER)"></a>DUAL MASTER 复制架构(MASTER - MASTER)</h3><p>Dual Master 环境就是两个 MySQL Server 互相将对方作 为自己的 Master，自己作为 对方的 Slave 来进行复制。这 样，任何一方所做的变更，都 会通过复制应用到另外一方的 数据库中。</p>
+<h3 id="级联复制架构-MASTER-SLAVES-SLAVES-…"><a href="#级联复制架构-MASTER-SLAVES-SLAVES-…" class="headerlink" title="级联复制架构(MASTER - SLAVES - SLAVES …)"></a>级联复制架构(MASTER - SLAVES - SLAVES …)</h3><p>有些应用场景中，可能读写压力差别比较大，读压力特别的大，一 个 Master 可能需要上10台甚至更多的 Slave 才能够支撑注读的压 力。复制就会消耗较多的资源，很容易造成复制的延时。</p>
+<h3 id="DUAL-MASTER-与级联复制结合架-构-MASTER-MASTER-SLAVES"><a href="#DUAL-MASTER-与级联复制结合架-构-MASTER-MASTER-SLAVES" class="headerlink" title="DUAL MASTER 与级联复制结合架 构(MASTER - MASTER - SLAVES)"></a>DUAL MASTER 与级联复制结合架 构(MASTER - MASTER - SLAVES)</h3><p>MMS同时解决 Master 因为所附属的 Slave 过多而成为瓶颈的问 题，及解决人工维护和出现异常需要切换后可能存在重新搭建 Replication 的问题。</p>
+<h3 id="M-S复制——S故障的情况"><a href="#M-S复制——S故障的情况" class="headerlink" title="M-S复制——S故障的情况"></a>M-S复制——S故障的情况</h3><p>当我们的 Slave 集群 中的一台 Slave C 出 现故障 crash 之后， 整个系统的变化仅仅 只是从 Master 至 Slave C 的复制中断， 客户端应用的 Read 请求也不能再访问 Slave C。当时其他所 有的 MySQL Server 在不需要任何调整的 情况下就能正常工作。 客户端的请求 Read 请求全部由 Slave A 和 Slave B 来承担。<br>MASTER 单点问题的解决<br>• 当 Master 出现问题后所有客户端的 Write 请求就无法处理<br>• 这时可以有如下两种解决方案： • 一个是将 Slave 中的某一台切换成 Master 对外提供服务， 同时将其他所有的 Slave 都以通过 CHANGE MASTER 命 令来将通过新的 Master 进行复制。 • 另一个方案就是新增一台 Master，也就是 Dual Master 的 解决方案</p>
+<h3 id="M-S复制——M故障的情况"><a href="#M-S复制——M故障的情况" class="headerlink" title="M-S复制——M故障的情况"></a>M-S复制——M故障的情况</h3><p>第一种解决方案，将一台 Slave 切换成 Master 来解决问题 当 Master 出现故障 crash 之后， 原客户端对 Master 的所有 Write 请求都会无法再继续进行下去了， 所有原 Master 到 Slave 的复制也 自然就断掉了。这时候，我们选 择一台 Slave 将其切换成 Master。 假设选择的是 Slave A，则我们将 其他 Slave B 和 Slave C 都通过 CHANGE MASTER TO 命令更换 其 Master，从新的 Master 也就 是原Slave A 开始继续进行复制。 同时将应用端所有的写入请求转 向到新的 Master。对于 Read 请 求，我们可以去掉对新 Master 的 Read 请求，也可以继续保留。</p>
+<h3 id="通过-DUAL-MASTER-来-解决-MASTER-的单点问题"><a href="#通过-DUAL-MASTER-来-解决-MASTER-的单点问题" class="headerlink" title="通过 DUAL MASTER 来 解决 MASTER 的单点问题"></a>通过 DUAL MASTER 来 解决 MASTER 的单点问题</h3><p>我们通过两台 MySQL Server 搭建成 Dual Master 环境，正常情况下，所 有客户端的 Write 请求都写往 Master A，然后通过 Replication 将 Master A 复制到 Master B。一旦 Master A 出现问题之后，所有的 Write 请求都 转向 Master B。而在正常情况下，当 Master B 出现问题的时候，实际上不 论是数据库还是客户端的请求，都不 会受到实质性的影响。 特点就是在 Master 出现故障之后的 处理比较简单，可控性比较大。而弊 端就是需要增加一台 MySQL 服务器， 在成本方面投入更大。</p>
+<h3 id="M-M-S复制——S故障的情况"><a href="#M-M-S复制——S故障的情况" class="headerlink" title="M-M-S复制——S故障的情况"></a>M-M-S复制——S故障的情况</h3><p>考虑 Slave 出现异常的情况。 在这个架构中，Slave 出现 异常后的处理情况和普通的 Master - Slave 架构的处理 方式完全一样，仅仅需要在 应用访问 Slave 集群的访问 配置中去掉一个 Slave 节点 即可解决<br>不论是通过应用程序自己判 断，还是通过硬件解决方案， 都可以很容易的实现。</p>
+<h3 id="M-M-S复制——当-MASTER-A-出现故障之后的处理方案"><a href="#M-M-S复制——当-MASTER-A-出现故障之后的处理方案" class="headerlink" title="M-M-S复制——当 MASTER A 出现故障之后的处理方案"></a>M-M-S复制——当 MASTER A 出现故障之后的处理方案</h3><p>当 Master A 出现故障 crash 之 后，Master A 与 Master B 之 间的复制将中断，所有客户端 向 Master A 的 Write 请求都必 须转向 Master B。<br>这个转向动作的实现，可以通 过VIP 的方式实现。 由于之前所有的 Slave 就都是 从 Master B 来实现复制，所以 Slave 集群不会受到任何的影响， 客户端的所有 Read 请求也就 不会受到任何的影响，整个过 程可以完全自动进行，不需要 任何的人为干预。</p>
+<h3 id="M-M-S复制——当-MASTER-B-出现故障之后的情况又如何"><a href="#M-M-S复制——当-MASTER-B-出现故障之后的情况又如何" class="headerlink" title="M-M-S复制——当 MASTER B 出现故障之后的情况又如何"></a>M-M-S复制——当 MASTER B 出现故障之后的情况又如何</h3><p>首先可以确定的是我们的所有 Write 请求都不会受到任何影响， 而且所有的 Read 请求也都还是能 够正常访问。 但所有 Slave 的复制都会中断， Slave 上面的数据会开始出现滞后 的现象。 需要做的就是将所有的 Slave 进行 CHANGE MASTER TO 操作，改 为从 Master A 进行复制。由于所 有 Slave 的复制都不可能超前最初 的数据源，所以可以根据 Slave 上 面的 Relay Log 中的时间戳信息与 Master A 中的时间戳信息进行对 照来找到准确的复制起始点，不会 造成任何的数据丢失。</p>
+<h3 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h3><p><strong>基本可用</strong> 数据能够保证80%一致 性就够了，剩下20%就 不要过于纠结了。可参 考八二定律</p>
+<p><strong>软状态</strong> 可以理解为无连接的， 而Hard state是面向连接 的。Soft state可以有一 段时间不同步，异步</p>
+<p><strong>最终一致性</strong> 在某一段短时间内允许数 据不一致，但经过一段较 长时间，等所有节点上数 据的拷贝都整合在一起的 时候，数据会最终达到完 全一致</p>
+<h3 id="架构设计理论与原则"><a href="#架构设计理论与原则" class="headerlink" title="架构设计理论与原则"></a>架构设计理论与原则</h3><ol>
+<li><strong>一致性</strong> 分布式系统中，数据一 般会存储在不同节点， 一致性就是要保证对数 据操作的原子性</li>
+<li><strong>可用性</strong> 确保客户访问数据时可得 到响应。不强调各个节点 上数据要保持一致性。</li>
+<li><strong>分区容忍性</strong> 数据分区存储后，即使部 分分区组件不可用，其施 加的操作也能够完成</li>
+</ol>
+<h2 id="非结构化数据处理"><a href="#非结构化数据处理" class="headerlink" title="非结构化数据处理"></a>非结构化数据处理</h2><p>信息检索是从大规模非结构化数据（通常是文本）的集合（通常保 存在计算机上）中找出满足用户信息需求的资料（通常是文档）的 过程。 Document –文档 Unstructured – 非结构化 Information need –信息需求 Collection—文档集、语料库</p>
+<h3 id="IR中的基本假设"><a href="#IR中的基本假设" class="headerlink" title="IR中的基本假设"></a>IR中的基本假设</h3><p>文档集Collection: 由固定数目的文档组成 目标: 返回与用户需求相关的文档并辅助用户来完成某 项任务 相关性Relevance： • 主观的概念 • 反映对象的匹配程度 • 不同应用相关性不同</p>
+<h3 id="检索效果的评价"><a href="#检索效果的评价" class="headerlink" title="检索效果的评价"></a>检索效果的评价</h3><p>正确率(Precision) : 返回结果文档中正确的比例。如返 回80篇文档，其中20篇相关，正确率1/4。</p>
+<p> 召回率(Recall) : 全部相关文档中被返回的比例，如返 回80篇文档，其中20篇相关，但是总的应该相关的文档 是100篇，召回率1/5。</p>
+<p> 正确率和召回率反映检索效果的两个方面，缺一不可。</p>
+<p> • 全部返回，正确率低，召回率100% </p>
+<p>• 只返回一个非常可靠的结果，正确率100%，召回率低</p>
+<h3 id="布尔检索"><a href="#布尔检索" class="headerlink" title="布尔检索"></a>布尔检索</h3><p>针对布尔查询的检索，布尔查询是指利用 AND, OR 或者NOT 操作符将词项连接起来的查询。</p>
+<h3 id="关联向量-INCIDENCE-VECTORS"><a href="#关联向量-INCIDENCE-VECTORS" class="headerlink" title="关联向量(INCIDENCE VECTORS)"></a>关联向量(INCIDENCE VECTORS)</h3><p>关联矩阵的每一列都是 0/1向量，每个0/1都对应一个词 项 给定查询Brutus AND Caesar AND NOT Calpurnia 取出三个列向量 ，并对Calpurnia 的列向量求补，最后 按位进行与操作<br>110100 AND 110111 AND 101111 = 100100. </p>
+<h2 id="相似度计算"><a href="#相似度计算" class="headerlink" title="相似度计算"></a>相似度计算</h2><p>Jaccard系数：$JACCARD(A,B)=\frac{A\cap B}{A \cup B}$</p>
+<h3 id="词项频率tf"><a href="#词项频率tf" class="headerlink" title="词项频率tf"></a>词项频率tf</h3><p>$tf_{t,d}$为t在文档d中出现的次数（词项频率实际为频数）</p>
+<h3 id="文档-词项的匹配得分"><a href="#文档-词项的匹配得分" class="headerlink" title="文档-词项的匹配得分"></a>文档-词项的匹配得分</h3><p>匹配得分 = $\sum_{t\in q\cap d}(1+log \  tf_{t,d})$</p>
+<h3 id="文档频率df"><a href="#文档频率df" class="headerlink" title="文档频率df"></a>文档频率df</h3><p>文档频率指出现词项的文档数目</p>
+<h3 id="idf权重"><a href="#idf权重" class="headerlink" title="idf权重"></a>idf权重</h3><p>$idf_t=log_{10}\frac{N}{df_t}$</p>
+<p>$df_t$是文档频率，N是文档集的文档数目</p>
+<h3 id="tf-idf权重计算"><a href="#tf-idf权重计算" class="headerlink" title="tf-idf权重计算"></a>tf-idf权重计算</h3><p>tf-idf权重是tf权重和idf权重的乘积</p>
+<p>$w_{t,d} = (1+log_{tf_{t,d}})log \ \frac{N}{df_{t}}$</p>
+<p>随着词项频率的增大而增大 ,随着词项罕见度的增加而增大</p>
+<h3 id="文档表示成向量"><a href="#文档表示成向量" class="headerlink" title="文档表示成向量"></a>文档表示成向量</h3><p>每篇文档表示成一个基于tf-idf权重的实值向量 ∈ R| V |. </p>
+<p>我们有一个 | V |维实值空间 </p>
+<p>空间的每一维都对应词项 </p>
+<p>文档都是该空间下的一个点或者向量 </p>
+<p>极高维向量：对于Web搜索引擎，空间会上千万维 </p>
+<p>对每个向量来说又非常稀疏，大部分都是0</p>
+<h3 id="查询和文档之间的余弦相似度计算"><a href="#查询和文档之间的余弦相似度计算" class="headerlink" title="查询和文档之间的余弦相似度计算"></a>查询和文档之间的余弦相似度计算</h3><p>$$<br>cos(\vec{q},\vec{d})=\frac{\sum_{i=1}^{|V|} q_id_i}{\sqrt{\sum_{i=1}^{|V|}q_i^2\sum_{i=1}{|V|}d_i^2}}$</p>
+<p>$$</p>
+<p>$q_i$是第i个词项在查询q中的tf-idf权重</p>
+<p>$d_i$是第i个词项在文档d中的tf-idf权重</p>
+<h2 id="NoSQL数据库的特点"><a href="#NoSQL数据库的特点" class="headerlink" title="NoSQL数据库的特点"></a>NoSQL数据库的特点</h2><ol>
+<li>灵活的扩展性</li>
+<li>灵活的数据模型</li>
+<li>与云计算紧密结合</li>
+</ol>
+<h3 id="关系数据库与nosql数据库对比"><a href="#关系数据库与nosql数据库对比" class="headerlink" title="关系数据库与nosql数据库对比"></a>关系数据库与nosql数据库对比</h3><p>（1）关系数据库 </p>
+<p>优势：以完善的关系代数理论作为基础，有严格的标准， 支持事务ACID四性，借助索引机制可以实现高效的查询， 技术成熟，有专业公司的技术支持 </p>
+<p>劣势：可扩展性较差，无法较好支持海量数据存储，数据 模型过于死板、无法较好支持Web2.0应用，事务机制影响 了系统的整体性能等<br>（2）NoSQL数据库 </p>
+<p>优势：可以支持超大规模数据存储，灵活的数据模型可以 很好地支持Web2.0应用，具有强大的横向扩展能力等</p>
+<p> 劣势：缺乏数学理论基础，复杂查询性能不高，大都不能 实现事务强一致性，很难实现数据完整性，技术尚不成熟， 缺乏专业团队的技术支持，维护较困难</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>•关系数据库应用场景：电信、银行等领域的关键业务系统，需 要保证强事务一致性</p>
+<p> •NoSQL数据库应用场景：互联网企业、传统企业的非关键业务 （比如数据分析）</p>
+<h3 id="典型的NoSQL数据库"><a href="#典型的NoSQL数据库" class="headerlink" title="典型的NoSQL数据库"></a>典型的NoSQL数据库</h3><p>通常包括键值数据库、列族数据库、文档数据库和图形<br>数据库</p>
+<h3 id="当处理CAP的问题时，可以有几个明显的选择："><a href="#当处理CAP的问题时，可以有几个明显的选择：" class="headerlink" title="当处理CAP的问题时，可以有几个明显的选择："></a>当处理CAP的问题时，可以有几个明显的选择：</h3><ol>
+<li><p>CA：也就是强调一致性（C）和可用性（A），放弃分区容忍性（P），最简单的做法是把所有与事务相关的内容都放到同一台机器上。很显然，这种做法会严重影响系统的可扩展性。传统的关系数据库（MySQL、SQL Server和PostgreSQL），都采用了这种设计原则，因此，扩展性都比较差</p>
+</li>
+<li><p>CP：也就是强调一致性（C）和分区容忍性（P），放弃可用性<br> （A），当出现网络分区的情况时，受影响的服务需要等待数据<br> 一致，因此在等待期间就无法对外提供服务</p>
+</li>
+<li><p>AP：也就是强调可用性（A）和分区容忍性（P），放弃一致性<br> （C），允许系统返回不一致的数据</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/26/数据库应用复习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2019-12-25-qt资源文件的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:qt资源文件的使用<br>date:2019-12-25</p>
+<h2 id="tags-qt"><a href="#tags-qt" class="headerlink" title="tags:qt"></a>tags:qt</h2><h1 id="qt-资源文件的使用"><a href="#qt-资源文件的使用" class="headerlink" title="qt 资源文件的使用"></a>qt 资源文件的使用</h1><ol>
+<li><p>添加 <code>Qt resource文件</code>（后缀为qrc的文件)并打开它</p>
+</li>
+<li><p><img src="C:%5CUsers%5C23167%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577265247642.png" alt="1577265247642"></p>
+</li>
+<li><p>添加前缀。在引用该文件的时候必须含该前缀。出于简洁考虑，没什么必要就设为 <code>/</code>好了</p>
+</li>
+<li><p>编写qss文件</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">QMainWindow</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QDialog</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QColorDialog</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTextEdit</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPlainTextEdit</span> &#123;</span><br><span class="line">        <span class="attribute">selection-background-color</span>:<span class="number">#007b50</span>;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPushButton</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPushButton</span><span class="selector-pseudo">::default</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: inset;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QToolButton</span> &#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QToolButton</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#37efba</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPushButton</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#37efba</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPushButton</span><span class="selector-pseudo">:pressed</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#37efba</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#37efba</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QPushButton</span><span class="selector-pseudo">:disabled</span>&#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#808086</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#808086</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QLineEdit</span> &#123;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>; <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgb</span>(58, 58, 58);</span><br><span class="line">        <span class="attribute">border-style</span>: inset;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">8px</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">selection-background-color</span>:<span class="number">#007b50</span>;</span><br><span class="line">        <span class="attribute">selection-color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QLabel</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QLCDNumber</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#37e6b4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QProgressBar</span> &#123;</span><br><span class="line">        <span class="attribute">text-align</span>: center;</span><br><span class="line">        <span class="attribute">color</span>: <span class="built_in">rgb</span>(240, 240, 240);</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgb</span>(58, 58, 58);</span><br><span class="line">        <span class="attribute">border-style</span>: inset;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QProgressBar</span><span class="selector-pseudo">::chunk</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QMenuBar</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QMenuBar</span><span class="selector-pseudo">::item</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">spacing</span>: <span class="number">3px</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">1px</span> <span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">QMenuBar</span><span class="selector-pseudo">::item</span><span class="selector-pseudo">:selected</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QMenu</span><span class="selector-pseudo">::item</span><span class="selector-pseudo">:selected</span> &#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-width</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">padding-left</span>:<span class="number">15px</span>;</span><br><span class="line">        <span class="attribute">padding-top</span>:<span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>:<span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">padding-right</span>:<span class="number">7px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QMenu</span><span class="selector-pseudo">::item</span> &#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">padding-left</span>:<span class="number">17px</span>;</span><br><span class="line">        <span class="attribute">padding-top</span>:<span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>:<span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">padding-right</span>:<span class="number">7px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QMenu</span>&#123;</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTabWidget</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="built_in">rgb</span>(0,0,0);</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTabWidget</span><span class="selector-pseudo">::pane</span> &#123;</span><br><span class="line">                <span class="attribute">border-color</span>: <span class="built_in">rgb</span>(77,77,77);</span><br><span class="line">                <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">                <span class="attribute">border-style</span>: solid;</span><br><span class="line">                <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">6px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTabBar</span><span class="selector-pseudo">::tab</span> &#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#808086</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">3px</span>;</span><br><span class="line">        <span class="attribute">margin-left</span>:<span class="number">3px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTabBar</span><span class="selector-pseudo">::tab</span><span class="selector-pseudo">:selected</span>, <span class="selector-tag">QTabBar</span><span class="selector-pseudo">::tab</span><span class="selector-pseudo">:last</span><span class="selector-pseudo">:selected</span>, <span class="selector-tag">QTabBar</span><span class="selector-pseudo">::tab</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">        <span class="attribute">border-bottom-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">border-bottom-width</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>: solid;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">padding-left</span>: <span class="number">3px</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">margin-left</span>:<span class="number">3px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">QCheckBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QCheckBox</span><span class="selector-pseudo">:disabled</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#808086</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">QCheckBox</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">border-radius</span>:<span class="number">4px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>:solid;</span><br><span class="line">        <span class="attribute">padding-left</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">padding-right</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">padding-bottom</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">padding-top</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-width</span>:<span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgb</span>(87, 97, 106);</span><br><span class="line">        <span class="attribute">background-color</span>:<span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QCheckBox</span><span class="selector-pseudo">::indicator</span><span class="selector-pseudo">:checked</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>:solid;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QCheckBox</span><span class="selector-pseudo">::indicator</span><span class="selector-pseudo">:unchecked</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>:solid;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QRadioButton</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">1px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QRadioButton</span><span class="selector-pseudo">::indicator</span><span class="selector-pseudo">:checked</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>:solid;</span><br><span class="line">        <span class="attribute">border-radius</span>:<span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QRadioButton</span><span class="selector-pseudo">::indicator</span>:!<span class="selector-tag">checked</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">border-style</span>:solid;</span><br><span class="line">        <span class="attribute">border-radius</span>:<span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#04b97f</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QStatusBar</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#027f7f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSpinBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QDoubleSpinBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QTimeEdit</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QDateTimeEdit</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QDateEdit</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QComboBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QComboBox</span><span class="selector-pseudo">:editable</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">selection-background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QComboBox</span> <span class="selector-tag">QAbstractItemView</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">        <span class="attribute">selection-color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">selection-background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QComboBox</span>:!<span class="selector-tag">editable</span><span class="selector-pseudo">:on</span>, <span class="selector-tag">QComboBox</span><span class="selector-pseudo">::drop-down</span><span class="selector-pseudo">:editable</span><span class="selector-pseudo">:on</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QFontComboBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QToolBox</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QToolBox</span><span class="selector-pseudo">::tab</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#a9b7c6</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QToolBox</span><span class="selector-pseudo">::tab</span><span class="selector-pseudo">:selected</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QScrollArea</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#1e1d23</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::groove</span><span class="selector-pseudo">:horizontal</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::groove</span><span class="selector-pseudo">:vertical</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::handle</span><span class="selector-pseudo">:horizontal</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">qlineargradient</span>(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#5c5c5c</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">14px</span>;</span><br><span class="line">        <span class="attribute">margin</span>: -<span class="number">5px</span> <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">7px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::handle</span><span class="selector-pseudo">:vertical</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">qlineargradient</span>(x1:1, y1:1, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f);</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#5c5c5c</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">14px</span>;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">0</span> -<span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">7px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::add-page</span><span class="selector-pseudo">:horizontal</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::add-page</span><span class="selector-pseudo">:vertical</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::sub-page</span><span class="selector-pseudo">:horizontal</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">QSlider</span><span class="selector-pseudo">::sub-page</span><span class="selector-pseudo">:vertical</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#04b97f</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/25/2019-12-25-qt资源文件的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-编译原理tiny扩充文法实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="编译原理tiny扩充文法实验"><a href="#编译原理tiny扩充文法实验" class="headerlink" title="编译原理tiny扩充文法实验"></a>编译原理tiny扩充文法实验</h1><p>除了将m a i n . c 放在g l o b a l s . h 的前面之外，这些文件的源代码及其行号都按顺序列在附录 B中了。任何代码文件都包含了 g l o b a l s . h 头文件，它包括了数据类型的定义和整个编译器 均使用的全程变量。m a i n . c 文件包括运行编译器的主程序，它还分配和初始化全程变量。其 他的文件则包含了头 /代码文件对、在头文件中给出了外部可用的函数原型以及在相关代码文 件中的实现（包括静态局部函数）。s c a n、p a r s e、a n a l y z e 和c g e n 文件与图1 - 1中的扫描 程序、分析程序、语义分析程序和代码生成器各阶段完全相符。 u t i l 文件包括了实用程序函 数，生成源代码（语法树）的内部表示和显示列表与出错信息均需要这些函数。 s y m t a b 文件 包括执行与T I N Y应用相符的符号表的杂凑表。c o d e文件包括用于依赖目标机器（将在1 . 7 . 3节 描述的T M机）的代码生成的实用程序。图1 - 1还缺少一些其他部分：没有单独的错误处理器或 文字表且没有优化阶段；没有从语法树上分隔出来的中间代码；另外，符号表只与语义分析程 序和代码生成器交互（这将在第6章中再次讨论到）。 </p>
+<table>
+<thead>
+<tr>
+<th>代码文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>globals.h</td>
+<td>包括了数据类型的定义和整个编译器 均使用的全局变量</td>
+</tr>
+<tr>
+<td>main.c</td>
+<td>运行编译器的主程序，它还分配和初始化全局变量</td>
+</tr>
+<tr>
+<td>scan.h/scan.c</td>
+<td>扫描程序</td>
+</tr>
+<tr>
+<td>parse.h/parse.c</td>
+<td>分析程序</td>
+</tr>
+<tr>
+<td>analyze.h/analyze.c</td>
+<td>语义分析程序</td>
+</tr>
+<tr>
+<td>cgen.h/cgen.c</td>
+<td>代码生成器</td>
+</tr>
+<tr>
+<td>util.h/util.c</td>
+<td>实用程序函 数，生成源代码（语法树）的内部表示和显示列表与出错信息</td>
+</tr>
+<tr>
+<td>symtab.h/symtab.c</td>
+<td>包括执行与T I N Y应用相符的符号表的杂凑表</td>
+</tr>
+<tr>
+<td>code.h/code.c</td>
+<td>依赖T M机的代码生成的实用程序</td>
+</tr>
+<tr>
+<td>tm.c</td>
+<td>tiny虚拟机程序，运行tiny的汇编代码</td>
+</tr>
+<tr>
+<td>tiny.l</td>
+<td>定义tiny语言的词法</td>
+</tr>
+<tr>
+<td>tiny.y</td>
+<td>定义tiny语言的语法</td>
+</tr>
+</tbody></table>
+<p>​    </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/24/编译原理tiny扩充文法实验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2019-12-23-如何做一个代码搬运工" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/12/23/2019-12-23-如何做一个代码搬运工/">如何做一个代码搬运工</a>
+    </h1>
+  
+
+        
+        <a href="2019/12/23/2019-12-23-如何做一个代码搬运工/" class="archive-article-date">
+  	<time datetime="2019-12-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="代码搬运实录"><a href="#代码搬运实录" class="headerlink" title="代码搬运实录"></a>代码搬运实录</h1><p>有时候你快速拥有项目经验，研究别人的开源项目是最好的成长方式。下面是一个将github上的一个开源项目<a href="https://github.com/smuyyh/BookReader" target="_blank" rel="noopener">任阅阅读器</a>的代码做二次修改变成新的app的实战。本例仅作为学习技术之用，绝不用作商业用途，并且本例做出的APP也会开发源代码发布在github上（根据gpl开源协议，使用开源项目的部分源代码的项目，必须将相关部分必须开放源代码，并且附上gpl 证书）</p>
+<p>首先新建一个项目，这里就不介绍了。</p>
+<p>这个项目有什么代码是我们可以复用的呢？</p>
+<p>首先切到 <code>app/src/main目录</code>下。</p>
+<p>打开 <code>res</code> 目录，<code>anim</code>目录存放的是设置动画的xml文件，动画文件几乎在任何项目都是可以无障碍套用的，因此立马把这个复制到自己的项目中。</p>
+<p><code>drawable</code>目录是存放 <code>shape</code>和 <code>selector</code> 资源的，这个项目不同差异很大，我们只学习他们是怎么写 <code>shape</code>的就好了</p>
+<p>找 <code>layout</code>目录的界面文件， 通过粗略操作该APP，我了解到在打开小说阅读，点击中央会弹出顶部菜单，上面有朗读功能，点击弹出 “任阅：正在拼命开发中”的 Toast提示，故全局搜索该字符串，在 <code>ReadActivity.java</code>中找到以下结果</p>
+<p><img src="1577089761427.png" alt="1577089761427"></p>
+<p>该方法与 <code>tvBookReadReading</code>绑定，按图索骥，继续找，最终发现文本阅读的页面文件是 <code>activity_read.xml</code></p>
+<p>阅读页面ReadView</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android 项目开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/23/2019-12-23-如何做一个代码搬运工/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2019-12-22-数字图像处理知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/12/22/2019-12-22-数字图像处理知识点/">数字图像处理知识点</a>
+    </h1>
+  
+
+        
+        <a href="2019/12/22/2019-12-22-数字图像处理知识点/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数字图像处理复习"><a href="#数字图像处理复习" class="headerlink" title="数字图像处理复习"></a>数字图像处理复习</h1><p>[TOC]</p>
+<h2 id="数字图像处理三个层次"><a href="#数字图像处理三个层次" class="headerlink" title="数字图像处理三个层次"></a>数字图像处理三个层次</h2><ul>
+<li>狭义图像处理 ——像素级 数据量大 底层.对输入图像进行某种变换得到输出图像</li>
+<li>图像分析——目标级 中层 对图像中感兴趣的目标进行检测和测量，从而得到对图像目标的描述</li>
+<li>图像理解——符号级 数据量小 高层 。 在图像分析的基础上基于人工智能和认知理论研究图像中各目标的性质和他们之间的相互联系</li>
+</ul>
+<h2 id="图片量化"><a href="#图片量化" class="headerlink" title="图片量化"></a>图片量化</h2><p>未压缩图像的数据量=行数 $\times$列数$\times$颜色位数$\times$alpha通道数（rgb图片的通道数为3，灰度图片的通道数为1）</p>
+<h2 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h2><p>灰度直方图概念：频率同灰度级的关系图（以灰度级为横坐标，灰度级的频率为纵坐标）</p>
+<p>性质：</p>
+<ul>
+<li>只能反映图像的灰度分布情况，丢失位置信息。</li>
+<li>一个图像分为多个区域，多个区域的直方图之和就是原直方图</li>
+</ul>
+<h2 id="处理算法的形式"><a href="#处理算法的形式" class="headerlink" title="处理算法的形式"></a>处理算法的形式</h2><p><strong>局部处理</strong>：输出像素 $JP(i,j)$ 值由输入图像 $IP(i,j)$像素的小邻域 $N[IP(i,j)]$确定的处理。比如图像的移动平均平滑法和空间域锐化。</p>
+<p><strong>点处理</strong>：输出值 $JP(i,j)$ 仅与$IP(i,j)$像素灰度有关的处理。比如图像对比度增强，图像二值化。</p>
+<p><strong>全局处理</strong>：输出像素 $JP(i,j)$ 值取决于输入图像较大范围或整幅图像像素的处理。如傅里叶变换。</p>
+<h2 id="图像变换的目的"><a href="#图像变换的目的" class="headerlink" title="图像变换的目的"></a>图像变换的目的</h2><ol>
+<li>使图像处理问题简化</li>
+<li>有利于图像特征提取</li>
+<li>有益于从概念上增强对图像信息的理解</li>
+</ol>
+<h2 id="图像变换在jpeg压缩的作用"><a href="#图像变换在jpeg压缩的作用" class="headerlink" title="图像变换在jpeg压缩的作用"></a>图像变换在jpeg压缩的作用</h2><ol>
+<li>使图像信息分布有规律</li>
+<li>易于压缩</li>
+</ol>
+<h2 id="图像增强的概念"><a href="#图像增强的概念" class="headerlink" title="图像增强的概念"></a>图像增强的概念</h2><p><strong>空间域增强</strong>：直接对图像像素灰度进行操作</p>
+<p><strong>频率域增强</strong>：对图像经傅里叶变换后的频谱成分进行操作，经傅里叶逆变换获得所需结果</p>
+<h2 id="直方图修正法"><a href="#直方图修正法" class="headerlink" title="直方图修正法"></a>直方图修正法</h2><h3 id="均衡化"><a href="#均衡化" class="headerlink" title="均衡化"></a>均衡化</h3><ol>
+<li>灰度级归一化： $r_i = i/(\text{灰度级数}-1)$</li>
+<li>频率累加实现均衡化： $s_{k计}=\sum_{i=0}^k p_i$</li>
+<li>约分：四舍五入，结果取归一化灰度级</li>
+<li>合并：灰度级相同的合并，频率叠加</li>
+</ol>
+<h3 id="规定化"><a href="#规定化" class="headerlink" title="规定化"></a>规定化</h3><ol>
+<li>规定化关键是求规定化后新灰度级的频率，规定化只能得到近似的直方图。</li>
+<li>对原图均衡化和规定直方图均衡化</li>
+<li>按规定直方图均衡化结果灰度级与原图均衡化的灰度级一一对应，结果频率取原图均衡化后的灰度级频率</li>
+</ol>
+<h2 id="图像平滑概念"><a href="#图像平滑概念" class="headerlink" title="图像平滑概念"></a>图像平滑概念</h2><p>为抑制噪声、改善图像质量所进行的处理成图像平滑或去噪，在空间域和频率域进行。</p>
+<h2 id="图像锐化概念"><a href="#图像锐化概念" class="headerlink" title="图像锐化概念"></a>图像锐化概念</h2><p>通过微分增强图像的边缘或轮廓。</p>
+<p>一阶偏导数用一阶差分近似表示</p>
+<h2 id="灰度变换"><a href="#灰度变换" class="headerlink" title="灰度变换"></a>灰度变换</h2><ol>
+<li><p>线性变换，$[a,b]\rightarrow[a’,b’]$：$g(i,j) = a’+\frac{b’-a’}{b-a}(f(i,j)-a)$</p>
+</li>
+<li><p>分段线性变换：$[0,a]\rightarrow[0,c],[a,b]\rightarrow[c,d],[b,M_f]\rightarrow[d,M_g]$<br> $$<br> \begin{equation}<br> g(i,j)=\left{<br> \begin{aligned}<br> &amp;(c/a)f(i,j), &amp; 0\le f(i,j) &lt; a\<br> &amp;\frac{d-c}{b-a}[f(i,j)-a]+c,&amp; 0\le f(i,j) &lt; b \<br> &amp;\frac{M_g-d}{M_f-c}[f(i,j)-b]+d, &amp; b \le f(i,j) &lt; M_f<br> \end{aligned}<br> \right.<br> \end{equation}<br> $$</p>
+</li>
+</ol>
+<h2 id="局部平滑"><a href="#局部平滑" class="headerlink" title="局部平滑"></a>局部平滑</h2><p>又称邻域平均法或移动平均法，使用像素邻域的各像素的灰度平均值代替该像素原来的灰度值。</p>
+<p>算法简单，处理快，邻域越大，模糊程度越重，适合相邻像素存在高度的空间相关性的图像</p>
+<h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><p>对滑动窗口的灰度排序，用中值代替该窗口中心像素</p>
+<p>特点：对脉冲干扰和椒盐噪声的抑制效果好，不适合用于点、线等细节较多的图像</p>
+<p>​    </p>
+<h2 id="伪彩色增强"><a href="#伪彩色增强" class="headerlink" title="伪彩色增强"></a>伪彩色增强</h2><p>把一幅灰度图像的各个不同灰度级按照线性或非线性的映射函数变换成的彩色，得到一幅彩色图像的技术</p>
+<h3 id="密度分割法"><a href="#密度分割法" class="headerlink" title="密度分割法"></a>密度分割法</h3><p>按灰度级大小划分区间，每个区间对应一种彩色</p>
+<h3 id="空间域灰度级——彩色变换合成法"><a href="#空间域灰度级——彩色变换合成法" class="headerlink" title="空间域灰度级——彩色变换合成法"></a>空间域灰度级——彩色变换合成法</h3><p>根据色度学，设置灰度到rgb三个分量的转换函数，将三个分量叠加进行合成</p>
+<h3 id="频率域伪彩色增强"><a href="#频率域伪彩色增强" class="headerlink" title="频率域伪彩色增强"></a>频率域伪彩色增强</h3><p>灰度图像经过傅里叶变换到频率域，用三个不同传递特性的滤波器分离成三个独立分量，傅里叶逆变换，得到三个单色图像，分别对三个图像进行处理，然后作为三基色分量分别加到rgb通道，实现频率域分段的伪彩色增强</p>
+<h2 id="假彩色增强"><a href="#假彩色增强" class="headerlink" title="假彩色增强"></a>假彩色增强</h2><p>通过映射函数将彩色图像或多光谱图像变换成新的三基色分量，经彩色合成在增强图像中呈现出与原图像不同彩色的技术。</p>
+<h2 id="彩色平衡"><a href="#彩色平衡" class="headerlink" title="彩色平衡"></a>彩色平衡</h2><p>纠正偏色，得到色彩正常的彩色图像</p>
+<h2 id="图像退化"><a href="#图像退化" class="headerlink" title="图像退化"></a>图像退化</h2><p>图像在形成、传输和记录过程中，由于成像系统、传输介质和设备的不完善，导致图像质量下降，这一现象称为图像的退化</p>
+<h2 id="图像复原与图像增强的区别"><a href="#图像复原与图像增强的区别" class="headerlink" title="图像复原与图像增强的区别"></a>图像复原与图像增强的区别</h2><p>图像增强只通过试探各种技术来增强图像的视觉效果。</p>
+<p>图像复原需要知道图像退化的机制和过程等先验知识，找出逆过程解析方法，得到复原图像。</p>
+<h2 id="保真度准则"><a href="#保真度准则" class="headerlink" title="保真度准则"></a>保真度准则</h2><p>描述解码图像相对原始图像偏离程度的测度一般称为保真度(逼真度)准则</p>
+<h2 id="统计编码的概念"><a href="#统计编码的概念" class="headerlink" title="统计编码的概念"></a>统计编码的概念</h2><p>根据信源的概率发布改变码长，使平均码长非常接近于熵的压缩编码</p>
+<h2 id="图像压缩比"><a href="#图像压缩比" class="headerlink" title="图像压缩比"></a>图像压缩比</h2><p>压缩编码的平均码长与原图编码的平均码长的比值</p>
+<h2 id="边缘检测算子"><a href="#边缘检测算子" class="headerlink" title="边缘检测算子"></a>边缘检测算子</h2><p>会算即可</p>
+<p>roberts算子</p>
+<p>Prewitt算子</p>
+<p>Sobel算子</p>
+<h2 id="区域增长"><a href="#区域增长" class="headerlink" title="区域增长"></a>区域增长</h2><h3 id="简单区域扩张法"><a href="#简单区域扩张法" class="headerlink" title="简单区域扩张法"></a>简单区域扩张法</h3><ol>
+<li>进行光栅扫描，找出不属于任何区域的像素</li>
+<li>与4-邻域（8-邻域）的不属于任何区域的像素比较，若灰度差值小于阈值，则合并到同一区域，对合并的像素赋予标记</li>
+<li>从新合并的像素开始，重复2的操作</li>
+<li>重复以上操作指导区域增长完毕</li>
+</ol>
+<h2 id="质心型增长"><a href="#质心型增长" class="headerlink" title="质心型增长"></a>质心型增长</h2><p>操作与区域扩张类似，不同的是比较已存在区域的像素灰度级的均值与该区域邻接的像素的大小，若小于阈值则合并到一起。</p>
+<h2 id="邻域概念"><a href="#邻域概念" class="headerlink" title="邻域概念"></a>邻域概念</h2><p>对于任意像素（i,j），把像素的集合｛(j+p,j+q)｝叫做像素(i,j)的邻域</p>
+<h2 id="连接数"><a href="#连接数" class="headerlink" title="连接数"></a>连接数</h2><p>像素p的连接数Nc（p）是与p连接的连接成分数</p>
+<p>含孔的叫多重连接成分，不含孔叫单连接成分</p>
+<p>编号</p>
+<p>| p3   | p2   | p1   |<br>|-|-|<br>| p4   |      | p0   |<br>| p5|p6|p7|</p>
+<p>如果1像素的连接成分用4/8-连接，则0像素用8/4-连接</p>
+<p>计算<br>$$<br>\begin{equation}<br>N_c^{(4)}(pj) = \sum_{k\in S}[B(p_k)-B(p_k)B(p_{k+1})B(p_{k+2})]\<br>N_c^{(8)}(pj) = \sum_{k\in S}[\overline{B}(p_k) - \overline{B}(p_k)\overline{B}(p_{k+1})\overline{B}(p_{k+2})]<br>\end{equation}<br>$$<br>孤立点: 像素点为1，邻接像素全0，连接数=0</p>
+<p>内部点：像素点为1，邻接像素全1，连接数=0</p>
+<p>边界点：像素点为1，出了孤立点和和内部点以外的点</p>
+<p>背景点：像素点为0，邻接像素全1称为孔，否则称背景</p>
+<h2 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h2><ol>
+<li>欧几里得距离： $d_{e}[(i,j),(h,k)]=((i-h)^2+(j-k)^2)^{1/2}$</li>
+<li>4-邻域距离： $d_4[(i,j),(h,k)]=|i-h|+|j-k|$</li>
+<li>8-邻域距离：$d_8[(i,j),(h,k)]=max(|i-h|,|j-k|)$</li>
+</ol>
+<h2 id="膨胀和腐蚀"><a href="#膨胀和腐蚀" class="headerlink" title="膨胀和腐蚀"></a>膨胀和腐蚀</h2><p>腐蚀方法：如果B上的所有点都在X的范围内，那么B的原点保留</p>
+<p>膨胀的方法，如果B上存在一点在X的范围内，那么B的原点保留</p>
+<h2 id="方向链码"><a href="#方向链码" class="headerlink" title="方向链码"></a>方向链码</h2><p>使用曲线起始点坐标和斜率（方向）表示曲线。</p>
+<p>曲线由相邻边界像素的单元连线逐段相连而成。连线方向有8个，从向右开始的方向为0，逆时针编码0，1，2，3，4，5，6，7。</p>
+<p>曲线的周长=偶数码个数+$\sqrt2$奇码个数</p>
+<h2 id="模板匹配的概念"><a href="#模板匹配的概念" class="headerlink" title="模板匹配的概念"></a>模板匹配的概念</h2><p>根据目标图案与一幅图像的各个部分的相似度是否存在，并求目标图案在图像中的位置的操作叫模板匹配。</p>
+<h2 id="统计模式识别"><a href="#统计模式识别" class="headerlink" title="统计模式识别"></a>统计模式识别</h2><p>研究每一个模式的各种测量数据的统计特性，并根据统计决策理论来分类的操作叫统计模式识别。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">数字图像处理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/22/2019-12-22-数字图像处理知识点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-语法分析笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/12/22/语法分析笔记/">语法分析笔记</a>
+    </h1>
+  
+
+        
+        <a href="2019/12/22/语法分析笔记/" class="archive-article-date">
+  	<time datetime="2019-12-22T03:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><h2 id="消除二义性"><a href="#消除二义性" class="headerlink" title="消除二义性"></a>消除二义性</h2><p>可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。</p>
+<h3 id="处理运算优先权和消除"><a href="#处理运算优先权和消除" class="headerlink" title="处理运算优先权和消除"></a>处理运算优先权和消除</h3><p>构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一个）</p>
+<p>未消除二义性的文法<br>$$<br>\begin{align<em>}<br>exp &amp;\rightarrow exp\ addop\ exp\ |\ term\<br>addop &amp;\rightarrow +|-\<br>term &amp;\rightarrow exp\ mulop\ exp\ |\ number\<br>mulop &amp; \rightarrow \times|\div<br>\end{align</em>}<br>$$</p>
+<p>消除二义性后的文法<br>$$<br>\begin{align<em>}<br>exp &amp; \rightarrow exp \ addop \ term \ | \ term \<br>addop &amp; \rightarrow + | - \<br>term &amp; \rightarrow term \ mulop \ exp \ | \ number\<br>mulop &amp; \rightarrow \times | \div<br>\end{align</em>}<br>$$</p>
+<h2 id="悬挂else的消除"><a href="#悬挂else的消除" class="headerlink" title="悬挂else的消除"></a>悬挂else的消除</h2><p>文法右边的表达式同时是该文法的另一条表达式的前缀。<br>$$<br>\begin{align<em>}<br>statement &amp;\rightarrow \text{if-stmt} \ | \ other \<br>\text{if-stmt} &amp;\rightarrow if(exp) \ statement \<br>&amp; | \ if(exp) \ statement \ else \ statement \<br>exp &amp; \rightarrow 0 \ | \ 1<br>\end{align</em>}<br>$$<br>最近嵌套规则消除悬挂else,要求出现else之前的语句必须是已匹配的<br>$$<br>\begin{align<em>}<br>statement &amp; \rightarrow \ \text{matched-stmt} \ | \ \text{unmatched-stmt} \<br>\text{matched-stmt} &amp; \rightarrow \ if(exp) \ \text{matched-stmt} \ else \ \text{matched-stmt}\ |\ other\<br>\text{unmatched-stmt} &amp; \rightarrow \ if(exp) \ statement \<br>&amp; | if(exp) \text{matched-stmt} \ else \ \text{unmatched-stmt}\<br>exp &amp; \rightarrow 0|1<br>\end{align</em>}<br>$$</p>
+<h2 id="无关紧要的二义性"><a href="#无关紧要的二义性" class="headerlink" title="无关紧要的二义性"></a>无关紧要的二义性</h2><p>某些文法总是存在二义性且总生成唯一的抽象语法树。由于相结合的语义不必依赖于使用的是哪种消除二义性的规则， 所以可将这样的二义性称作无关紧要的二义性（ inessential ambiguity）。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">编译原理语法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/22/语法分析笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-脑残实录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/12/20/脑残实录/">脑残实录</a>
+    </h1>
+  
+
+        
+        <a href="2019/12/20/脑残实录/" class="archive-article-date">
+  	<time datetime="2019-12-20T13:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="由于低级失误导致的坑"><a href="#由于低级失误导致的坑" class="headerlink" title="由于低级失误导致的坑"></a>由于低级失误导致的坑</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>人总是在不经意间造就一个个失误，难以避免，我曾因为各种失误在debug上浪费了巨多时间.这种失误往往是很low的，一想到为了这么简单的失误而花了辣么多的时间去找出来，内心有如一万只羊驼奔过，因此特意写下此篇文章，记录那些让人啼笑皆非的反面例子，提醒自己不要再犯重复的错误，也留给“同是天涯沦落人”的某些人作为一个参考。</p>
+<h2 id="记忆发生偏差"><a href="#记忆发生偏差" class="headerlink" title="记忆发生偏差"></a>记忆发生偏差</h2><p>在写android 的权限声明的时候，曾一度将 <code>uses-permission</code> 记忆成了 <code>user-permission</code>，导致 <code>android studio</code>一直报 <code>manifest.xml</code> 有错误。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 错误写法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 正确写法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>报错提示</strong><img src="1576897835175.png" alt="1576897835175"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/20/脑残实录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-android实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/12/20/android实战/">android实战</a>
+    </h1>
+  
+
+        
+        <a href="2019/12/20/android实战/" class="archive-article-date">
+  	<time datetime="2019-12-20T11:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="android-实战"><a href="#android-实战" class="headerlink" title="android 实战"></a>android 实战</h1>
+        
+          <a class="article-more-a" href="2019/12/20/android实战/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/12/20/android实战/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-git使用流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -238,14 +1080,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>pdfLaTeX是比较原始的版本，对Unicode的支持不是很好，所以显示汉字需要使用CJK宏包。它不支持操作系统的truetype字体(*.ttf)，只能使用type1字体。优点是支持的宏包比较多，有些老一点的宏包必须用pdfLaTeX来编译。XeLaTeX是新的Unicode版本，内建支持Unicode(UTF-8)，自然也包括汉字在内，而且可以调用操作系统的truetype字体。</p>
-</blockquote>
-<h2 id="使用前配置"><a href="#使用前配置" class="headerlink" title="使用前配置"></a>使用前配置</h2><p>本文默认你在win10系统上安装了Mitex套件，现在打开Mitex自带的Latex编辑器TeXworks，将编译选项改为XeLatex+MakeIndex+BibTex<br><img src="2019-08-11-13-06-02.png" alt="无法正常显示"></p>
-<h2 id="第一行代码"><a href="#第一行代码" class="headerlink" title="第一行代码"></a>第一行代码</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 正常的显示中文，仍需要ctex宏包 即 ctexart（ctex article）</span></span><br><span class="line"><span class="tag">\<span class="name">documentclass</span><span class="string">&#123;ctexart&#125;</span></span></span><br><span class="line"><span class="comment">% begin和end要成对出现</span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">hello, world!</span><br><span class="line"><span class="tag">\<span class="name">section</span><span class="string">&#123;一级标题&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">subsection</span><span class="string">&#123;二级标题&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">subsubsection</span><span class="string">&#123;三级标题&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">paragraph</span><span class="string">&#123;定格段落&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">subparagraph</span><span class="string">&#123;空两格段落&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line"><span class="comment">% ctrl+T编译生成pdf文档在当前目录下</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="必要的关键字"><a href="#必要的关键字" class="headerlink" title="必要的关键字"></a>必要的关键字</h2><p>文档类声明：<code>\documentclass{ctexart}</code><br>文档内容：<code>\begin{document}...\end{document}</code><br>数学宏包：<code>\usepackage{amsmath}</code></p>
-
+        <h1 id="latex常用代码"><a href="#latex常用代码" class="headerlink" title="latex常用代码"></a>latex常用代码</h1>
+        
+          <a class="article-more-a" href="2019/08/11/latex常用代码/#more">more >></a>
+        
       
 
       
@@ -298,369 +1136,10 @@
 
 
   
-    <article id="post-echarts常用API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/28/echarts常用API/">echarts常用API</a>
-    </h1>
-  
-
-        
-        <a href="2019/07/28/echarts常用API/" class="archive-article-date">
-  	<time datetime="2019-07-28T07:02:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-
-<blockquote>
-<p>ECharts，一个使用 JavaScript 实现的开源可视化库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖轻量级的矢量图形库 ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p>
-</blockquote>
-<h1 id="echarts常用API代码示例"><a href="#echarts常用API代码示例" class="headerlink" title="echarts常用API代码示例"></a>echarts常用API代码示例</h1><p>详细的说明可参考<a href="https://www.echartsjs.com/api.html#echarts" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="下载echarts"><a href="#下载echarts" class="headerlink" title="下载echarts"></a>下载echarts</h2><p>echarts提供了丰富的可视化功能，在一般情况下我们不会使用到所有的功能，故可以选择按需构建，只选择自己需要的功能在线打包成js文件，减小资源体积。<a href="https://echarts.baidu.com/builder.html" target="_blank" rel="noopener">点此在线构建</a></p>
-<h2 id="地图可视化"><a href="#地图可视化" class="headerlink" title="地图可视化"></a>地图可视化</h2><p>地图数据可视化是很数据可视化很重要的一部分内容，下面将简单介绍如何导入地图数据，和生成一个地图。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">API</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/28/echarts常用API/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-运行tensorflow使用gpu加速" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/28/运行tensorflow使用gpu加速/">运行tensorflow使用gpu加速</a>
-    </h1>
-  
-
-        
-        <a href="2019/07/28/运行tensorflow使用gpu加速/" class="archive-article-date">
-  	<time datetime="2019-07-28T06:59:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="配置tensorflow-gpu"><a href="#配置tensorflow-gpu" class="headerlink" title="配置tensorflow-gpu"></a>配置tensorflow-gpu</h1>
-        
-          <a class="article-more-a" href="2019/07/28/运行tensorflow使用gpu加速/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/28/运行tensorflow使用gpu加速/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据库ER图转关系模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/24/数据库ER图转关系模型/">数据库ER图转关系模型</a>
-    </h1>
-  
-
-        
-        <a href="2019/07/24/数据库ER图转关系模型/" class="archive-article-date">
-  	<time datetime="2019-07-24T00:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="E-R图转关系模型的要点"><a href="#E-R图转关系模型的要点" class="headerlink" title="E-R图转关系模型的要点"></a>E-R图转关系模型的要点</h1>
-        
-          <a class="article-more-a" href="2019/07/24/数据库ER图转关系模型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/24/数据库ER图转关系模型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/17/第一篇博客/">第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="2019/07/17/第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T15:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="提高工作效率的快捷键技巧"><a href="#提高工作效率的快捷键技巧" class="headerlink" title="提高工作效率的快捷键技巧"></a>提高工作效率的快捷键技巧</h1>
-        
-          <a class="article-more-a" href="2019/07/17/第一篇博客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快捷键</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/17/第一篇博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/07/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="2019/07/17/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-17T12:37:32.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hexo官网： <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br>hexo文档：k <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a><br>问题反馈： <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a>或 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub的issue</a>.</p>
-        
-          <a class="article-more-a" href="2019/07/17/hello-world/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/07/17/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -775,15 +1254,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,7 +1270,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android 项目开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
             
             <div class="clearfix"></div>
