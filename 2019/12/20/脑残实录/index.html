@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
   <title>脑残实录 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于低级失误导致的坑前言人总是在不经意间造就一个个失误，难以避免，我曾因为各种失误在debug上浪费了巨多时间.这种失误往往是很low的，一想到为了这么简单的失误而花了辣么多的时间去找出来，内心有如一万只羊驼奔过，因此特意写下此篇文章，记录那些让人啼笑皆非的反面例子，提醒自己不要再犯重复的错误，也留给“同是天涯沦落人”的某些人作为一个参考。 记忆发生偏差在写android 的权限声明的时候，曾一度">
+  <meta name="description" content="由于低级失误导致的坑">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="脑残实录">
 <meta property="og:url" content="https://rattonlzh.github.io/2019/12/20/脑残实录/index.html">
 <meta property="og:site_name" content="Ratton">
-<meta property="og:description" content="由于低级失误导致的坑前言人总是在不经意间造就一个个失误，难以避免，我曾因为各种失误在debug上浪费了巨多时间.这种失误往往是很low的，一想到为了这么简单的失误而花了辣么多的时间去找出来，内心有如一万只羊驼奔过，因此特意写下此篇文章，记录那些让人啼笑皆非的反面例子，提醒自己不要再犯重复的错误，也留给“同是天涯沦落人”的某些人作为一个参考。 记忆发生偏差在写android 的权限声明的时候，曾一度">
+<meta property="og:description" content="由于低级失误导致的坑">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://rattonlzh.github.io/2019/12/20/脑残实录/1576897835175.png">
-<meta property="og:updated_time" content="2019-12-22T03:39:10.095Z">
+<meta property="og:updated_time" content="2020-01-01T09:07:50.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="脑残实录">
-<meta name="twitter:description" content="由于低级失误导致的坑前言人总是在不经意间造就一个个失误，难以避免，我曾因为各种失误在debug上浪费了巨多时间.这种失误往往是很low的，一想到为了这么简单的失误而花了辣么多的时间去找出来，内心有如一万只羊驼奔过，因此特意写下此篇文章，记录那些让人啼笑皆非的反面例子，提醒自己不要再犯重复的错误，也留给“同是天涯沦落人”的某些人作为一个参考。 记忆发生偏差在写android 的权限声明的时候，曾一度">
+<meta name="twitter:description" content="由于低级失误导致的坑">
 <meta name="twitter:image" content="https://rattonlzh.github.io/2019/12/20/脑残实录/1576897835175.png">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
@@ -167,7 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="由于低级失误导致的坑"><a href="#由于低级失误导致的坑" class="headerlink" title="由于低级失误导致的坑"></a>由于低级失误导致的坑</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>人总是在不经意间造就一个个失误，难以避免，我曾因为各种失误在debug上浪费了巨多时间.这种失误往往是很low的，一想到为了这么简单的失误而花了辣么多的时间去找出来，内心有如一万只羊驼奔过，因此特意写下此篇文章，记录那些让人啼笑皆非的反面例子，提醒自己不要再犯重复的错误，也留给“同是天涯沦落人”的某些人作为一个参考。</p>
+        <h1 id="由于低级失误导致的坑"><a href="#由于低级失误导致的坑" class="headerlink" title="由于低级失误导致的坑"></a>由于低级失误导致的坑</h1><a id="more"></a>
 <h2 id="记忆发生偏差"><a href="#记忆发生偏差" class="headerlink" title="记忆发生偏差"></a>记忆发生偏差</h2><p>在写android 的权限声明的时候，曾一度将 <code>uses-permission</code> 记忆成了 <code>user-permission</code>，导致 <code>android studio</code>一直报 <code>manifest.xml</code> 有错误。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 错误写法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 正确写法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -439,10 +439,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
@@ -468,6 +464,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
             
             <div class="clearfix"></div>

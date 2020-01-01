@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
   <title>语法分析笔记 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
+  <meta name="description" content="语法分析">
 <meta name="keywords" content="编译原理语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="语法分析笔记">
 <meta property="og:url" content="https://rattonlzh.github.io/2019/12/22/语法分析笔记/index.html">
 <meta property="og:site_name" content="Ratton">
-<meta property="og:description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
+<meta property="og:description" content="语法分析">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-12-22T12:28:49.433Z">
+<meta property="og:updated_time" content="2020-01-01T09:07:51.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="语法分析笔记">
-<meta name="twitter:description" content="语法分析消除二义性可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。 处理运算优先权和消除构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一">
+<meta name="twitter:description" content="语法分析">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -165,7 +165,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><h2 id="消除二义性"><a href="#消除二义性" class="headerlink" title="消除二义性"></a>消除二义性</h2><p>可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。</p>
+        <h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><a id="more"></a>
+<h2 id="消除二义性"><a href="#消除二义性" class="headerlink" title="消除二义性"></a>消除二义性</h2><p>可以通过重写文法消除二义性。重写方法有两种结果，一种需要同时改变正在识别的基本串，一种不需要改变正在识别的语言。前者的应用价值甚微，下面我们只考虑不会改变语言的方式重写文法。</p>
 <h3 id="处理运算优先权和消除"><a href="#处理运算优先权和消除" class="headerlink" title="处理运算优先权和消除"></a>处理运算优先权和消除</h3><p>构造级联分析树：相同的优选权的算符归到同一组,更高优先级的算符的离语法树的根更远，将规则重写为左递归规则或右递归规则（对于文法右边的出现两次相同非终结符的表达式，用新的非终结符代替其中一个）</p>
 <p>未消除二义性的文法<br>$$<br>\begin{align<em>}<br>exp &amp;\rightarrow exp\ addop\ exp\ |\ term\<br>addop &amp;\rightarrow +|-\<br>term &amp;\rightarrow exp\ mulop\ exp\ |\ number\<br>mulop &amp; \rightarrow \times|\div<br>\end{align</em>}<br>$$</p>
 <p>消除二义性后的文法<br>$$<br>\begin{align<em>}<br>exp &amp; \rightarrow exp \ addop \ term \ | \ term \<br>addop &amp; \rightarrow + | - \<br>term &amp; \rightarrow term \ mulop \ exp \ | \ number\<br>mulop &amp; \rightarrow \times | \div<br>\end{align</em>}<br>$$</p>
@@ -438,10 +439,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
@@ -467,6 +464,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
             
             <div class="clearfix"></div>

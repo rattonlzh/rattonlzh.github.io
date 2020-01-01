@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://rattonlzh.github.io">
   <title>Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据库应用复习商用服务器总类 对称多处理结构 SMP 非一致存储访问结构 NUMA 海量并行处理结构  MPP  大型数据库的架构设计方法基本概念 可扩展性（可伸缩性）：系统适应不断增长的用户数的能力 高可用性：某些服务在任何时间都可以访问并在可预期的合理时间周期内有响应 负载均衡：集群技术将请求分发到不同的服务器上以获得较好高可用性和较好的性能  容错（Fault tolerance）：不管有多">
+  <meta name="description" content="数据库应用复习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ratton">
 <meta property="og:url" content="https://rattonlzh.github.io/2019/12/26/数据库应用复习/index.html">
 <meta property="og:site_name" content="Ratton">
-<meta property="og:description" content="数据库应用复习商用服务器总类 对称多处理结构 SMP 非一致存储访问结构 NUMA 海量并行处理结构  MPP  大型数据库的架构设计方法基本概念 可扩展性（可伸缩性）：系统适应不断增长的用户数的能力 高可用性：某些服务在任何时间都可以访问并在可预期的合理时间周期内有响应 负载均衡：集群技术将请求分发到不同的服务器上以获得较好高可用性和较好的性能  容错（Fault tolerance）：不管有多">
+<meta property="og:description" content="数据库应用复习">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-12-29T14:13:49.592Z">
+<meta property="og:updated_time" content="2020-01-01T15:29:12.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ratton">
-<meta name="twitter:description" content="数据库应用复习商用服务器总类 对称多处理结构 SMP 非一致存储访问结构 NUMA 海量并行处理结构  MPP  大型数据库的架构设计方法基本概念 可扩展性（可伸缩性）：系统适应不断增长的用户数的能力 高可用性：某些服务在任何时间都可以访问并在可预期的合理时间周期内有响应 负载均衡：集群技术将请求分发到不同的服务器上以获得较好高可用性和较好的性能  容错（Fault tolerance）：不管有多">
+<meta name="twitter:description" content="数据库应用复习">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -149,11 +149,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数据库应用复习"><a href="#数据库应用复习" class="headerlink" title="数据库应用复习"></a>数据库应用复习</h1><h2 id="商用服务器总类"><a href="#商用服务器总类" class="headerlink" title="商用服务器总类"></a>商用服务器总类</h2><ol>
+        <h1 id="数据库应用复习"><a href="#数据库应用复习" class="headerlink" title="数据库应用复习"></a>数据库应用复习</h1><a id="more"></a>
+<h2 id="数据产生的被动、主动和自动三个阶段"><a href="#数据产生的被动、主动和自动三个阶段" class="headerlink" title="数据产生的被动、主动和自动三个阶段"></a>数据产生的被动、主动和自动三个阶段</h2><h3 id="运营式系统阶段"><a href="#运营式系统阶段" class="headerlink" title="运营式系统阶段"></a>运营式系统阶段</h3><p>  数据库的出现使得数据管理的复杂度大大降低，实际中数据库大都为运营系统所采用， 作为运营系统的数据管理子系统。比如超市的销售记录系统，银行的交易记录系统、 医院病人的医疗记录等。人类社会数据量第一次大的飞跃正是建立在运营式系统开始 广泛使用数据库开始。这个阶段最主要特点是数据往往伴随着一定的运营活动而产生 并记录在数据库中的，比如超市每销售出一件产品就会在数据库中产生相应的一条销 售记录。这种数据的产生方式是被动的。</p>
+<h3 id="用户原创内容阶段"><a href="#用户原创内容阶段" class="headerlink" title="用户原创内容阶段"></a>用户原创内容阶段</h3><p>互联网的诞生促使人类社会数据量出现第二次大的飞跃。但是真正的数据爆发产生于 Web 2.0 时代，而Web 2.0 的最重要标志就是用户原创内容（UGC,User Generated Content）。这类数据近几年一直呈现爆炸性的增长，主要有两个方面的原因。首先 是以博客、微博为代表的新型社交网络的出现和快速发展，使得用户产生数据的意愿 更加强烈。其次就是以智能手机、平板电脑为代表的新型移动设备的出现，这些易携 带、全天候接入网络的移动设备使得人们在网上发表自己意见的途径更为便捷。这个 阶段数据的产生方式是主动的。</p>
+<h3 id="感知式系统阶段"><a href="#感知式系统阶段" class="headerlink" title="感知式系统阶段"></a>感知式系统阶段</h3><p>人类社会数据量第三次大的飞跃最终导致了大数据的产生，今天我们正处于这个阶段。 这次飞跃的根本原因在于感知式系统的广泛使用。随着技术的发展，人们已经有能力 制造极其微小的带有处理功能的传感器，并开始将这些设备广泛的布置于社会的各个 角落，通过这些设备来对整个社会的运转进行监控。这些设备会源源不断的产生新数 据，这种数据的产生方式是自动的。</p>
+<h2 id="商用服务器总类"><a href="#商用服务器总类" class="headerlink" title="商用服务器总类"></a>商用服务器总类</h2><ol>
 <li>对称多处理结构 SMP</li>
 <li>非一致存储访问结构 NUMA</li>
 <li>海量并行处理结构  MPP</li>
 </ol>
+<h2 id="MyISAM-与-InnoDB"><a href="#MyISAM-与-InnoDB" class="headerlink" title="MyISAM 与 InnoDB"></a>MyISAM 与 InnoDB</h2><p>.frm 是表定义文件</p>
+<h3 id="MyISAM特点"><a href="#MyISAM特点" class="headerlink" title="MyISAM特点"></a>MyISAM特点</h3><p>MyISAM使用b+树索引，用三个文件表示一个表，<code>.myi,myd,.frm</code><br>访问数据时所有数据库引擎中最快的<br>table level lock，性能较差，适合读操作更多的表<br>可以索引压缩，少碎片，支持大文件<br>不支持事务，外键约束等数据库特性<br>二进制文件可以移植<br>单表存储容量有限，建议50w~200w</p>
+<h3 id="InnoDB特点"><a href="#InnoDB特点" class="headerlink" title="InnoDB特点"></a>InnoDB特点</h3><p>InnoDB用两个文件表示一个表 <code>.ibd,.frm</code><br>使用table space的方式存储表<br>存储容量大<br>支持数据库事务<br>关闭自动提交时，性能与MyISAM相当<br>row level lock，读写性能好<br>有独立的缓存池，缓存数据和索引</p>
 <h2 id="大型数据库的架构设计方法"><a href="#大型数据库的架构设计方法" class="headerlink" title="大型数据库的架构设计方法"></a>大型数据库的架构设计方法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
 <li>可扩展性（可伸缩性）：系统适应不断增长的用户数的能力</li>
 <li>高可用性：某些服务在任何时间都可以访问并在可预期的合理时间周期内有响应</li>
@@ -284,12 +291,55 @@
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>•关系数据库应用场景：电信、银行等领域的关键业务系统，需 要保证强事务一致性</p>
 <p> •NoSQL数据库应用场景：互联网企业、传统企业的非关键业务 （比如数据分析）</p>
 <h3 id="典型的NoSQL数据库"><a href="#典型的NoSQL数据库" class="headerlink" title="典型的NoSQL数据库"></a>典型的NoSQL数据库</h3><p>通常包括键值数据库、列族数据库、文档数据库和图形<br>数据库</p>
+<h2 id="mecached数据库与redis数据库"><a href="#mecached数据库与redis数据库" class="headerlink" title="mecached数据库与redis数据库"></a>mecached数据库与redis数据库</h2><p>都是基于内存的分布式缓存系统，redis提供了比mecached更多的api接口，支持10w并发读写，建议用redis代替mecached</p>
+<h2 id="sequoia数据库"><a href="#sequoia数据库" class="headerlink" title="sequoia数据库"></a>sequoia数据库</h2><p>使用json格式的文档数据库</p>
+<h2 id="hbase数据库"><a href="#hbase数据库" class="headerlink" title="hbase数据库"></a>hbase数据库</h2><p>分布式的面向列的非结构化数据库。<br>高可靠性，可伸缩，可在廉价pc搭建大规模结构化存储集群</p>
+<h2 id="mongodb数据库"><a href="#mongodb数据库" class="headerlink" title="mongodb数据库"></a>mongodb数据库</h2><p>基于分布式文件存储的开源数据库系统，由c++编写，数据结构类似于json对象。</p>
 <h3 id="当处理CAP的问题时，可以有几个明显的选择："><a href="#当处理CAP的问题时，可以有几个明显的选择：" class="headerlink" title="当处理CAP的问题时，可以有几个明显的选择："></a>当处理CAP的问题时，可以有几个明显的选择：</h3><ol>
 <li><p>CA：也就是强调一致性（C）和可用性（A），放弃分区容忍性（P），最简单的做法是把所有与事务相关的内容都放到同一台机器上。很显然，这种做法会严重影响系统的可扩展性。传统的关系数据库（MySQL、SQL Server和PostgreSQL），都采用了这种设计原则，因此，扩展性都比较差</p>
 </li>
 <li><p>CP：也就是强调一致性（C）和分区容忍性（P），放弃可用性<br> （A），当出现网络分区的情况时，受影响的服务需要等待数据<br> 一致，因此在等待期间就无法对外提供服务</p>
 </li>
 <li><p>AP：也就是强调可用性（A）和分区容忍性（P），放弃一致性<br> （C），允许系统返回不一致的数据</p>
+<h2 id="数据仓库定义"><a href="#数据仓库定义" class="headerlink" title="数据仓库定义"></a>数据仓库定义</h2><ul>
+<li><p>为统一的历史数据分析提供坚实平台，对信息处理提供支持 </p>
+</li>
+<li><p>“数据仓库是一个面向主体的、集成的、时变的、非易失 的数据集合，支持管理过程的决策过程”—W. H. Inmon • </p>
+<h2 id="OLTP-与OLAP的区别"><a href="#OLTP-与OLAP的区别" class="headerlink" title="OLTP 与OLAP的区别"></a>OLTP 与OLAP的区别</h2></li>
+<li><p>OLTP面向顾客，OLAP面向市场</p>
+</li>
+<li><p>OLTP主要ER模型，OLAP主要使用雪花模型和星形模型</p>
+</li>
+<li><p>OLTP管理当前数据， OLAP管理历史数据</p>
+</li>
+<li><p>OLTP关注一个企业内部的数据，OLAP关注汇总的数据</p>
+</li>
+<li><p>OLTP访问由短的原子事务构成，OLAP多是复杂的只读查询</p>
+</li>
+<li><p>OLTP的操作只要是读、写，索引和散列， OLAP主要是大量扫描，访问记录数量多，用户数少</p>
+<h2 id="事实表与维表"><a href="#事实表与维表" class="headerlink" title="事实表与维表"></a>事实表与维表</h2><p>维表是实际保存了所需字段的数据表，事实表由所需的维表的主键和一些度量数据组成。维表类似于er模型的实体集，事实表类似于er模型的联系集</p>
+<h2 id="数据仓库的模型"><a href="#数据仓库的模型" class="headerlink" title="数据仓库的模型"></a>数据仓库的模型</h2></li>
+<li><p>星型模型：多个维表与一个事实表连接而成</p>
+</li>
+<li><p>雪花模型：在星型模型的基础上，一些维表进一步连接另外的维表（常用于有多值属性的表）</p>
+</li>
+<li><p>星座模型：多个事实表共享一个维表</p>
+<h2 id="度量的三种分类"><a href="#度量的三种分类" class="headerlink" title="度量的三种分类"></a>度量的三种分类</h2></li>
+</ul>
+<ol>
+<li><p>分布式：可以先算出子集的结果，再将子集结果合并</p>
+</li>
+<li><p>代数的：涉及分布式的代数函数，多个分布式运算</p>
+</li>
+<li><p>整体的：对整个数据集度量，不能通过划分-合并子集计算</p>
+<h2 id="三种数据仓库模型"><a href="#三种数据仓库模型" class="headerlink" title="三种数据仓库模型"></a>三种数据仓库模型</h2></li>
+<li><p>企业仓库：关于主题的所有信息，跨越整个组织</p>
+</li>
+<li><p>数据集市：企业范围数据的子集，范围限于选定的用户</p>
+</li>
+<li><p>虚拟仓库：操作视图的集合，少数是物化视图</p>
+</li>
+</ol>
 </li>
 </ol>
 
@@ -539,10 +589,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
@@ -568,6 +614,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
             
             <div class="clearfix"></div>
