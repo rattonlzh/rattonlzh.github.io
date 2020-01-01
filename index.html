@@ -393,194 +393,6 @@
 
 
   
-    <article id="post-编译原理tiny扩充文法实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编译原理tiny扩充文法实验"><a href="#编译原理tiny扩充文法实验" class="headerlink" title="编译原理tiny扩充文法实验"></a>编译原理tiny扩充文法实验</h1><p>除了将m a i n . c 放在g l o b a l s . h 的前面之外，这些文件的源代码及其行号都按顺序列在附录 B中了。任何代码文件都包含了 g l o b a l s . h 头文件，它包括了数据类型的定义和整个编译器 均使用的全程变量。m a i n . c 文件包括运行编译器的主程序，它还分配和初始化全程变量。其 他的文件则包含了头 /代码文件对、在头文件中给出了外部可用的函数原型以及在相关代码文 件中的实现（包括静态局部函数）。s c a n、p a r s e、a n a l y z e 和c g e n 文件与图1 - 1中的扫描 程序、分析程序、语义分析程序和代码生成器各阶段完全相符。 u t i l 文件包括了实用程序函 数，生成源代码（语法树）的内部表示和显示列表与出错信息均需要这些函数。 s y m t a b 文件 包括执行与T I N Y应用相符的符号表的杂凑表。c o d e文件包括用于依赖目标机器（将在1 . 7 . 3节 描述的T M机）的代码生成的实用程序。图1 - 1还缺少一些其他部分：没有单独的错误处理器或 文字表且没有优化阶段；没有从语法树上分隔出来的中间代码；另外，符号表只与语义分析程 序和代码生成器交互（这将在第6章中再次讨论到）。 </p>
-<table>
-<thead>
-<tr>
-<th>代码文件</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>globals.h</td>
-<td>包括了数据类型的定义和整个编译器 均使用的全局变量</td>
-</tr>
-<tr>
-<td>main.c</td>
-<td>运行编译器的主程序，它还分配和初始化全局变量</td>
-</tr>
-<tr>
-<td>scan.h/scan.c</td>
-<td>扫描程序</td>
-</tr>
-<tr>
-<td>parse.h/parse.c</td>
-<td>分析程序</td>
-</tr>
-<tr>
-<td>analyze.h/analyze.c</td>
-<td>语义分析程序</td>
-</tr>
-<tr>
-<td>cgen.h/cgen.c</td>
-<td>代码生成器</td>
-</tr>
-<tr>
-<td>util.h/util.c</td>
-<td>实用程序函 数，生成源代码（语法树）的内部表示和显示列表与出错信息</td>
-</tr>
-<tr>
-<td>symtab.h/symtab.c</td>
-<td>包括执行与T I N Y应用相符的符号表的杂凑表</td>
-</tr>
-<tr>
-<td>code.h/code.c</td>
-<td>依赖T M机的代码生成的实用程序</td>
-</tr>
-<tr>
-<td>tm.c</td>
-<td>tiny虚拟机程序，运行tiny的汇编代码</td>
-</tr>
-<tr>
-<td>tiny.l</td>
-<td>定义tiny语言的词法</td>
-</tr>
-<tr>
-<td>tiny.y</td>
-<td>定义tiny语言的语法</td>
-</tr>
-</tbody></table>
-<p>​    </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/12/24/编译原理tiny扩充文法实验/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2019-12-23-如何做一个代码搬运工" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/12/23/2019-12-23-如何做一个代码搬运工/">如何做一个代码搬运工</a>
-    </h1>
-  
-
-        
-        <a href="2019/12/23/2019-12-23-如何做一个代码搬运工/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="代码搬运实录"><a href="#代码搬运实录" class="headerlink" title="代码搬运实录"></a>代码搬运实录</h1><p>有时候你快速拥有项目经验，研究别人的开源项目是最好的成长方式。下面是一个将github上的一个开源项目<a href="https://github.com/smuyyh/BookReader" target="_blank" rel="noopener">任阅阅读器</a>的代码做二次修改变成新的app的实战。本例仅作为学习技术之用，绝不用作商业用途，并且本例做出的APP也会开发源代码发布在github上（根据gpl开源协议，使用开源项目的部分源代码的项目，必须将相关部分必须开放源代码，并且附上gpl 证书）</p>
-<p>首先新建一个项目，这里就不介绍了。</p>
-<p>这个项目有什么代码是我们可以复用的呢？</p>
-<p>首先切到 <code>app/src/main目录</code>下。</p>
-<p>打开 <code>res</code> 目录，<code>anim</code>目录存放的是设置动画的xml文件，动画文件几乎在任何项目都是可以无障碍套用的，因此立马把这个复制到自己的项目中。</p>
-<p><code>drawable</code>目录是存放 <code>shape</code>和 <code>selector</code> 资源的，这个项目不同差异很大，我们只学习他们是怎么写 <code>shape</code>的就好了</p>
-<p>找 <code>layout</code>目录的界面文件， 通过粗略操作该APP，我了解到在打开小说阅读，点击中央会弹出顶部菜单，上面有朗读功能，点击弹出 “任阅：正在拼命开发中”的 Toast提示，故全局搜索该字符串，在 <code>ReadActivity.java</code>中找到以下结果</p>
-<p><img src="1577089761427.png" alt="1577089761427"></p>
-<p>该方法与 <code>tvBookReadReading</code>绑定，按图索骥，继续找，最终发现文本阅读的页面文件是 <code>activity_read.xml</code></p>
-<p>阅读页面ReadView</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android 项目开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2019/12/23/2019-12-23-如何做一个代码搬运工/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-2019-12-22-数字图像处理知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -602,6 +414,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数字图像处理复习"><a href="#数字图像处理复习" class="headerlink" title="数字图像处理复习"></a>数字图像处理复习</h1><p>[TOC]</p>
+<h2 id="什么是数字图像处理"><a href="#什么是数字图像处理" class="headerlink" title="什么是数字图像处理"></a>什么是数字图像处理</h2><p>利用计算机对数字图像进行一系列的操作，以达到某种预期目的的技术</p>
 <h2 id="数字图像处理三个层次"><a href="#数字图像处理三个层次" class="headerlink" title="数字图像处理三个层次"></a>数字图像处理三个层次</h2><ul>
 <li>狭义图像处理 ——像素级 数据量大 底层.对输入图像进行某种变换得到输出图像</li>
 <li>图像分析——目标级 中层 对图像中感兴趣的目标进行检测和测量，从而得到对图像目标的描述</li>
@@ -1136,6 +949,147 @@
 
 
   
+    <article id="post-echarts常用API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/07/28/echarts常用API/">echarts常用API</a>
+    </h1>
+  
+
+        
+        <a href="2019/07/28/echarts常用API/" class="archive-article-date">
+  	<time datetime="2019-07-28T07:02:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="echarts入门"><a href="#echarts入门" class="headerlink" title="echarts入门"></a>echarts入门</h1>
+        
+          <a class="article-more-a" href="2019/07/28/echarts常用API/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">API</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/07/28/echarts常用API/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-运行tensorflow使用gpu加速" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/07/28/运行tensorflow使用gpu加速/">运行tensorflow使用gpu加速</a>
+    </h1>
+  
+
+        
+        <a href="2019/07/28/运行tensorflow使用gpu加速/" class="archive-article-date">
+  	<time datetime="2019-07-28T06:59:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="配置tensorflow-gpu"><a href="#配置tensorflow-gpu" class="headerlink" title="配置tensorflow-gpu"></a>配置tensorflow-gpu</h1>
+        
+          <a class="article-more-a" href="2019/07/28/运行tensorflow使用gpu加速/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2019/07/28/运行tensorflow使用gpu加速/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
@@ -1150,7 +1104,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Ratton
+    		&copy; 2020 Ratton
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1254,11 +1208,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,11 +1220,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,15 +1236,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android 项目开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
             
             <div class="clearfix"></div>
