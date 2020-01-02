@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Ratton">
 <meta property="og:description" content="数据库应用复习">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2020-01-01T15:29:12.170Z">
+<meta property="og:updated_time" content="2020-01-02T03:54:16.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ratton">
 <meta name="twitter:description" content="数据库应用复习">
@@ -170,7 +170,7 @@
 <p>失效转移（Failover）：当一个结点失效时，通过选择集群的另一个结点，使处理继续进行</p>
 <p>等幂方法（idempotent methods）：重复相同的参数调用可以得到相同的结果</p>
 <h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p>原子性-atomicity：要么不做，要么全做</p>
-<p>完整性-consistency：写入的数据满足定义的约束规则</p>
+<p>一致性-consistency：写入的数据满足定义的约束规则</p>
 <p>隔离性-isolation：并发执行的事务如同串行执行，保证 系统状态的一致性</p>
 <p>持久性-duration：一旦提交，即便断电、crash也不会丢失数据</p>
 <h3 id="数据库的扩展性Scalable"><a href="#数据库的扩展性Scalable" class="headerlink" title="数据库的扩展性Scalable"></a>数据库的扩展性Scalable</h3><ol>
@@ -219,39 +219,65 @@
 <p>灾难恢复性：抵御所有中断，为重要程序提供连续处理能力，最终目标让中断时间少于总服务时间的0.001%</p>
 <p>高可用性：更苛刻的恢复时间目标（几秒到数分钟）和恢复点目标（零用户中断）</p>
 <h2 id="系统可用性"><a href="#系统可用性" class="headerlink" title="系统可用性"></a>系统可用性</h2><p>在特定时间和特定条件系统的正常工作程度</p>
-<p>测量方式：可用性的平均值=MTBF/(MTBF+MTTP),</p>
+<p>测量方式：可用性的平均值=MTBF/(MTBF+MTTR),</p>
 <p>MTBF：平均故障间隔时间</p>
-<p>MTTP：平均故障修复时间</p>
-<h3 id="完美性与避错技术"><a href="#完美性与避错技术" class="headerlink" title="完美性与避错技术"></a>完美性与避错技术</h3><p>完美性追求一种避错技术，即避免出错。要求组成系统的各个部件、 器件具有高可用性，不允许出错，或者出错率降至最低。<br>•硬件的可用性与完美性 • 指元器件的完美性、部件的完美性、整机与系统的完美性 •软件的可用性与完美性 • 指软件的正确性、完美性、兼容性</p>
-<h3 id="容错性与容错技术"><a href="#容错性与容错技术" class="headerlink" title="容错性与容错技术"></a>容错性与容错技术</h3><p>• 容错技术：在一定程度上容忍故障的技术 • 容错系统：采用容错技术的系统 • 当系统因某种原因出错或者失效，系统能够继续工作，程序 能够继续运行，不会因计算机故障而中止或被修改，执行结 果也不包含系统中故障引起的差错。<br>• 容错技术也称为故障掩盖技术(fault masking)。</p>
-<p>冗余技术是容错技术的重要结构，它以增加资源的办法换取可 用性。由于资源的不同，冗余技术分为硬件冗余、软件冗余、 时间冗余和信息冗余。资源与成本按线性增加，而故障概率则 可按对数规律下降。<br>• 冗余要消耗资源，应当在可用性与资源消耗之间进行权衡和折 衷。</p>
-<h3 id="REPLICATION-机制的实现原理"><a href="#REPLICATION-机制的实现原理" class="headerlink" title="REPLICATION 机制的实现原理"></a>REPLICATION 机制的实现原理</h3><p>• MySQL的 Replication 是一个异步的复制过程，从一个 MySQL instance（我们称之为 Master）复制到另一个 MySQL instance（我们称之 Slave）。在 Master 与 Slave 之 间的实现整个复制过程主要由三个线程来完成，其中两个线程 （SQL线程和IO线程）在 Slave 端，另外一个线程（IO线程） 在 Master 端。<br>• 首先必须打开 Master 端的Binary Log（mysql-bin.xxxxxx） 功能</p>
+<p>MTTR：平均故障修复时间</p>
+<h3 id="完美性与避错技术"><a href="#完美性与避错技术" class="headerlink" title="完美性与避错技术"></a>完美性与避错技术</h3><p>完美性追求一种避错技术，即避免出错。要求组成系统的各个部件、 器件具有高可用性，不允许出错，或者出错率降至最低。</p>
+<ul>
+<li>硬件的可用性与完美性 : 指元器件的完美性、部件的完美性、整机与系统的完美性 </li>
+<li>软件的可用性与完美性 : 指软件的正确性、完美性、兼容性</li>
+</ul>
+<h3 id="容错性与容错技术"><a href="#容错性与容错技术" class="headerlink" title="容错性与容错技术"></a>容错性与容错技术</h3><ul>
+<li><p>容错技术：在一定程度上容忍故障的技术 </p>
+</li>
+<li><p>容错系统：采用容错技术的系统。当系统因某种原因出错或者失效，系统能够继续工作，程序能够继续运行，不会因计算机故障而中止或被修改，执行结果也不包含系统中故障引起的差错。</p>
+</li>
+<li><p>容错技术也称为故障掩盖技术(fault masking)。</p>
+</li>
+<li><p>冗余技术是容错技术的重要结构，它以增加资源的办法换取可 用性。由于资源的不同，冗余技术分为硬件冗余、软件冗余、 时间冗余和信息冗余。资源与成本按线性增加，而故障概率则 可按对数规律下降。</p>
+</li>
+<li><p>冗余要消耗资源，应当在可用性与资源消耗之间进行权衡和折 衷。</p>
+</li>
+</ul>
+<h3 id="REPLICATION-机制的实现原理"><a href="#REPLICATION-机制的实现原理" class="headerlink" title="REPLICATION 机制的实现原理"></a>REPLICATION 机制的实现原理</h3><ul>
+<li>MySQL的 Replication 是一个异步的复制过程，从一个 MySQL instance（我们称之为 Master）复制到另一个 MySQL instance（我们称之 Slave）。在 Master 与 Slave 之 间的实现整个复制过程主要由三个线程来完成，其中两个线程 （SQL线程和IO线程）在 Slave 端，另外一个线程（IO线程） 在 Master 端。</li>
+</ul>
 <h3 id="MYSQL-复制的基本过程"><a href="#MYSQL-复制的基本过程" class="headerlink" title="MYSQL 复制的基本过程"></a>MYSQL 复制的基本过程</h3><ol>
-<li>Slave 上面的IO线程连接上 Master，并请求从指定日志文件的指定位置（或者 从最开始的日志）之后的日志内容；</li>
+<li>首先必须打开 Master 端的Binary Log（mysql-bin.xxxxxx） 功能</li>
+<li>Slave 上面的IO线程连接上 Master，并请求从指定日志文件的指定位置（或者 从最开始的日志）读取之后的日志内容；</li>
 <li>Master 接收到来自 Slave 的 IO 线程的请求后，通过负责复制的 IO 线程根据 请求信息读取指定日志指定位置之后的日志信息，返回给 Slave 端的 IO 线程。 返回信息中除了日志所包含的信息之外，还包括本次返回的信息在 Master 端 的 Binary Log 文件的名称以及在 Binary Log 中的位置； </li>
-<li>Slave 的 IO 线程接收到信息后，将接收到的日志内容依次写入到 Slave 端的 Relay Log文件(mysql-relay-bin.xxxxxx)的最末端，并将读取到的Master端的 bin-log的文件名和位置记录到master-info文件中，以便在下一次读取的时候 能够清楚的告诉Master“我需要从某个bin-log的哪个位置开始往后的日志内容， 请发给我” </li>
+<li>Slave 的 IO 线程接收到信息后，将接收到的日志内容依次写入到 Slave 端的 Relay Log文件(mysql-relay-bin.xxxxxx)的最末端，并将读取到的Master端的 bin-log的文件名和位置记录到master-info文件中，以便在下一次读取的时候 能够清楚的告诉Master。“我需要从某个bin-log的哪个位置开始往后的日志内容， 请发给我” </li>
 <li>Slave 的 SQL 线程检测到 Relay Log 中新增加了内容后，会马上解析该 Log 文件中的内容成为在 Master 端真实执行时候的那些可执行的 Query 语句，并 在自身执行这些 Query。这样，实际上就是在 Master 端和 Slave 端执行了同 样的 Query，所以两端的数据是完全一样的。</li>
 </ol>
 <h3 id="常见复制架构"><a href="#常见复制架构" class="headerlink" title="常见复制架构"></a>常见复制架构</h3><p>对于数据实时性要求不是特 别 Critical 的应用，只需要 通过廉价的pc server来扩 展 Slave 的数量，将读压 力分散到多台 Slave 的机 器上面，即可通过分散单台 数据库服务器的读压力来解 决数据库端的读性能瓶颈</p>
-<h3 id="DUAL-MASTER-复制架构-MASTER-MASTER"><a href="#DUAL-MASTER-复制架构-MASTER-MASTER" class="headerlink" title="DUAL MASTER 复制架构(MASTER - MASTER)"></a>DUAL MASTER 复制架构(MASTER - MASTER)</h3><p>Dual Master 环境就是两个 MySQL Server 互相将对方作 为自己的 Master，自己作为 对方的 Slave 来进行复制。这 样，任何一方所做的变更，都 会通过复制应用到另外一方的 数据库中。</p>
+<h3 id="DUAL-MASTER-复制架构-MASTER-MASTER"><a href="#DUAL-MASTER-复制架构-MASTER-MASTER" class="headerlink" title="DUAL MASTER 复制架构(MASTER - MASTER)"></a>DUAL MASTER 复制架构(MASTER - MASTER)</h3><p>Dual Master 环境就是两个 MySQL Server 互相将对方作为自己的 Master，自己作为对方的 Slave 来进行复制。这 样，任何一方所做的变更，都 会通过复制应用到另外一方的数据库中。</p>
 <h3 id="级联复制架构-MASTER-SLAVES-SLAVES-…"><a href="#级联复制架构-MASTER-SLAVES-SLAVES-…" class="headerlink" title="级联复制架构(MASTER - SLAVES - SLAVES …)"></a>级联复制架构(MASTER - SLAVES - SLAVES …)</h3><p>有些应用场景中，可能读写压力差别比较大，读压力特别的大，一 个 Master 可能需要上10台甚至更多的 Slave 才能够支撑注读的压 力。复制就会消耗较多的资源，很容易造成复制的延时。</p>
-<h3 id="DUAL-MASTER-与级联复制结合架-构-MASTER-MASTER-SLAVES"><a href="#DUAL-MASTER-与级联复制结合架-构-MASTER-MASTER-SLAVES" class="headerlink" title="DUAL MASTER 与级联复制结合架 构(MASTER - MASTER - SLAVES)"></a>DUAL MASTER 与级联复制结合架 构(MASTER - MASTER - SLAVES)</h3><p>MMS同时解决 Master 因为所附属的 Slave 过多而成为瓶颈的问 题，及解决人工维护和出现异常需要切换后可能存在重新搭建 Replication 的问题。</p>
-<h3 id="M-S复制——S故障的情况"><a href="#M-S复制——S故障的情况" class="headerlink" title="M-S复制——S故障的情况"></a>M-S复制——S故障的情况</h3><p>当我们的 Slave 集群 中的一台 Slave C 出 现故障 crash 之后， 整个系统的变化仅仅 只是从 Master 至 Slave C 的复制中断， 客户端应用的 Read 请求也不能再访问 Slave C。当时其他所 有的 MySQL Server 在不需要任何调整的 情况下就能正常工作。 客户端的请求 Read 请求全部由 Slave A 和 Slave B 来承担。<br>MASTER 单点问题的解决<br>• 当 Master 出现问题后所有客户端的 Write 请求就无法处理<br>• 这时可以有如下两种解决方案： • 一个是将 Slave 中的某一台切换成 Master 对外提供服务， 同时将其他所有的 Slave 都以通过 CHANGE MASTER 命 令来将通过新的 Master 进行复制。 • 另一个方案就是新增一台 Master，也就是 Dual Master 的 解决方案</p>
-<h3 id="M-S复制——M故障的情况"><a href="#M-S复制——M故障的情况" class="headerlink" title="M-S复制——M故障的情况"></a>M-S复制——M故障的情况</h3><p>第一种解决方案，将一台 Slave 切换成 Master 来解决问题 当 Master 出现故障 crash 之后， 原客户端对 Master 的所有 Write 请求都会无法再继续进行下去了， 所有原 Master 到 Slave 的复制也 自然就断掉了。这时候，我们选 择一台 Slave 将其切换成 Master。 假设选择的是 Slave A，则我们将 其他 Slave B 和 Slave C 都通过 CHANGE MASTER TO 命令更换 其 Master，从新的 Master 也就 是原Slave A 开始继续进行复制。 同时将应用端所有的写入请求转 向到新的 Master。对于 Read 请 求，我们可以去掉对新 Master 的 Read 请求，也可以继续保留。</p>
-<h3 id="通过-DUAL-MASTER-来-解决-MASTER-的单点问题"><a href="#通过-DUAL-MASTER-来-解决-MASTER-的单点问题" class="headerlink" title="通过 DUAL MASTER 来 解决 MASTER 的单点问题"></a>通过 DUAL MASTER 来 解决 MASTER 的单点问题</h3><p>我们通过两台 MySQL Server 搭建成 Dual Master 环境，正常情况下，所 有客户端的 Write 请求都写往 Master A，然后通过 Replication 将 Master A 复制到 Master B。一旦 Master A 出现问题之后，所有的 Write 请求都 转向 Master B。而在正常情况下，当 Master B 出现问题的时候，实际上不 论是数据库还是客户端的请求，都不 会受到实质性的影响。 特点就是在 Master 出现故障之后的 处理比较简单，可控性比较大。而弊 端就是需要增加一台 MySQL 服务器， 在成本方面投入更大。</p>
+<h3 id="DUAL-MASTER-与级联复制结合架构-MASTER-MASTER-SLAVES"><a href="#DUAL-MASTER-与级联复制结合架构-MASTER-MASTER-SLAVES" class="headerlink" title="DUAL MASTER 与级联复制结合架构(MASTER - MASTER - SLAVES)"></a>DUAL MASTER 与级联复制结合架构(MASTER - MASTER - SLAVES)</h3><p>MMS同时解决 Master 因为所附属的 Slave 过多而成为瓶颈的问题，及解决人工维护和出现异常需要切换后可能存在重新搭建 Replication 的问题。</p>
+<h3 id="M-S复制——S故障的情况"><a href="#M-S复制——S故障的情况" class="headerlink" title="M-S复制——S故障的情况"></a>M-S复制——S故障的情况</h3><p>当我们的 Slave 集群中的一台Slave C 出现故障 crash 之后， 整个系统的变化仅仅只是从 Master 至 Slave C 的复制中断， 客户端应用的 Read 请求也不能再访问 Slave C。当时其他所 有的 MySQL Server 在不需要任何调整的 情况下就能正常工作。 客户端的请求 Read 请求全部由 Slave A 和 Slave B 来承担。</p>
+<h3 id="M-S复制——M故障的情况"><a href="#M-S复制——M故障的情况" class="headerlink" title="M-S复制——M故障的情况"></a>M-S复制——M故障的情况</h3><p>当 Master 出现问题后所有客户端的 Write 请求就无法处理，这时可以有如下两种解决方案： </p>
+<ul>
+<li>一个是将 Slave 中的某一台切换成 Master 对外提供服务，同时将其他所有的 Slave 都以通过 CHANGE MASTER TO命令来将通过新的 Master 进行复制。 </li>
+<li>另一个方案就是新增一台Master，也就是 Dual Master 的解决方案</li>
+</ul>
+<h3 id="通过-DUAL-MASTER-来-解决-MASTER-的单点问题"><a href="#通过-DUAL-MASTER-来-解决-MASTER-的单点问题" class="headerlink" title="通过 DUAL MASTER 来 解决 MASTER 的单点问题"></a>通过 DUAL MASTER 来 解决 MASTER 的单点问题</h3><p>我们通过两台 MySQL Server 搭建成 Dual Master 环境，正常情况下，所有客户端的 Write 请求都写往 Master A，然后通过 Replication 将 Master A 复制到 Master B。一旦 Master A 出现问题之后，所有的 Write 请求都转向 Master B。而在正常情况下，当 Master B 出现问题的时候，实际上不论是数据库还是客户端的请求，都不会受到实质性的影响。 特点就是在 Master 出现故障之后的处理比较简单，可控性比较大。而弊端就是需要增加一台 MySQL 服务器， 在成本方面投入更大。</p>
 <h3 id="M-M-S复制——S故障的情况"><a href="#M-M-S复制——S故障的情况" class="headerlink" title="M-M-S复制——S故障的情况"></a>M-M-S复制——S故障的情况</h3><p>考虑 Slave 出现异常的情况。 在这个架构中，Slave 出现 异常后的处理情况和普通的 Master - Slave 架构的处理 方式完全一样，仅仅需要在 应用访问 Slave 集群的访问 配置中去掉一个 Slave 节点 即可解决<br>不论是通过应用程序自己判 断，还是通过硬件解决方案， 都可以很容易的实现。</p>
 <h3 id="M-M-S复制——当-MASTER-A-出现故障之后的处理方案"><a href="#M-M-S复制——当-MASTER-A-出现故障之后的处理方案" class="headerlink" title="M-M-S复制——当 MASTER A 出现故障之后的处理方案"></a>M-M-S复制——当 MASTER A 出现故障之后的处理方案</h3><p>当 Master A 出现故障 crash 之 后，Master A 与 Master B 之 间的复制将中断，所有客户端 向 Master A 的 Write 请求都必 须转向 Master B。<br>这个转向动作的实现，可以通 过VIP 的方式实现。 由于之前所有的 Slave 就都是 从 Master B 来实现复制，所以 Slave 集群不会受到任何的影响， 客户端的所有 Read 请求也就 不会受到任何的影响，整个过 程可以完全自动进行，不需要 任何的人为干预。</p>
-<h3 id="M-M-S复制——当-MASTER-B-出现故障之后的情况又如何"><a href="#M-M-S复制——当-MASTER-B-出现故障之后的情况又如何" class="headerlink" title="M-M-S复制——当 MASTER B 出现故障之后的情况又如何"></a>M-M-S复制——当 MASTER B 出现故障之后的情况又如何</h3><p>首先可以确定的是我们的所有 Write 请求都不会受到任何影响， 而且所有的 Read 请求也都还是能 够正常访问。 但所有 Slave 的复制都会中断， Slave 上面的数据会开始出现滞后 的现象。 需要做的就是将所有的 Slave 进行 CHANGE MASTER TO 操作，改 为从 Master A 进行复制。由于所 有 Slave 的复制都不可能超前最初 的数据源，所以可以根据 Slave 上 面的 Relay Log 中的时间戳信息与 Master A 中的时间戳信息进行对 照来找到准确的复制起始点，不会 造成任何的数据丢失。</p>
+<h3 id="M-M-S复制——当-MASTER-B-出现故障之后的情况又如何"><a href="#M-M-S复制——当-MASTER-B-出现故障之后的情况又如何" class="headerlink" title="M-M-S复制——当 MASTER B 出现故障之后的情况又如何"></a>M-M-S复制——当 MASTER B 出现故障之后的情况又如何</h3><p>首先可以确定的是我们的所有 Write 请求都不会受到任何影响， 而且所有的 Read 请求也都还是能 够正常访问。 但所有 Slave 的复制都会中断， Slave 上面的数据会开始出现滞后 的现象。 需要做的就是将所有的 Slave 进行 CHANGE MASTER TO 操作，改 为从 Master A 进行复制。由于所 有 Slave 的复制都不可能超前最初 的数据源，所以可以根据 Slave 上 面的 Relay Log 中的时间戳信息与 Master A 中的时间戳信息进行对 照来找到准确的复制起始点，不会造成任何的数据丢失。</p>
 <h3 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h3><p><strong>基本可用</strong> 数据能够保证80%一致 性就够了，剩下20%就 不要过于纠结了。可参 考八二定律</p>
 <p><strong>软状态</strong> 可以理解为无连接的， 而Hard state是面向连接 的。Soft state可以有一 段时间不同步，异步</p>
 <p><strong>最终一致性</strong> 在某一段短时间内允许数 据不一致，但经过一段较 长时间，等所有节点上数 据的拷贝都整合在一起的 时候，数据会最终达到完 全一致</p>
 <h3 id="架构设计理论与原则"><a href="#架构设计理论与原则" class="headerlink" title="架构设计理论与原则"></a>架构设计理论与原则</h3><ol>
-<li><strong>一致性</strong> 分布式系统中，数据一 般会存储在不同节点， 一致性就是要保证对数 据操作的原子性</li>
+<li><strong>一致性</strong> 分布式系统中，数据一般会存储在不同节点， 一致性就是要保证对数据操作的原子性</li>
 <li><strong>可用性</strong> 确保客户访问数据时可得 到响应。不强调各个节点 上数据要保持一致性。</li>
-<li><strong>分区容忍性</strong> 数据分区存储后，即使部 分分区组件不可用，其施 加的操作也能够完成</li>
+<li><strong>分区容忍性</strong> 数据分区存储后，即使部分分区组件不可用，其施加的操作也能够完成</li>
 </ol>
-<h2 id="非结构化数据处理"><a href="#非结构化数据处理" class="headerlink" title="非结构化数据处理"></a>非结构化数据处理</h2><p>信息检索是从大规模非结构化数据（通常是文本）的集合（通常保 存在计算机上）中找出满足用户信息需求的资料（通常是文档）的 过程。 Document –文档 Unstructured – 非结构化 Information need –信息需求 Collection—文档集、语料库</p>
-<h3 id="IR中的基本假设"><a href="#IR中的基本假设" class="headerlink" title="IR中的基本假设"></a>IR中的基本假设</h3><p>文档集Collection: 由固定数目的文档组成 目标: 返回与用户需求相关的文档并辅助用户来完成某 项任务 相关性Relevance： • 主观的概念 • 反映对象的匹配程度 • 不同应用相关性不同</p>
+<h2 id="非结构化数据处理"><a href="#非结构化数据处理" class="headerlink" title="非结构化数据处理"></a>非结构化数据处理</h2><p>信息检索是从大规模非结构化数据（通常是文本）的集合（通常保存在计算机上）中找出满足用户信息需求的资料（通常是文档）的 过程。 Document –文档 Unstructured – 非结构化 Information need –信息需求 Collection—文档集、语料库</p>
+<h3 id="IR中的基本假设"><a href="#IR中的基本假设" class="headerlink" title="IR中的基本假设"></a>IR中的基本假设</h3><p>文档集Collection: 由固定数目的文档组成 目标: 返回与用户需求相关的文档并辅助用户来完成某项任务相关性Relevance： </p>
+<ul>
+<li>主观的概念 </li>
+<li>反映对象的匹配程度 </li>
+<li>不同应用相关性不同</li>
+</ul>
 <h3 id="检索效果的评价"><a href="#检索效果的评价" class="headerlink" title="检索效果的评价"></a>检索效果的评价</h3><p>正确率(Precision) : 返回结果文档中正确的比例。如返 回80篇文档，其中20篇相关，正确率1/4。</p>
 <p> 召回率(Recall) : 全部相关文档中被返回的比例，如返 回80篇文档，其中20篇相关，但是总的应该相关的文档 是100篇，召回率1/5。</p>
 <p> 正确率和召回率反映检索效果的两个方面，缺一不可。</p>
@@ -593,19 +619,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">语法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,7 +635,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
               </li>
             
             <div class="clearfix"></div>
