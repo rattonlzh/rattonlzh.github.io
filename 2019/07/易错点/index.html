@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://ziphold.gitee.io">
   <title>编程易错点 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="易错点 1234ans[p+1] = Math.max(ans[p], nums[i]);           ++p;ans[++p] = Math.max(ans[p], nums[i]);// 在计算右边的表达式前优先执行左边的自增运算，结果与1、2行代码的执行结果不同  对数据结构中的元素错误地直接用 ==比较  一般来说对引用类型比较都是为了进行对象的值的比较而非对象地址的比较，而在标准">
+  <meta name="description" content="易错点">
 <meta name="keywords" content="经验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程易错点">
 <meta property="og:url" content="https://ziphold.gitee.io/2019/07/易错点/index.html">
 <meta property="og:site_name" content="Ratton">
-<meta property="og:description" content="易错点 1234ans[p+1] = Math.max(ans[p], nums[i]);           ++p;ans[++p] = Math.max(ans[p], nums[i]);// 在计算右边的表达式前优先执行左边的自增运算，结果与1、2行代码的执行结果不同  对数据结构中的元素错误地直接用 ==比较  一般来说对引用类型比较都是为了进行对象的值的比较而非对象地址的比较，而在标准">
+<meta property="og:description" content="易错点">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://ziphold.gitee.io/2019/07/易错点/image-20200229231739392.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2019/07/易错点/image-20200301155110891.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2019/07/易错点/1576897835175.png">
-<meta property="og:updated_time" content="2020-03-26T10:11:10.042Z">
+<meta property="og:updated_time" content="2020-03-26T10:57:23.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程易错点">
-<meta name="twitter:description" content="易错点 1234ans[p+1] = Math.max(ans[p], nums[i]);           ++p;ans[++p] = Math.max(ans[p], nums[i]);// 在计算右边的表达式前优先执行左边的自增运算，结果与1、2行代码的执行结果不同  对数据结构中的元素错误地直接用 ==比较  一般来说对引用类型比较都是为了进行对象的值的比较而非对象地址的比较，而在标准">
+<meta name="twitter:description" content="易错点">
 <meta name="twitter:image" content="https://ziphold.gitee.io/2019/07/易错点/image-20200229231739392.png">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
@@ -170,6 +170,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="易错点">易错点</h1>
+<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ans[p+<span class="number">1</span>] = Math.max(ans[p], nums[i]);</span><br><span class="line">           ++p;</span><br><span class="line"></span><br><span class="line">ans[++p] = Math.max(ans[p], nums[i]);<span class="comment">// 在计算右边的表达式前优先执行左边的自增运算，结果与1、2行代码的执行结果不同</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>对数据结构中的元素错误地直接用 <code>==</code>比较</li>

@@ -142,82 +142,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-apache服务器配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2020/02/apache服务器配置/">apache服务器配置</a>
-    </h1>
-  
-
-        
-        <a href="../../2020/02/apache服务器配置/" class="archive-article-date">
-  	<time datetime="2020-02-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="apache服务器路由配置">apache服务器路由配置</h1>
-        
-          <a class="article-more-a" href="../../2020/02/apache服务器配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="../../2020/02/apache服务器配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-git使用流程[2]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -391,40 +315,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="学习新编程语言的关注点">学习新编程语言的关注点</h1>
-<p>（暂停更新）</p>
-<p>程序语言的基本运算<code>=+-*/%</code>，位运算<code>&amp;|^&lt;&lt;&gt;&gt;</code>,逻辑运算<code>&amp;&amp;， ||， ！</code>，关系比较 <code>==，&gt;,&lt;,&gt;=,&lt;=,!=</code>，分支语句 <code>if-else语句，switch语句</code>， 循环语句 <code>while语句，for语句</code>， 函数定义，类定义，命名空间，入口函数等这些概念现代编程语言基本都有类似的存在，它们都大同小异，因此不是我们关注的重点。我们需要关注的是该编程语言的内置库以及常用第三方库的常用API。可以思考用新语言能否实现以下功能</p>
-<ol type="1">
-<li>字符串使用正则表达式查找、替换字符</li>
-<li>json字符串与字典互转</li>
-<li>日期时间与字符串互转，日期时间的加减</li>
-<li>运行多线程</li>
-<li>常用数据库驱动的使用</li>
-<li>栈，队列，集合，字典，最大堆和最小堆等常用数据结构的使用</li>
-<li>升序排序和降序排序，二分查找</li>
-<li>单元测试</li>
-<li>输入数据与类型不匹配时的处理</li>
-<li>定义接口与抽象类</li>
-<li>进程间通信</li>
-</ol>
-<h2 id="c实现">c++实现</h2>
-<h3 id="字符串使用正则表达式查找替换字符">字符串使用正则表达式查找、替换字符</h3>
-<h3 id="json字符串与字典互转">json字符串与字典互转</h3>
-<h3 id="日期时间与字符串互转日期时间的加减">日期时间与字符串互转，日期时间的加减</h3>
-<h3 id="运行多线程">运行多线程</h3>
-<h3 id="常用数据库驱动的使用">常用数据库驱动的使用</h3>
-<h3 id="栈队列集合字典最大堆和最小堆等常用数据结构的使用">栈，队列，集合，字典，最大堆和最小堆等常用数据结构的使用</h3>
-<h3 id="升序排序和降序排序二分查找">升序排序和降序排序，二分查找</h3>
-<h3 id="输入数据与类型不匹配时的处理">输入数据与类型不匹配时的处理</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"&gt;&gt;&gt;"</span>;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line"><span class="comment">// 处理异常输入</span></span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">cin</span>.fail()) &#123;<span class="comment">// 输入异常时返回true</span></span><br><span class="line">    printError();</span><br><span class="line">    <span class="built_in">cin</span>.clear();<span class="comment">// 清除错误状态</span></span><br><span class="line">    <span class="built_in">cin</span>.ignore(numeric_limits&lt;streamsize&gt;::max(), <span class="string">'\n'</span>);<span class="comment">// 忽略缓存区的内容直到遇到'\n'</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\n&gt;&gt;&gt;"</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="定义接口与抽象类">定义接口与抽象类</h3>
-<h3 id="进程间通信">进程间通信</h3>
-<h2 id="java实现">java实现</h2>
-<h2 id="c实现-1">c#实现</h2>
-<h2 id="python实现">python实现</h2>
-<h2 id="js实现">js实现</h2>
-<h2 id="kotlin实现">kotlin实现</h2>
-<h2 id="php实现">php实现</h2>
-
+        
+          <a class="article-more-a" href="../../2020/02/学习新编程语言的关注点/#more">more >></a>
+        
       
 
       
@@ -498,20 +391,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="准备啃的书单">准备啃的书单</h1>
-<ul>
-<li><p>[ ] java编程思想</p></li>
-<li><p>[ ] 算法导论</p></li>
-<li><p>[ ] python编程从入门到实践</p></li>
-<li><p>[ ] C++Primer</p></li>
-<li><p>[ ] Unix环境高级编程</p></li>
-<li><p>[ ] spring实战</p></li>
-<li><p>[ ] springboot实战</p></li>
-<li><p>[ ] spring技术内幕</p></li>
-<li><p>[ ] mysql必知必会</p></li>
-<li><p>[ ] 高性能mysql</p></li>
-<li><p>[ ] 重构 改善现有代码的设计</p></li>
-</ul>
-
+        
+          <a class="article-more-a" href="../../2020/01/计算机推荐书籍/#more">more >></a>
+        
       
 
       
@@ -915,6 +797,82 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="../../2020/01/java实战/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/01/设计模式/">设计模式</a>
+    </h1>
+  
+
+        
+        <a href="../../2020/01/设计模式/" class="archive-article-date">
+  	<time datetime="2020-01-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="uml类图的图例">UML类图的图例</h1>
+        
+          <a class="article-more-a" href="../../2020/01/设计模式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="../../2020/01/设计模式/">展开全文 >></a>
         </p>
       
 
