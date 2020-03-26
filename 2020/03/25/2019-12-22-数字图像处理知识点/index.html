@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ziphold.gitee.io">
-  <title>Ratton</title>
+  <title>数字图像处理知识点 | Ratton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ratton">
-<meta property="og:url" content="https://ziphold.gitee.io/index.html">
+  <meta name="description" content="数字图像处理复习">
+<meta name="keywords" content="数字图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字图像处理知识点">
+<meta property="og:url" content="https://ziphold.gitee.io/2020/03/25/2019-12-22-数字图像处理知识点/index.html">
 <meta property="og:site_name" content="Ratton">
+<meta property="og:description" content="数字图像处理复习">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-03-25T03:01:02.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ratton">
+<meta name="twitter:title" content="数字图像处理知识点">
+<meta name="twitter:description" content="数字图像处理复习">
   
     <link rel="alternative" href="/atom.xml" title="Ratton" type="application/atom+xml">
   
@@ -53,7 +58,7 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/homepage/homepage.html">主页</a></li>
+				<li><a href="../../../../homepage/homepage.html">主页</a></li>
 	        
 			</ul>
 		</nav>
@@ -125,7 +130,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/homepage/homepage.html">主页</a></li>
+					<li style="width: 100%"><a href="../../../../homepage/homepage.html">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -140,21 +145,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2019-12-22-数字图像处理知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2019-12-22-数字图像处理知识点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="2020/03/25/2019-12-22-数字图像处理知识点/">数字图像处理知识点</a>
+    <h1 class="article-title" itemprop="name">
+      数字图像处理知识点
     </h1>
   
 
         
-        <a href="2020/03/25/2019-12-22-数字图像处理知识点/" class="archive-article-date">
+        <a href="" class="archive-article-date">
   	<time datetime="2020-03-25T03:01:02.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
 </a>
         
@@ -163,11 +166,202 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数字图像处理复习">数字图像处理复习</h1>
-        
-          <a class="article-more-a" href="2020/03/25/2019-12-22-数字图像处理知识点/#more">more >></a>
-        
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="什么是数字图像处理">什么是数字图像处理</h2>
+<p>利用计算机对数字图像进行一系列的操作，以达到某种预期目的的技术</p>
+<h2 id="数字图像处理三个层次">数字图像处理三个层次</h2>
+<ul>
+<li>狭义图像处理 ——像素级 数据量大 底层.对输入图像进行某种变换得到输出图像</li>
+<li>图像分析——目标级 中层 对图像中感兴趣的目标进行检测和测量，从而得到对图像目标的描述</li>
+<li>图像理解——符号级 数据量小 高层 。 在图像分析的基础上基于人工智能和认知理论研究图像中各目标的性质和他们之间的相互联系</li>
+</ul>
+<h2 id="图片量化">图片量化</h2>
+<p>未压缩图像的数据量=行数 <span class="math inline">\(\times\)</span>列数<span class="math inline">\(\times\)</span>颜色位数<span class="math inline">\(\times\)</span>alpha通道数（rgb图片的通道数为3，灰度图片的通道数为1）</p>
+<h2 id="直方图">直方图</h2>
+<p>灰度直方图概念：频率同灰度级的关系图（以灰度级为横坐标，灰度级的频率为纵坐标）</p>
+<p>性质：</p>
+<ul>
+<li>只能反映图像的灰度分布情况，丢失位置信息。</li>
+<li>一个图像分为多个区域，多个区域的直方图之和就是原直方图</li>
+</ul>
+<h2 id="处理算法的形式">处理算法的形式</h2>
+<p><strong>局部处理</strong>：输出像素 <span class="math inline">\(JP(i,j)\)</span> 值由输入图像 <span class="math inline">\(IP(i,j)\)</span>像素的小邻域 <span class="math inline">\(N[IP(i,j)]\)</span>确定的处理。比如图像的移动平均平滑法和空间域锐化。</p>
+<p><strong>点处理</strong>：输出值 <span class="math inline">\(JP(i,j)\)</span> 仅与<span class="math inline">\(IP(i,j)\)</span>像素灰度有关的处理。比如图像对比度增强，图像二值化。</p>
+<p><strong>全局处理</strong>：输出像素 <span class="math inline">\(JP(i,j)\)</span> 值取决于输入图像较大范围或整幅图像像素的处理。如傅里叶变换。</p>
+<h2 id="图像变换的目的">图像变换的目的</h2>
+<ol type="1">
+<li>使图像处理问题简化</li>
+<li>有利于图像特征提取</li>
+<li>有益于从概念上增强对图像信息的理解</li>
+</ol>
+<h2 id="图像变换在jpeg压缩的作用">图像变换在jpeg压缩的作用</h2>
+<ol type="1">
+<li>使图像信息分布有规律</li>
+<li>易于压缩</li>
+</ol>
+<h2 id="图像增强的概念">图像增强的概念</h2>
+<p><strong>空间域增强</strong>：直接对图像像素灰度进行操作</p>
+<p><strong>频率域增强</strong>：对图像经傅里叶变换后的频谱成分进行操作，经傅里叶逆变换获得所需结果</p>
+<h2 id="直方图修正法">直方图修正法</h2>
+<h3 id="均衡化">均衡化</h3>
+<ol type="1">
+<li>灰度级归一化： <span class="math inline">\(r_i = i/(\text{灰度级数}-1)\)</span></li>
+<li>频率累加实现均衡化： <span class="math inline">\(s_{k计}=\sum_{i=0}^k p_i\)</span></li>
+<li>约分：四舍五入，结果取归一化灰度级</li>
+<li>合并：灰度级相同的合并，频率叠加</li>
+</ol>
+<h3 id="规定化">规定化</h3>
+<ol type="1">
+<li>规定化关键是求规定化后新灰度级的频率，规定化只能得到近似的直方图。</li>
+<li>对原图均衡化和规定直方图均衡化</li>
+<li>按规定直方图均衡化结果灰度级与原图均衡化的灰度级一一对应，结果频率取原图均衡化后的灰度级频率</li>
+</ol>
+<h2 id="图像平滑概念">图像平滑概念</h2>
+<p>为抑制噪声、改善图像质量所进行的处理成图像平滑或去噪，在空间域和频率域进行。</p>
+<h2 id="图像锐化概念">图像锐化概念</h2>
+<p>通过微分增强图像的边缘或轮廓。</p>
+<p>一阶偏导数用一阶差分近似表示</p>
+<h2 id="灰度变换">灰度变换</h2>
+<ol type="1">
+<li><p>线性变换，<span class="math inline">\([a,b]\rightarrow[a&#39;,b&#39;]\)</span>：<span class="math inline">\(g(i,j) = a&#39;+\frac{b&#39;-a&#39;}{b-a}(f(i,j)-a)\)</span></p></li>
+<li><p>分段线性变换：<span class="math inline">\([0,a]\rightarrow[0,c],[a,b]\rightarrow[c,d],[b,M_f]\rightarrow[d,M_g]\)</span> <span class="math display">\[
+ \begin{equation}
+ g(i,j)=\left\{ 
+ \begin{aligned}
+ &amp;(c/a)f(i,j), &amp; 0\le f(i,j) &lt; a\\
+ &amp;\frac{d-c}{b-a}[f(i,j)-a]+c,&amp; 0\le f(i,j) &lt; b \\
+ &amp;\frac{M_g-d}{M_f-c}[f(i,j)-b]+d, &amp; b \le f(i,j) &lt; M_f
+ \end{aligned}
+ \right.
+ \end{equation}
+ \]</span></p></li>
+</ol>
+<h2 id="局部平滑">局部平滑</h2>
+<p>又称邻域平均法或移动平均法，使用像素邻域的各像素的灰度平均值代替该像素原来的灰度值。</p>
+<p>算法简单，处理快，邻域越大，模糊程度越重，适合相邻像素存在高度的空间相关性的图像</p>
+<h2 id="中值滤波">中值滤波</h2>
+<p>对滑动窗口的灰度排序，用中值代替该窗口中心像素</p>
+<p>特点：对脉冲干扰和椒盐噪声的抑制效果好，不适合用于点、线等细节较多的图像</p>
+<p>​</p>
+<h2 id="伪彩色增强">伪彩色增强</h2>
+<p>把一幅灰度图像的各个不同灰度级按照线性或非线性的映射函数变换成的彩色，得到一幅彩色图像的技术</p>
+<h3 id="密度分割法">密度分割法</h3>
+<p>按灰度级大小划分区间，每个区间对应一种彩色</p>
+<h3 id="空间域灰度级彩色变换合成法">空间域灰度级——彩色变换合成法</h3>
+<p>根据色度学，设置灰度到rgb三个分量的转换函数，将三个分量叠加进行合成</p>
+<h3 id="频率域伪彩色增强">频率域伪彩色增强</h3>
+<p>灰度图像经过傅里叶变换到频率域，用三个不同传递特性的滤波器分离成三个独立分量，傅里叶逆变换，得到三个单色图像，分别对三个图像进行处理，然后作为三基色分量分别加到rgb通道，实现频率域分段的伪彩色增强</p>
+<h2 id="假彩色增强">假彩色增强</h2>
+<p>通过映射函数将彩色图像或多光谱图像变换成新的三基色分量，经彩色合成在增强图像中呈现出与原图像不同彩色的技术。</p>
+<h2 id="彩色平衡">彩色平衡</h2>
+<p>纠正偏色，得到色彩正常的彩色图像</p>
+<h2 id="图像退化">图像退化</h2>
+<p>图像在形成、传输和记录过程中，由于成像系统、传输介质和设备的不完善，导致图像质量下降，这一现象称为图像的退化</p>
+<h2 id="图像复原与图像增强的区别">图像复原与图像增强的区别</h2>
+<p>图像增强只通过试探各种技术来增强图像的视觉效果。</p>
+<p>图像复原需要知道图像退化的机制和过程等先验知识，找出逆过程解析方法，得到复原图像。</p>
+<h2 id="保真度准则">保真度准则</h2>
+<p>描述解码图像相对原始图像偏离程度的测度一般称为保真度(逼真度)准则</p>
+<h2 id="统计编码的概念">统计编码的概念</h2>
+<p>根据信源的概率发布改变码长，使平均码长非常接近于熵的压缩编码</p>
+<h2 id="图像压缩比">图像压缩比</h2>
+<p>压缩编码的平均码长与原图编码的平均码长的比值</p>
+<h2 id="边缘检测算子">边缘检测算子</h2>
+<p>会算即可</p>
+<p>roberts算子</p>
+<p>Prewitt算子</p>
+<p>Sobel算子</p>
+<h2 id="区域增长">区域增长</h2>
+<h3 id="简单区域扩张法">简单区域扩张法</h3>
+<ol type="1">
+<li>进行光栅扫描，找出不属于任何区域的像素</li>
+<li>与4-邻域（8-邻域）的不属于任何区域的像素比较，若灰度差值小于阈值，则合并到同一区域，对合并的像素赋予标记</li>
+<li>从新合并的像素开始，重复2的操作</li>
+<li>重复以上操作指导区域增长完毕</li>
+</ol>
+<h2 id="质心型增长">质心型增长</h2>
+<p>操作与区域扩张类似，不同的是比较已存在区域的像素灰度级的均值与该区域邻接的像素的大小，若小于阈值则合并到一起。</p>
+<h2 id="邻域概念">邻域概念</h2>
+<p>对于任意像素（i,j），把像素的集合｛(j+p,j+q)｝叫做像素(i,j)的邻域</p>
+<h2 id="连接数">连接数</h2>
+<p>像素p的连接数Nc（p）是与p连接的连接成分数</p>
+<p>含孔的叫多重连接成分，不含孔叫单连接成分</p>
+<p>编号</p>
+<table>
+<thead>
+<tr class="header">
+<th>p3</th>
+<th>p2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>p4</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>p5</td>
+<td>p6</td>
+</tr>
+</tbody>
+</table>
+<p>如果1像素的连接成分用4/8-连接，则0像素用8/4-连接</p>
+<p>计算 <span class="math display">\[
+\begin{equation}
+N_c^{(4)}(pj) = \sum_{k\in S}[B(p_k)-B(p_k)B(p_{k+1})B(p_{k+2})]\\
+N_c^{(8)}(pj) = \sum_{k\in S}[\overline{B}(p_k) - \overline{B}(p_k)\overline{B}(p_{k+1})\overline{B}(p_{k+2})]
+\end{equation}
+\]</span> 孤立点: 像素点为1，邻接像素全0，连接数=0</p>
+<p>内部点：像素点为1，邻接像素全1，连接数=0</p>
+<p>边界点：像素点为1，出了孤立点和和内部点以外的点</p>
+<p>背景点：像素点为0，邻接像素全1称为孔，否则称背景</p>
+<h2 id="距离">距离</h2>
+<ol type="1">
+<li>欧几里得距离： <span class="math inline">\(d_{e}[(i,j),(h,k)]=((i-h)^2+(j-k)^2)^{1/2}\)</span></li>
+<li>4-邻域距离： <span class="math inline">\(d_4[(i,j),(h,k)]=|i-h|+|j-k|\)</span></li>
+<li>8-邻域距离：<span class="math inline">\(d_8[(i,j),(h,k)]=max(|i-h|,|j-k|)\)</span></li>
+</ol>
+<h2 id="膨胀和腐蚀">膨胀和腐蚀</h2>
+<p>腐蚀方法：如果B上的所有点都在X的范围内，那么B的原点保留</p>
+<p>膨胀的方法，如果B上存在一点在X的范围内，那么B的原点保留</p>
+<h2 id="方向链码">方向链码</h2>
+<p>使用曲线起始点坐标和斜率（方向）表示曲线。</p>
+<p>曲线由相邻边界像素的单元连线逐段相连而成。连线方向有8个，从向右开始的方向为0，逆时针编码0，1，2，3，4，5，6，7。</p>
+<p>曲线的周长=偶数码个数+<span class="math inline">\(\sqrt2\)</span>奇码个数</p>
+<h2 id="模板匹配的概念">模板匹配的概念</h2>
+<p>根据目标图案与一幅图像的各个部分的相似度是否存在，并求目标图案在图像中的位置的操作叫模板匹配。</p>
+<h2 id="统计模式识别">统计模式识别</h2>
+<p>研究每一个模式的各种测量数据的统计特性，并根据统计决策理论来分类的操作叫统计模式识别。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬的打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wepay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -187,16 +381,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="2020/03/25/2019-12-22-数字图像处理知识点/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ziphold.gitee.io/2020/03/25/2019-12-22-数字图像处理知识点/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="../../24/Ubuntu１８．０４新手踩雷/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ubuntu18.04 新手踩雷</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -216,84 +469,14 @@
 
 
 
-
   
-    <article id="post-Ubuntu１８．０４新手踩雷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="2020/03/24/Ubuntu１８．０４新手踩雷/">ubuntu18.04 新手踩雷</a>
-    </h1>
   
 
-        
-        <a href="2020/03/24/Ubuntu１８．０４新手踩雷/" class="archive-article-date">
-  	<time datetime="2020-03-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>人生苦短,何苦入坑</p>
-        
-          <a class="article-more-a" href="2020/03/24/Ubuntu１８．０４新手踩雷/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2020/03/24/Ubuntu１８．０４新手踩雷/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -316,8 +499,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

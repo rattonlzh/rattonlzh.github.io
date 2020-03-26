@@ -23,6 +23,7 @@
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320094441419.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320201100388.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320094638244.png">
+<meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/Screenshot%20from%202020-03-20%2009-48-06.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320104652869.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320124144153.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200320130552512.png">
@@ -41,7 +42,7 @@
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200318203137731.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200318203719339.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/24/Ubuntu１８．０４新手踩雷/image-20200318204556217.png">
-<meta property="og:updated_time" content="2020-03-25T01:32:13.077Z">
+<meta property="og:updated_time" content="2020-03-25T01:37:29.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu18.04 新手踩雷">
 <meta name="twitter:description" content="人生苦短,何苦入坑">
@@ -193,13 +194,12 @@
       
         <p>人生苦短,何苦入坑</p>
 <a id="more"></a>
-
-
-
 <blockquote>
 <p>[toc]</p>
 </blockquote>
-<h1 id="Linux开篇"><a href="#Linux开篇" class="headerlink" title="Linux开篇"></a>Linux开篇</h1><h2 id="干嘛非要往Linux坑里跳"><a href="#干嘛非要往Linux坑里跳" class="headerlink" title="干嘛非要往Linux坑里跳"></a>干嘛非要往Linux坑里跳</h2><p>Q：现在都2020年了，windows和linux相比，有什么优劣，为什么推荐技术人员使用linux开发？</p>
+<h1 id="linux开篇">Linux开篇</h1>
+<h2 id="干嘛非要往linux坑里跳">干嘛非要往Linux坑里跳</h2>
+<p>Q：现在都2020年了，windows和linux相比，有什么优劣，为什么推荐技术人员使用linux开发？</p>
 <p>A：很多生产级别的服务器都是linux系统，平时在linux上调试程序可以避免以后把项目放linux服务器出现异常时手足无措，并且平时使用Linux系统可以时不时熟悉一下linux的shell命令。另外linux上一切皆文件，桌面可以通过css进行个性化定制，可以搭配出很好看的界面。Linux强大的是终端命令，桌面操作未必有win10人性化</p>
 <p>Q：Linux有什么好用的工具适合开发者？</p>
 <p>A: vscode，android studio， eclipse，chrome这些windows系统也有的就不介绍了，linux</p>
@@ -211,98 +211,128 @@
 <p>现在n卡驱动官方支持linux了，无线模块据说默认是关闭的</p>
 <p>Q：gif录屏，做笔记，板绘都ok吗</p>
 <p>peek录屏</p>
-<h1 id="Linux安装篇"><a href="#Linux安装篇" class="headerlink" title="Linux安装篇"></a>Linux安装篇</h1><p>双系统方案：在已安装win10的笔记本安装Linux，因为咱笔记本有1T机械硬盘的存在，可以大方的给linux分配空间</p>
-<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>ubuntu18.04 LTS 64位，去官网下载镜像，下载文件后找个工具计算镜像的md5值，检验是否和官网给出的md5校验值一致，如果不一致说明文件下载不完整，有可能在安装时出岔子</p>
+<h1 id="linux安装篇">Linux安装篇</h1>
+<p>双系统方案：在已安装win10的笔记本安装Linux，因为咱笔记本有1T机械硬盘的存在，可以大方的给linux分配空间</p>
+<h2 id="制作启动盘">制作启动盘</h2>
+<p>ubuntu18.04 LTS 64位，去官网下载镜像，下载文件后找个工具计算镜像的md5值，检验是否和官网给出的md5校验值一致，如果不一致说明文件下载不完整，有可能在安装时出岔子</p>
 <p>插上U盘，使用rufus制作启动盘</p>
-<p><img src="image-20200316181340827.png" alt="image-20200316181340827"></p>
+<figure>
+<img src="image-20200316181340827.png" alt="image-20200316181340827"><figcaption>image-20200316181340827</figcaption>
+</figure>
 <p>制作盘制作完成，不要拔出U盘</p>
-<h2 id="分配空间"><a href="#分配空间" class="headerlink" title="分配空间"></a>分配空间</h2><p>在win10磁盘管理工具中右键E盘选择压缩卷腾出200g空间</p>
-<p><img src="image-20200316181103877.png" alt="image-20200316181103877"></p>
-<h2 id="U盘启动"><a href="#U盘启动" class="headerlink" title="U盘启动"></a>U盘启动</h2><p>重启电脑，闪过开机动画前疯狂按F12，进入U盘快速启动模式，选择代表U盘的磁盘启动(非Windows Boot Manager项)</p>
+<h2 id="分配空间">分配空间</h2>
+<p>在win10磁盘管理工具中右键E盘选择压缩卷腾出200g空间</p>
+<figure>
+<img src="image-20200316181103877.png" alt="image-20200316181103877"><figcaption>image-20200316181103877</figcaption>
+</figure>
+<h2 id="u盘启动">U盘启动</h2>
+<p>重启电脑，闪过开机动画前疯狂按F12，进入U盘快速启动模式，选择代表U盘的磁盘启动(非Windows Boot Manager项)</p>
 <p>点击Try Ubuntu Without Install，进入ubuntu系统，桌面有安装系统的快捷方式，打开它，跟着指示完成系统安装，安装的过程比较漫长。</p>
-<h2 id="安装建议"><a href="#安装建议" class="headerlink" title="安装建议"></a>安装建议</h2><p>选择自定义安装（Custom）</p>
+<h2 id="安装建议">安装建议</h2>
+<p>选择自定义安装（Custom）</p>
 <p>建议分区方案：</p>
 <p>/efi: 256MB（系统引导必须，大了没用）</p>
 <p>swap：2GB（只有内存不足时才会临时用来充当内存，由于本身是硬盘，IO速度肯定不如内存，用到swap时说明处在一个糟糕的状况了。如果你肯定平时不会80%以上内存占用，设多小都没关系）</p>
 <p>/：剩余所有都给它就对了，home之类的逻辑分区可以不用特地设置</p>
 <p>小白不要选最小化安装，到时缺这缺那还得手动安装</p>
 <p>安装时选择简体中文（为了得到省心的中文预设），安装完再改回英文（在文本界面出现中文会乱码显示）</p>
-<h2 id="联想电脑无法无线上网的解决方案"><a href="#联想电脑无法无线上网的解决方案" class="headerlink" title="联想电脑无法无线上网的解决方案"></a>联想电脑无法无线上网的解决方案</h2><p>只在联想游戏本安装fedora系统时遇过。</p>
+<h2 id="联想电脑无法无线上网的解决方案">联想电脑无法无线上网的解决方案</h2>
+<p>只在联想游戏本安装fedora系统时遇过。</p>
 <p>在 <code>/etc/rc.local</code>文件添加命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#因为使用的是非管理员登录，故在执行sudo命令时要输入密码，方可自动化执行，</span></span><br><span class="line"><span class="comment">#此处假设用户密码为123，命令一定要在exit 0之前运行，该文件如果没有修改权限</span></span><br><span class="line"><span class="comment">#修改前使用 chmod 命令修改权限即可！</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"123"</span> |sudo modprobe -r ideapad_laptop</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
-
-<h2 id="镜像换源"><a href="#镜像换源" class="headerlink" title="镜像换源"></a>镜像换源</h2><p>清华源<code>https://mirrors.tuna.tsinghua.edu.cn</code>，2020/03/16写此文时仍可用。</p>
+<h2 id="镜像换源">镜像换源</h2>
+<p>清华源<code>https://mirrors.tuna.tsinghua.edu.cn</code>，2020/03/16写此文时仍可用。</p>
 <p>通过SoftWare&amp;Updates的GUI软件更改，是的没错，不需要用手动修改sources.list文件。如果非要改文件，建议备份一下原文件，免得 被玩坏了</p>
 <p>备份原文件命令</p>
-<p><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code> </p>
+<p><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></p>
 <p>SoftWare&amp;Updates界面</p>
-<p><img src="image-20200318191938025.png" alt="image-20200318191938025"></p>
-<h2 id="更新apt索引"><a href="#更新apt索引" class="headerlink" title="更新apt索引"></a>更新apt索引</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置开发工具篇"><a href="#配置开发工具篇" class="headerlink" title="配置开发工具篇"></a>配置开发工具篇</h1><h2 id="jdk"><a href="#jdk" class="headerlink" title="jdk"></a>jdk</h2><p>尽管现在都出到jdk13了，jdk11也有很多人用了，但jdk11与jdk8的差异较大，一些软件使用jdk11以上的jre可能会出错，所以还是要装一个jdk8，最好在国内镜像站点下载，比如 <a href="https://mirrors.huaweicloud.com/java/jdk/[](https://mirrors.huaweicloud.com/java/jdk/)" target="_blank" rel="noopener">https://mirrors.huaweicloud.com/java/jdk/[](https://mirrors.huaweicloud.com/java/jdk/)</a></p>
+<figure>
+<img src="image-20200318191938025.png" alt="image-20200318191938025"><figcaption>image-20200318191938025</figcaption>
+</figure>
+<h2 id="更新apt索引">更新apt索引</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<h1 id="配置开发工具篇">配置开发工具篇</h1>
+<h2 id="jdk">jdk</h2>
+<p>尽管现在都出到jdk13了，jdk11也有很多人用了，但jdk11与jdk8的差异较大，一些软件使用jdk11以上的jre可能会出错，所以还是要装一个jdk8，最好在国内镜像站点下载，比如 https://mirrors.huaweicloud.com/java/jdk/<a href="https://mirrors.huaweicloud.com/java/jdk/" target="_blank" rel="noopener"></a></p>
 <p>我下载的是jdk1.8.0_202,download下来的是一个压缩文件,用tar解压到自定义目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf ~/Downloads/jdk-8u202-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-
 <p>默认解压到当前目录,为了方便管理,我手动移动到了<code>/usr/lib/jvm</code>目录下</p>
 <p>然后就是设置环境变量了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-
 <p>编辑内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_162</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><p>去官网下载的是deb包，别通过双击打开进行安装，可能会卡死，deb包的安装命令</p>
+<h2 id="vscode">vscode</h2>
+<p>去官网下载的是deb包，别通过双击打开进行安装，可能会卡死，deb包的安装命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i &lt;path/filename&gt;.deb</span><br></pre></td></tr></table></figure>
-
 <p>啰嗦一句：ubuntu的文件管理器叫nautilus，默认情况地址栏的路径是复制不了的，需要按<code>ctrl+l</code>临时切换到编辑状态</p>
-<p><img src="image-20200320094258335.png" alt="image-20200320094258335"></p>
-<p><img src="image-20200320094441419.png" alt="image-20200320094441419"></p>
+<figure>
+<img src="image-20200320094258335.png" alt="image-20200320094258335"><figcaption>image-20200320094258335</figcaption>
+</figure>
+<figure>
+<img src="image-20200320094441419.png" alt="image-20200320094441419"><figcaption>image-20200320094441419</figcaption>
+</figure>
 <p>chrome：官网下载的也是deb包</p>
 <p>lamp：linux环境apache+mysql+php</p>
-<p>从<a href="https://github.com/teddysun/lamp/tree/archive根据提示安装" target="_blank" rel="noopener">https://github.com/teddysun/lamp/tree/archive根据提示安装</a></p>
-<p><img src="image-20200320201100388.png" alt="image-20200320201100388"></p>
+<p>从https://github.com/teddysun/lamp/tree/archive根据提示安装</p>
+<figure>
+<img src="image-20200320201100388.png" alt="image-20200320201100388"><figcaption>image-20200320201100388</figcaption>
+</figure>
 <p>eclipse：通过软件商店下载吧</p>
-<p><img src="image-20200320094638244.png" alt="image-20200320094638244"></p>
+<figure>
+<img src="image-20200320094638244.png" alt="image-20200320094638244"><figcaption>image-20200320094638244</figcaption>
+</figure>
 <p>认准这个logo，别下了老版本，下面这个安装可能会出问题</p>
-<p>![Screenshot from 2020-03-20 09-48-06](Ubuntu１８．０４新手踩雷/Screenshot from 2020-03-20 09-48-06.png)</p>
-<h2 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h2><p>按照这个教程安装<a href="http://dblab.xmu.edu.cn/blog/install-hadoop/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/install-hadoop/</a></p>
-<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><p><a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.1/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.1/</a></p>
-<p>从<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener"> 清华大学开源软件镜像站</a>可以下载，下载的是run文件，授予它执行权限然后运行即可，安装时有个gcc64啥的一定要勾选（别以为系统有了gcc就不需要了，它们不是同一个东西），这个是兼容gcc64的qmake相关的东西，没有这个编译不了</p>
-<h2 id="android-studio"><a href="#android-studio" class="headerlink" title="android studio"></a>android studio</h2><p>官网给的是压缩包，解压到你想要安装的目录下即可，如果安装在非home目录及子目录，很可能没有写入权限，那就需要sudo了，比如我想要装在 <code>/opt</code>目录下</p>
+<figure>
+<img src="Screenshot%20from%202020-03-20%2009-48-06.png" alt="Screenshot from 2020-03-20 09-48-06"><figcaption>Screenshot from 2020-03-20 09-48-06</figcaption>
+</figure>
+<h2 id="hadoop">hadoop</h2>
+<p>按照这个教程安装http://dblab.xmu.edu.cn/blog/install-hadoop/</p>
+<h2 id="qt">Qt</h2>
+<p>https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.1/</p>
+<p>从<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">清华大学开源软件镜像站</a>可以下载，下载的是run文件，授予它执行权限然后运行即可，安装时有个gcc64啥的一定要勾选（别以为系统有了gcc就不需要了，它们不是同一个东西），这个是兼容gcc64的qmake相关的东西，没有这个编译不了</p>
+<h2 id="android-studio">android studio</h2>
+<p>官网给的是压缩包，解压到你想要安装的目录下即可，如果安装在非home目录及子目录，很可能没有写入权限，那就需要sudo了，比如我想要装在 <code>/opt</code>目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvf xxxx.tar.xx -C /opt</span><br></pre></td></tr></table></figure>
-
 <p>想要在启动器打开需要手动在<code>/usr/share/applications</code>目录手动创建<code>filaname.desktop</code>文件，编辑内容如下：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Desktop Entry]</span></span><br><span class="line"><span class="attr">Name</span>=你的应用名字</span><br><span class="line"><span class="attr">GenericName</span>=应用的泛用名</span><br><span class="line"><span class="attr">Exec</span>=启动程序的命令如/opt/android-studio/bin/studio</span><br><span class="line"><span class="attr">Terminal</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">Type</span>=Application</span><br><span class="line"><span class="attr">StartupNotify</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">Icon</span>=你的应用的图标文件如/opt/andrioid-studio/bin/studio.png</span><br></pre></td></tr></table></figure>
-
 <p>name和exec是关键</p>
-<h1 id="linux美化篇"><a href="#linux美化篇" class="headerlink" title="linux美化篇"></a>linux美化篇</h1><p>主要参考自知乎大神<a href="https://www.zhihu.com/people/l0nGYear" target="_blank" rel="noopener">路灯等3248人</a>的博客[^1]</p>
+<h1 id="linux美化篇">linux美化篇</h1>
+<p>主要参考自知乎大神<a href="https://www.zhihu.com/people/l0nGYear" target="_blank" rel="noopener">路灯等3248人</a>的博客<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>美化桌面需要下载的工具</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell</span><br></pre></td></tr></table></figure>
-
 <p>在chrome浏览器下载一个 <code>gnome shell integration</code></p>
 <p>刚装完gnome-shell-extensions之后界面奇丑无比</p>
-<p><img src="image-20200320104652869.png" alt="image-20200320104652869"></p>
+<figure>
+<img src="image-20200320104652869.png" alt="image-20200320104652869"><figcaption>image-20200320104652869</figcaption>
+</figure>
 <p>需要去主题网站<a href="https://www.gnome-look.org/" target="_blank" rel="noopener">gnome-look.org</a>或者github下载喜欢的主题</p>
-<p>去<a href="https://extensions.gnome.org/" target="_blank" rel="noopener">https://extensions.gnome.org/</a>下载喜欢的扩展</p>
-<h2 id="主题下载清单"><a href="#主题下载清单" class="headerlink" title="主题下载清单"></a>主题下载清单</h2><p>Mac主题：<a href="https://github.com/paullinuxthemer/Mc-OS-themes" target="_blank" rel="noopener">https://github.com/paullinuxthemer/Mc-OS-themes</a></p>
-<p>Mac图标：<a href="https://www.gnome-look.org/p/1013714" target="_blank" rel="noopener">https://www.gnome-look.org/p/1013714</a></p>
-<p><del>登录界面：<a href="https://www.gnome-look.org/p/1207015/" target="_blank" rel="noopener">https://www.gnome-look.org/p/1207015/</a></del>(没卵用)</p>
-<p><del>开机界面: <a href="https://www.gnome-look.org/p/1344634/" target="_blank" rel="noopener">https://www.gnome-look.org/p/1344634/</a></del>(小心电脑启动不了)</p>
-<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><p>先把丑不拉几的底部的任务栏(window-list)给删了</p>
+<p>去<a href="https://extensions.gnome.org/" class="uri" target="_blank" rel="noopener">https://extensions.gnome.org/</a>下载喜欢的扩展</p>
+<h2 id="主题下载清单">主题下载清单</h2>
+<p>Mac主题：https://github.com/paullinuxthemer/Mc-OS-themes</p>
+<p>Mac图标：https://www.gnome-look.org/p/1013714</p>
+<p><del>登录界面：https://www.gnome-look.org/p/1207015/</del>(没卵用)</p>
+<p><del>开机界面: https://www.gnome-look.org/p/1344634/</del>(小心电脑启动不了)</p>
+<h2 id="主题设置">主题设置</h2>
+<p>先把丑不拉几的底部的任务栏(window-list)给删了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/gnome-shell/extensions</span><br><span class="line">ls | grep window-list</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320124144153.png" alt="image-20200320124144153"></p>
+<figure>
+<img src="image-20200320124144153.png" alt="image-20200320124144153"><figcaption>image-20200320124144153</figcaption>
+</figure>
 <p>找到了它的全名，删了删了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf window-list@gnome-shell-extensions.gcampax.github.com</span><br></pre></td></tr></table></figure>
-
 <p>按　<code>ａｌｔ＋ｆ２</code>，然后输入 <code>r</code> 重启gnome桌面,使修改生效</p>
-<p>我把<a href="https://github.com/paullinuxthemer/Mc-OS-themes" target="_blank" rel="noopener">https://github.com/paullinuxthemer/Mc-OS-themes</a>克隆下来了,里面有很多个仿mac主题(白色,和夜间主题都有,但是夜间主题的定制不是很好,有些面板字体颜色与背景分不开,影响阅读),将主题文件夹主题粘贴到 <code>~/.themes/</code>或者<code>/usr/share/themes/</code>下，将图标文件夹移到 <code>/usr/share/icons/</code>目录下, 然后可以用gnome-tweak-tool设置主题</p>
+<p>我把<a href="https://github.com/paullinuxthemer/Mc-OS-themes" class="uri" target="_blank" rel="noopener">https://github.com/paullinuxthemer/Mc-OS-themes</a>克隆下来了,里面有很多个仿mac主题(白色,和夜间主题都有,但是夜间主题的定制不是很好,有些面板字体颜色与背景分不开,影响阅读),将主题文件夹主题粘贴到 <code>~/.themes/</code>或者<code>/usr/share/themes/</code>下，将图标文件夹移到 <code>/usr/share/icons/</code>目录下, 然后可以用gnome-tweak-tool设置主题</p>
 <p>可以吧标题栏的三个按钮移到左边:打开tweaks-&gt;Windows-&gt;Titlebar Buttons-&gt;placement选择left,如图</p>
-<p><img src="image-20200320130552512.png" alt="image-20200320130552512"></p>
+<figure>
+<img src="image-20200320130552512.png" alt="image-20200320130552512"><figcaption>image-20200320130552512</figcaption>
+</figure>
 <p>如果设置的主题的顶部栏有一个难看的白色渐变，可以在该主题对应的gnome-shell.css中的<code>#panel</code>中加入一行代码</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#panel</span> <span class="selector-id">#panelActivities</span><span class="selector-class">.panel-button</span> &gt; * &#123;</span><br><span class="line"> .....</span><br><span class="line">  <span class="selector-tag">background-gradient-direction</span>: <span class="selector-tag">none</span> !<span class="selector-tag">important</span>;</span><br><span class="line"> .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320131349365.png" alt="image-20200320131349365"></p>
-<h2 id="扩展下载清单"><a href="#扩展下载清单" class="headerlink" title="扩展下载清单"></a>扩展下载清单</h2><p>以下扩展可以在chrome插件打开的网站中<a href="https://extensions.gnome.org/下载" target="_blank" rel="noopener">https://extensions.gnome.org/下载</a></p>
+<figure>
+<img src="image-20200320131349365.png" alt="image-20200320131349365"><figcaption>image-20200320131349365</figcaption>
+</figure>
+<h2 id="扩展下载清单">扩展下载清单</h2>
+<p>以下扩展可以在chrome插件打开的网站中https://extensions.gnome.org/下载</p>
 <p><strong>Coverflow alt-tab</strong>：切换窗口预览动画</p>
 <p><strong>Dash to dock</strong> ：仿mac的底部dock，也可以用plank代替,plank可以在软件商店里下载</p>
 <p><strong>Blyr</strong>：在Overriew窗口模糊背景</p>
@@ -311,44 +341,59 @@
 <p><strong>User themes</strong>：加载<code>~/.themes</code>目录的gnome-shelll.css</p>
 <p>如果用plank代替dash to dock,需要设置开机自启并关闭dash to dock</p>
 <p>启动blank后,按住ctrl键不放鼠标右键点击blank栏,打开preferences,设置theme为Transparent, icon Size尽量设大一点,Position设置位底部,Icon zoom要手动开启(这是灵魂所在)</p>
-<p><img src="image-20200320134704908.png" alt="image-20200320134704908"></p>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>我最终选择的主题如下</p>
-<p><img src="image-20200320181134921.png" alt="image-20200320181134921"></p>
-<p><img src="image-20200320181049854.png" alt="image-20200320181049854"></p>
-<p><img src="image-20200320180632886.png" alt="image-20200320180632886"></p>
-<p><img src="demo.gif" alt="demo.gif"></p>
+<figure>
+<img src="image-20200320134704908.png" alt="image-20200320134704908"><figcaption>image-20200320134704908</figcaption>
+</figure>
+<h2 id="效果图">效果图</h2>
+<p>我最终选择的主题如下</p>
+<figure>
+<img src="image-20200320181134921.png" alt="image-20200320181134921"><figcaption>image-20200320181134921</figcaption>
+</figure>
+<figure>
+<img src="image-20200320181049854.png" alt="image-20200320181049854"><figcaption>image-20200320181049854</figcaption>
+</figure>
+<figure>
+<img src="image-20200320180632886.png" alt="image-20200320180632886"><figcaption>image-20200320180632886</figcaption>
+</figure>
+<figure>
+<img src="demo.gif" alt="demo.gif"><figcaption>demo.gif</figcaption>
+</figure>
 <p>如果追求更进一步的个性化,可以自己修改gnome-shell.css,</p>
-<h1 id="vim配置篇-有bug"><a href="#vim配置篇-有bug" class="headerlink" title="vim配置篇(有bug)"></a><del>vim配置篇</del>(有bug)</h1><p>在linux下工作怎么能少了vim.但vim的预设可能并不符合我们的预期,下面开始魔改</p>
+<h1 id="vim配置篇有bug"><del>vim配置篇</del>(有bug)</h1>
+<p>在linux下工作怎么能少了vim.但vim的预设可能并不符合我们的预期,下面开始魔改</p>
 <p>下载vundle(vim插件管理器)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
-
 <p>编写配置文件 <code>~/.vimrc</code></p>
-<p>参考qilimi-1的博客[^2]</p>
+<p>参考qilimi-1的博客<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> nocompatible              <span class="string">" 去除VI一致性,必须要添加</span></span><br><span class="line"><span class="string">filetype off                  "</span> 必须要添加</span><br><span class="line"></span><br><span class="line"><span class="string">" 设置包括vundle和初始化相关的runtime path</span></span><br><span class="line"><span class="string">set rtp+=~/.vim/bundle/Vundle.vim</span></span><br><span class="line"><span class="string">call vundle#begin()</span></span><br><span class="line"><span class="string">"</span> 另一种选择, 指定一个vundle安装插件的路径</span><br><span class="line"><span class="string">"call vundle#begin('~/some/path/here')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> 让vundle管理插件版本,必须</span><br><span class="line">Plugin <span class="string">'VundleVim/Vundle.vim'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" 以下范例用来支持不同格式的插件安装.</span></span><br><span class="line"><span class="string">"</span> 请将安装插件的命令放在vundle<span class="comment">#begin和vundle#end之间.</span></span><br><span class="line"><span class="string">" Github上的插件</span></span><br><span class="line"><span class="string">"</span> 格式为 Plugin <span class="string">'用户名/插件仓库名'</span></span><br><span class="line">Plugin <span class="string">'tpope/vim-fugitive'</span></span><br><span class="line"><span class="string">" 来自 http://vim-scripts.org/vim/scripts.html 的插件</span></span><br><span class="line"><span class="string">"</span> Plugin <span class="string">'插件名称'</span> 实际上是 Plugin <span class="string">'vim-scripts/插件仓库名'</span> 只是此处的用户名可以省略</span><br><span class="line">Plugin <span class="string">'L9'</span></span><br><span class="line"><span class="string">" 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'</span></span><br><span class="line"><span class="string">Plugin 'git://git.wincent.com/command-t.git'</span></span><br><span class="line"><span class="string">"</span> 本地的Git仓库(例如自己的插件) Plugin <span class="string">'file:///+本地插件仓库绝对路径'</span></span><br><span class="line">Plugin <span class="string">'file:///home/gmarik/path/to/plugin'</span></span><br><span class="line"><span class="string">" 插件在仓库的子目录中.</span></span><br><span class="line"><span class="string">"</span> 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下</span><br><span class="line">Plugin <span class="string">'rstacruz/sparkup'</span>, &#123;<span class="string">'rtp'</span>: <span class="string">'vim/'</span>&#125;</span><br><span class="line"><span class="string">" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突</span></span><br><span class="line"><span class="string">Plugin 'ascenator/L9', &#123;'name': 'newL9'&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> 你的所有插件需要在下面这行之前</span><br><span class="line">call vundle<span class="comment">#end()            " 必须</span></span><br><span class="line">filetype plugin indent on    <span class="string">" 必须 加载vim自带和插件相应的语法和文件类型相关脚本</span></span><br><span class="line"><span class="string">"</span> 忽视插件改变缩进,可以使用以下替代:</span><br><span class="line"><span class="string">"filetype plugin on</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="string">" 常用的命令</span></span><br><span class="line"><span class="string">"</span> :PluginList       - 列出所有已配置的插件</span><br><span class="line"><span class="string">" :PluginInstall  	 - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate</span></span><br><span class="line"><span class="string">"</span> :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存</span><br><span class="line"><span class="string">" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="string">" 查阅 :h vundle 获取更多细节和wiki以及FAQ</span></span><br><span class="line"><span class="string">"</span> 将你自己对非插件片段放在这行之后</span><br></pre></td></tr></table></figure>
-
 <p>下面是我安装的插件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">set</span> nocompatible</span><br><span class="line">  filetype off</span><br><span class="line">  <span class="built_in">set</span> rtp+=~/.vim/bundle/Vundle.vim</span><br><span class="line">  call vundle<span class="comment">#begin()</span></span><br><span class="line">  Plugin <span class="string">'VundleVim/Vundle.vim'</span></span><br><span class="line">  Plugin <span class="string">'kien/rainbow_parentheses.vim'</span></span><br><span class="line">  Plugin <span class="string">'vim-airline/vim-airline'</span></span><br><span class="line">  Plugin <span class="string">'preservim/nerdtree'</span></span><br><span class="line">  Plugin <span class="string">'kien/ctrlp.vim'</span></span><br><span class="line"> Plugin <span class="string">'preservim/nerdcommenter'</span></span><br><span class="line"> Plugin <span class="string">'altercation/solarized'</span></span><br><span class="line"> Plugin <span class="string">'junegunn/fzf.vim'</span></span><br><span class="line"> Plugin <span class="string">'mileszs/ack.vim'</span></span><br><span class="line"> Plugin <span class="string">'vim-scripts/taglist.vim'</span></span><br><span class="line"> Plugin <span class="string">'jiangmiao/auto-pairs'</span></span><br><span class="line"> Plugin <span class="string">'ycm-core/YouCompleteMe'</span></span><br><span class="line"> </span><br><span class="line"> call vundle<span class="comment">#end()</span></span><br><span class="line"> filetype plugin indent on</span><br><span class="line"> <span class="string">" 自适应不同语言的智能缩进</span></span><br><span class="line"><span class="string"> filetype indent on</span></span><br><span class="line"><span class="string">"</span> 将制表符扩展为空格</span><br><span class="line"> <span class="built_in">set</span> expandtab</span><br><span class="line"> <span class="string">" 设置编辑时制表符占用空格数</span></span><br><span class="line"><span class="string"> set tabstop=4</span></span><br><span class="line"><span class="string"> "</span> 设置格式化时制表符占用空格数</span><br><span class="line"> <span class="built_in">set</span> shiftwidth=4</span><br><span class="line"> <span class="string">" 让 vim 把连续数量的空格视为一个制表符</span></span><br><span class="line"><span class="string"> set softtabstop=4</span></span><br><span class="line"><span class="string"> set number</span></span><br></pre></td></tr></table></figure>
-
 <p>进行插件安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim +PluginInstall +qall</span><br></pre></td></tr></table></figure>
-
-<h1 id="Linux终端命令工具篇"><a href="#Linux终端命令工具篇" class="headerlink" title="Linux终端命令工具篇"></a>Linux终端命令工具篇</h1><p>有很多大佬写了在命令行上运行的有趣的命令,介绍一下</p>
+<h1 id="linux终端命令工具篇">Linux终端命令工具篇</h1>
+<p>有很多大佬写了在命令行上运行的有趣的命令,介绍一下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmatrix<span class="comment">#类似黑客帝国的字节流</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320170335844.png" alt="image-20200320170335844"></p>
+<figure>
+<img src="image-20200320170335844.png" alt="image-20200320170335844"><figcaption>image-20200320170335844</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install toilet<span class="comment">#用字母拼成大字符,可惜不支持中文</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320170734970.png" alt="image-20200320170734970"></p>
+<figure>
+<img src="image-20200320170734970.png" alt="image-20200320170734970"><figcaption>image-20200320170734970</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install install libaa-bin<span class="comment">#字符火焰</span></span><br><span class="line">aafire</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320170959489.png" alt="image-20200320170959489"></p>
+<figure>
+<img src="image-20200320170959489.png" alt="image-20200320170959489"><figcaption>image-20200320170959489</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install sl<span class="comment"># 跑火车</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320171154553.png" alt="image-20200320171154553"></p>
+<figure>
+<img src="image-20200320171154553.png" alt="image-20200320171154553"><figcaption>image-20200320171154553</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cowsay<span class="comment"># cow说的</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200320171353695.png" alt="image-20200320171353695"></p>
-<h1 id="常备软件篇"><a href="#常备软件篇" class="headerlink" title="常备软件篇"></a>常备软件篇</h1><p>Document Viewer：pdf阅读器，功能并不强大，胜在轻便，且ubuntu自带，将就着用</p>
+<figure>
+<img src="image-20200320171353695.png" alt="image-20200320171353695"><figcaption>image-20200320171353695</figcaption>
+</figure>
+<h1 id="常备软件篇">常备软件篇</h1>
+<p>Document Viewer：pdf阅读器，功能并不强大，胜在轻便，且ubuntu自带，将就着用</p>
 <p>WPS：office套件</p>
 <p>typora：markdown写作神器</p>
 <p>chrome：网页开发或日常上网的必备工具</p>
@@ -356,92 +401,93 @@
 <p>搜狗输入法：中文输入法虽然有ibus输入法，但我们需要搜狗强大的词库</p>
 <p>百度网盘：电脑必装的好吧</p>
 <p>还有个录屏软件是ubuntu自带的，在系统设置配置快捷键时可以找到，<code>ctrl+shift+alt+r</code>启动、关闭录屏，输出格式为webm，为了方便可以把它改成 <code>win+R</code></p>
-<h1 id="Linux学习资料篇"><a href="#Linux学习资料篇" class="headerlink" title="Linux学习资料篇"></a>Linux学习资料篇</h1><p>Linux就该这么学</p>
+<h1 id="linux学习资料篇">Linux学习资料篇</h1>
+<p>Linux就该这么学</p>
 <p>Unix环境高级编程</p>
-<h1 id="命令篇"><a href="#命令篇" class="headerlink" title="命令篇"></a>命令篇</h1><p>设置环境变量:修改<code>/etc/profile</code> 或者 <code>~/.profile</code></p>
+<h1 id="命令篇">命令篇</h1>
+<p>设置环境变量:修改<code>/etc/profile</code> 或者 <code>~/.profile</code></p>
 <p>刷新列表</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">或者</span><br><span class="line"><span class="built_in">source</span> ~/.profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="有用但生疏的命令"><a href="#有用但生疏的命令" class="headerlink" title="有用但生疏的命令"></a>有用但生疏的命令</h2><h3 id="wget下载github的一个文件"><a href="#wget下载github的一个文件" class="headerlink" title="wget下载github的一个文件"></a>wget下载github的一个文件</h3><p>比如下载这个网址的文件:<code>https://github.com/rattonlzh/rattonlzh.github.io/blob/master/homepage/main.css</code><br>将网址替换成<code>https://raw.githubusercontent.com/rattonlzh/rattonlzh.github.io/blob/master/homepage/main.css</code>,然后wget即可</p>
+<h2 id="有用但生疏的命令">有用但生疏的命令</h2>
+<h3 id="wget下载github的一个文件">wget下载github的一个文件</h3>
+<p>比如下载这个网址的文件:<code>https://github.com/rattonlzh/rattonlzh.github.io/blob/master/homepage/main.css</code> 将网址替换成<code>https://raw.githubusercontent.com/rattonlzh/rattonlzh.github.io/blob/master/homepage/main.css</code>,然后wget即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget  https://raw.githubusercontent.com/rattonlzh/rattonlzh.github.io/blob/master/homepage/main.css</span><br></pre></td></tr></table></figure>
-
-<h3 id="生成gitee的ssh公钥"><a href="#生成gitee的ssh公钥" class="headerlink" title="生成gitee的ssh公钥"></a>生成gitee的ssh公钥</h3><p>参考<a href="https://gitee.com/help/articles/4191#article-header0" target="_blank" rel="noopener">设置账户SSH公钥</a></p>
+<h3 id="生成gitee的ssh公钥">生成gitee的ssh公钥</h3>
+<p>参考<a href="https://gitee.com/help/articles/4191#article-header0" target="_blank" rel="noopener">设置账户SSH公钥</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;</span><br></pre></td></tr></table></figure>
-
 <p>第一次询问保存路径,默认是 <code>~/.ssh/id_rsa</code></p>
 <p>第二次和第三次询问直接按回车即可</p>
 <p>然后打印公钥信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-
 <p>将ssh-rsa开头到邮箱名前面的字符复制,粘贴到gitee上个人设置的SSH公钥处即可,标题建议起当前电脑的名字以示区分</p>
-<p>使用ssh连接默认使用 <code>~/.ssh/id_rsa</code>的私钥,如果有多个ssh私钥,并且希望连接不同平台的远程仓库使用不同的私钥,应做以下配置</p>
-<ol>
-<li><p>比如我要在连接gitee.com时,使用<code>gitee_id_rsa</code>私钥,则输入 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑<code>~/.ssh/config</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitee</span></span><br><span class="line">Host gitee</span><br><span class="line">HostName gitee.com</span><br><span class="line">User git </span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure>
-
-</li>
+<p>使用ssh连接默认使用 <code>~/.ssh/id_rsa</code>的私钥,如果有多个ssh私钥,并且希望连接不同平台的远程仓库使用不同的私钥,应做以下配置 1. 比如我要在连接gitee.com时,使用<code>gitee_id_rsa</code>私钥,则输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li>编辑<code>~/.ssh/config</code> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitee</span></span><br><span class="line">Host gitee</span><br><span class="line">HostName gitee.com</span><br><span class="line">User git </span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>现在测试链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T gitee.com</span><br></pre></td></tr></table></figure>
-
-<p>如果发现返回了你在gitee的用户名,说明配置成功</p>
-<h3 id="校验md5-结果以大写形式输出"><a href="#校验md5-结果以大写形式输出" class="headerlink" title="校验md5(结果以大写形式输出)"></a>校验md5(结果以大写形式输出)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum &lt;path&gt;/&lt;file&gt; | tr &quot;a-z&quot; &quot;A-Z&quot;</span><br></pre></td></tr></table></figure>
-
+<p>现在测试链接 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T gitee.com</span><br></pre></td></tr></table></figure></p>
+<p>如果发现返回了你在gitee的用户名,说明配置成功 ### 校验md5(结果以大写形式输出)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum &lt;path&gt;/&lt;file&gt; | tr &quot;a-z&quot; &quot;A-Z&quot;</span><br></pre></td></tr></table></figure>
 <p>将文本文件的匹配内容全部替换成其他内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;s/shan/hua/g&quot;  lishan.txt</span><br></pre></td></tr></table></figure>
-
 <p>grep查找当前目录搜索文件(用来检查大目录下是否存在某文件)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -a | grep &quot;name&quot;</span><br><span class="line">#name采用正则语法</span><br></pre></td></tr></table></figure>
-
-<p>## </p>
-<h2 id="终端的复制粘贴快捷键"><a href="#终端的复制粘贴快捷键" class="headerlink" title="终端的复制粘贴快捷键"></a>终端的复制粘贴快捷键</h2><p><code>ctrl+shift+c</code>：复制</p>
+<h2 id="section"></h2>
+<h2 id="终端的复制粘贴快捷键">终端的复制粘贴快捷键</h2>
+<p><code>ctrl+shift+c</code>：复制</p>
 <p><code>ctrl+shift+v</code>：粘贴</p>
-<h2 id="deb文件安装与卸载"><a href="#deb文件安装与卸载" class="headerlink" title="deb文件安装与卸载"></a>deb文件安装与卸载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i &lt;文件名&gt;.deb</span><br><span class="line">sudo dpkg -r &lt;文件&gt;.deb</span><br></pre></td></tr></table></figure>
-
-<h2 id="run文件安装"><a href="#run文件安装" class="headerlink" title="run文件安装"></a>run文件安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x &lt;文件名&gt;.run</span><br><span class="line">./&lt;文件名&gt;.run</span><br></pre></td></tr></table></figure>
-
-<h2 id="tar-gz文件安装"><a href="#tar-gz文件安装" class="headerlink" title="tar.gz文件安装"></a>tar.gz文件安装</h2><p>推荐安装到<code>/opt</code>目录下</p>
+<h2 id="deb文件安装与卸载">deb文件安装与卸载</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i &lt;文件名&gt;.deb</span><br><span class="line">sudo dpkg -r &lt;文件&gt;.deb</span><br></pre></td></tr></table></figure>
+<h2 id="run文件安装">run文件安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x &lt;文件名&gt;.run</span><br><span class="line">./&lt;文件名&gt;.run</span><br></pre></td></tr></table></figure>
+<h2 id="tar.gz文件安装">tar.gz文件安装</h2>
+<p>推荐安装到<code>/opt</code>目录下</p>
 <p>这是压缩文件，一般解压即可用，但为了可以快捷打开，需要手动设置快捷方式</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/share/applications/&lt;程序名&gt;.desktop</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gedit ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> QTDIR=/home/creator/Applications/Qt592/5.9.2/gcc_64</span><br><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=<span class="variable">$PKG_CONFIG_PATH</span>:<span class="variable">$QTDIR</span>/lib/pkgconfig</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$QTDIR</span>/bin:<span class="variable">$PATH</span> </span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$QTDIR</span>/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="添加环境变量">添加环境变量</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gedit ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> QTDIR=/home/creator/Applications/Qt592/5.9.2/gcc_64</span><br><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=<span class="variable">$PKG_CONFIG_PATH</span>:<span class="variable">$QTDIR</span>/lib/pkgconfig</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$QTDIR</span>/bin:<span class="variable">$PATH</span> </span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$QTDIR</span>/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建软连接</span></span><br><span class="line">ln -s /usr/lib64/libGL.so.1 /usr/lib/libGL.so</span><br></pre></td></tr></table></figure>
-
-<h2 id="清除终端当前输入命令"><a href="#清除终端当前输入命令" class="headerlink" title="清除终端当前输入命令"></a>清除终端当前输入命令</h2><p><code>ctrl+u</code>：清除当光标之前的字符</p>
-<h2 id="查找某个文件的命令"><a href="#查找某个文件的命令" class="headerlink" title="查找某个文件的命令"></a>查找某个文件的命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate filename</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除软连接"><a href="#删除软连接" class="headerlink" title="删除软连接"></a>删除软连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf &lt;link-name&gt;　　<span class="comment">#　不删除实际内容</span></span><br><span class="line">sudo rm -rf &lt;link-name&gt;/ 　<span class="comment">#　删除实际内容</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查找并杀死进程"><a href="#查找并杀死进程" class="headerlink" title="查找并杀死进程"></a>查找并杀死进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep &lt;name&gt;<span class="comment"># 查看进程ｉｄ</span></span><br><span class="line"><span class="built_in">kill</span> -s &lt;进程ｉｄ&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="默认配置篇"><a href="#默认配置篇" class="headerlink" title="默认配置篇"></a>默认配置篇</h1><h2 id="Qt初次编译由于找不到libGL导致失败的解决方案"><a href="#Qt初次编译由于找不到libGL导致失败的解决方案" class="headerlink" title="Qt初次编译由于找不到libGL导致失败的解决方案"></a>Qt初次编译由于找不到libGL导致失败的解决方案</h2><p><img src="image-20200318202710971.png" alt="image-20200318202710971"></p>
+<h2 id="清除终端当前输入命令">清除终端当前输入命令</h2>
+<p><code>ctrl+u</code>：清除当光标之前的字符</p>
+<h2 id="查找某个文件的命令">查找某个文件的命令</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate filename</span><br></pre></td></tr></table></figure>
+<h2 id="删除软连接">删除软连接</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf &lt;link-name&gt;　　<span class="comment">#　不删除实际内容</span></span><br><span class="line">sudo rm -rf &lt;link-name&gt;/ 　<span class="comment">#　删除实际内容</span></span><br></pre></td></tr></table></figure>
+<h2 id="查找并杀死进程">查找并杀死进程</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep &lt;name&gt;<span class="comment"># 查看进程ｉｄ</span></span><br><span class="line"><span class="built_in">kill</span> -s &lt;进程ｉｄ&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="默认配置篇">默认配置篇</h1>
+<h2 id="qt初次编译由于找不到libgl导致失败的解决方案">Qt初次编译由于找不到libGL导致失败的解决方案</h2>
+<figure>
+<img src="image-20200318202710971.png" alt="image-20200318202710971"><figcaption>image-20200318202710971</figcaption>
+</figure>
 <p>默认在 <code>/usr/lib</code>目录中查找，但ubuntu的libGL一方面是在其子目录下，另一方面名字后面带有版本号，所以最好的方法是把它找出来并创建一个软链接到 <code>/usr/lib</code> 目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到libGL.so文件</span></span><br><span class="line">locate libGl.so</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200318203137731.png" alt="image-20200318203137731"></p>
+<figure>
+<img src="image-20200318203137731.png" alt="image-20200318203137731"><figcaption>image-20200318203137731</figcaption>
+</figure>
 <p>留意 <code>/usr/lib</code>目录下的，前面两个是32位的，后面两个都是64位的（并不是随便选，发现后面那个1.0.0的库有问题，建议选第一个，如下图），创建软链接</p>
-<p><img src="image-20200318203719339.png" alt="image-20200318203719339"></p>
+<figure>
+<img src="image-20200318203719339.png" alt="image-20200318203719339"><figcaption>image-20200318203719339</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建软链接,在/usr目录下创建文件需要root权限</span></span><br><span class="line">sudo ln -s /usr/lib/x86_64-linux-gnu/libGL.so.1.0.0 /usr/lib/libGL.so</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20200318204556217.png" alt="image-20200318204556217"></p>
+<figure>
+<img src="image-20200318204556217.png" alt="image-20200318204556217"><figcaption>image-20200318204556217</figcaption>
+</figure>
 <p>然后就可以正常启动了</p>
-<h1 id="每日一个linux命令"><a href="#每日一个linux命令" class="headerlink" title="每日一个linux命令"></a>每日一个linux命令</h1><h2 id="tar解压命令"><a href="#tar解压命令" class="headerlink" title="tar解压命令"></a>tar解压命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 版本:1.29,不需要加上解压类型的参数,可以自动识别tar的压缩类型</span></span><br><span class="line">tar -xvf &lt;file&gt;.tar.gz</span><br><span class="line">tar -xvf &lt;file&gt;.tar.xz</span><br><span class="line">tar -xvf &lt;file&gt;.tar.Z</span><br><span class="line">tar -xvf &lt;file&gt;.tar.bz2</span><br><span class="line"><span class="comment"># 加上-C可以指定解压路径</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看是否支持cpu虚拟化技术"><a href="#查看是否支持cpu虚拟化技术" class="headerlink" title="查看是否支持cpu虚拟化技术"></a>查看是否支持cpu虚拟化技术</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -c <span class="string">'(svm|vmx)'</span> /proc/cpuinfo</span><br></pre></td></tr></table></figure>
-
-<h2 id="对文件（夹）添加权限"><a href="#对文件（夹）添加权限" class="headerlink" title="对文件（夹）添加权限"></a>对文件（夹）添加权限</h2><p>1：执行权限</p>
+<h1 id="每日一个linux命令">每日一个linux命令</h1>
+<h2 id="tar解压命令">tar解压命令</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 版本:1.29,不需要加上解压类型的参数,可以自动识别tar的压缩类型</span></span><br><span class="line">tar -xvf &lt;file&gt;.tar.gz</span><br><span class="line">tar -xvf &lt;file&gt;.tar.xz</span><br><span class="line">tar -xvf &lt;file&gt;.tar.Z</span><br><span class="line">tar -xvf &lt;file&gt;.tar.bz2</span><br><span class="line"><span class="comment"># 加上-C可以指定解压路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看是否支持cpu虚拟化技术">查看是否支持cpu虚拟化技术</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -c <span class="string">'(svm|vmx)'</span> /proc/cpuinfo</span><br></pre></td></tr></table></figure>
+<h2 id="对文件夹添加权限">对文件（夹）添加权限</h2>
+<p>1：执行权限</p>
 <p>2：写权限</p>
 <p>4：读权限</p>
 <p>同时拥有几个权限直接将数字相加即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 /dev/kvm</span><br><span class="line"><span class="comment"># 7代表同时拥有执行，读，写权限，第一个7表示用户权限，第二个7表示用户组的权限，第三个7表示其他用户权限（其他用户指除了执行这行命令的用户）</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="文件校验"><a href="#文件校验" class="headerlink" title="文件校验"></a>文件校验</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shasum -a 256 &lt;filename&gt;<span class="comment">#使用sha256算法计算文件校验和</span></span><br><span class="line">shasum -c checksum.txt<span class="comment">#checksum.txt是校验和文件,与被校验文件放在同一个目录,里面的内容的格式是:&lt;算法名称&gt; &lt;校验和&gt; &lt;被校验文件的文件名&gt;</span></span><br><span class="line">md5sum -c checksum.txt<span class="comment">#同上</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><p>OS:Ubuntu18.04 LTS Desktop 64bits</p>
+<h2 id="文件校验">文件校验</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shasum -a 256 &lt;filename&gt;<span class="comment">#使用sha256算法计算文件校验和</span></span><br><span class="line">shasum -c checksum.txt<span class="comment">#checksum.txt是校验和文件,与被校验文件放在同一个目录,里面的内容的格式是:&lt;算法名称&gt; &lt;校验和&gt; &lt;被校验文件的文件名&gt;</span></span><br><span class="line">md5sum -c checksum.txt<span class="comment">#同上</span></span><br></pre></td></tr></table></figure>
+<h1 id="吐槽">吐槽</h1>
+<p>OS:Ubuntu18.04 LTS Desktop 64bits</p>
 <p>kernel version: 5.3.0-42-generic</p>
 <p>自带的截图工具的复制当前窗口截图到剪切板的快捷键经常失灵</p>
 <p>文件管理器nautilus没有右键复制文件完整路径的功能</p>
@@ -450,7 +496,15 @@
 <p>截图不能选择保存路径,不能立即进行图文标注和模糊</p>
 <p>document viewer不能对书签重命名,不能快捷键打开书签</p>
 <p>zathura不能对在pdf上做笔记</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[^1]:<a href="https://zhuanlan.zhihu.com/p/37852274" target="_blank" rel="noopener">教程：为你的linux桌面带来Mac OS Mojave的体验</a><br>[^2]:<a href="https://blog.csdn.net/qilimi1053620912/article/details/90484379" target="_blank" rel="noopener">vim插件管理器：Vundle的介绍及安装</a><br>[^3]:<a href="http://www.aqee.net/post/10-funny-liunx-command.html" target="_blank" rel="noopener">动画演示10个有趣但毫无用处的Linux命令</a><br>[^4]:<a href="https://blog.csdn.net/h8y0bDJVUkwE1LboZlE/article/details/103397074" target="_blank" rel="noopener">10款好用到爆的Vim插件，你知道几个？</a></p>
+<p>按win键(super键)调出的搜索框不能通过输入路径来在此处打开文件管理器,bash或vscode</p>
+<h1 id="参考资料">参考资料</h1>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://zhuanlan.zhihu.com/p/37852274" target="_blank" rel="noopener">教程：为你的linux桌面带来Mac OS Mojave的体验</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p><a href="https://blog.csdn.net/qilimi1053620912/article/details/90484379" target="_blank" rel="noopener">vim插件管理器：Vundle的介绍及安装</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
 
       
 
@@ -558,6 +612,20 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="../../25/2019-12-22-数字图像处理知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数字图像处理知识点
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -699,19 +767,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
+                <a href="javascript:void(0)" class="js-tag color1">git工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,15 +795,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
