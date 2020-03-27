@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/Leetcode刷题总结/image-20200314174858598.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/Leetcode刷题总结/image-20200314175018116.png">
 <meta property="og:image" content="https://ziphold.gitee.io/2020/03/Leetcode刷题总结/image-20200314175157126.png">
-<meta property="og:updated_time" content="2020-03-26T10:54:04.602Z">
+<meta property="og:updated_time" content="2020-03-27T04:10:36.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode刷题总结">
 <meta name="twitter:description" content="Leetcode刷题总结">
@@ -281,6 +281,7 @@ f(n-1)
 <img src="image-20200314175157126.png" alt="image-20200314175157126"><figcaption>image-20200314175157126</figcaption>
 </figure>
 <p>赋值比基本运算(加减乘除取模)要快,所以对于一个数组,如果为了用0标记未访问而进行 <code>A[i] = n + 1</code>,强行让 <code>A[i]</code> <span class="math inline">\(\ge\)</span> 0,不如用 <code>Arrays.fill(A, -1)</code>改成用-1标记未访问</p>
+<p>对于复杂（很长）的逻辑表达式，为了提高可读性，可以用一个布尔变量保存它，这个一般用来提取if语句的表达式，不推荐用在while循环，因为如果没有在循环体内对该变量重新赋值，则会导致死循环 注意用break时是否处在多重循环中，因为平常用break时基本都在一层循环中，容易无意识认为break后就退出所有循环了，要注意检查这点</p>
 
       
 
@@ -556,14 +557,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">qt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">产品</a>
               </li>
              
@@ -572,15 +565,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数字图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">qt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,15 +601,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,11 +617,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">快捷键</a>
               </li>
              
               <li class="article-tag-list-item">
