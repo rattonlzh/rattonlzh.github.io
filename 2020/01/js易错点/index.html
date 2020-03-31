@@ -148,24 +148,24 @@
             <article id="post-js易错点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 class="article-title" itemprop="name">
       js易错点
     </h1>
   
 
-        
-        <a href="" class="archive-article-date">
+  
+  <a href="" class="archive-article-date">
   	<time datetime="2020-01-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-20</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="js的等于和绝对等于">js的等于和绝对等于</h1>
+    <h1 id="js的等于和绝对等于">js的等于和绝对等于</h1>
 <a id="more"></a>
 <p><code>==</code>对于不同类型的比较会发生类型转换再比较，比较的是值，<code>===</code>比较不会发生类型转换，比较的是类型和值</p>
 <h1 id="java的比较">java的==比较</h1>
@@ -190,39 +190,40 @@
 <p>返回的匿名函数出现的arguments是匿名函数中的参数而非外部函数的参数</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="keyword">var</span> a = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;<span class="keyword">return</span> <span class="keyword">typeof</span>(b) !== <span class="string">'number'</span> ? <span class="literal">undefined</span>: a+b&#125;;<span class="comment">//对匿名函数来说，a是一个确定值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;<span class="keyword">return</span> <span class="keyword">typeof</span>(b) !== <span class="string">'number'</span> ? <span class="literal">undefined</span>: <span class="built_in">arguments</span>[<span class="number">0</span>]+b&#125;;<span class="comment">//此时arguments[0]等同于b</span></span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">5</span>)(<span class="number">6</span>);<span class="comment">//11</span></span><br><span class="line">add(<span class="number">5</span>)(<span class="number">6</span>);<span class="comment">//12</span></span><br></pre></td></tr></table></figure>
 
-      
+    
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬的打赏<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wepay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
+    
+    <div class="page-reward">
+      <a href="javascript:;" class="page-reward-btn tooltip-top">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬的打赏<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/wepay.jpg">
+                    <span class="reward-type">微信</span>
                   </div>
-                </span>
+                  
+                </div>
               </span>
             </span>
-          </div>
-          </a>
+          </span>
         </div>
-      
+      </a>
     </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -234,12 +235,12 @@
 		</ul>
 	</div>
 
-      
+    
 
-      
+    
 
-      
-        
+    
+    
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -289,13 +290,13 @@
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
-  
+
 <nav id="article-nav">
   
     <a href="../java测试/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -317,32 +318,36 @@
 
 
 <aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
+
+  <div class="mod-side-operation">
+    
+    <div class="jump-container" id="js-jump-container" style="display:none;">
+      <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+        <i class="icon-font icon-back"></i>
+      </a>
+      <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+        <i class="icon-font icon-plane jump-plane"></i>
+      </div>
     </div>
+    
+    
+  </div>
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
+    src="//music.163.com/outchain/player?type=2&id=531679262&auto=1&height=66"></iframe>
 </aside>
 
 
 
-  
-  
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
 
 
           </div>
@@ -464,7 +469,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">qt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">产品</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,7 +489,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">qt</a>
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +497,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,11 +513,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,11 +529,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">编程实验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
