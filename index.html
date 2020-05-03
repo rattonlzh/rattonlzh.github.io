@@ -142,6 +142,197 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一条命令开启lnmp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2020/05/一条命令开启lnmp/">一条命令开启lnmp</a>
+    </h1>
+  
+
+  
+  <a href="2020/05/一条命令开启lnmp/" class="archive-article-date">
+  	<time datetime="2020-05-03T04:13:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+</a>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>OS:Ubuntu 18.04 LTS 64bit</p>
+<p>我的lnmp是在这里安装的<a href="https://lnmp.org/download.html" class="uri" target="_blank" rel="noopener">https://lnmp.org/download.html</a>安装的是lnmp 1.6（运行安装脚本一键安装).用于在个人电脑上开发web站点，纯新手</p>
+<p>先前linux上开启/关闭lnmp都是敲命令<code>sudo service nginx start/stop</code>,再一个<code>sudo service mysql start</code>/stop，(php-fpm一直没有关闭过)，连敲几个命令感觉很不方便，希望有一个脚本运行后一次性启动/关闭所有的lnmp服务（后来才知道安装包早就附赠了这个脚本，装完lnmp运行<code>sudo lnmp start/stop</code>就可以开启/关闭nginx、mysql、php-fpm服务)</p>
+<p>自己不会写脚本，就到网上找找，结果找到这个https://www.cnblogs.com/vanwoos/p/5092230.html</p>
+<p><img src="启动php需要注意的地方.png"></p>
+<p>照着上面的命令试着运行了一下，关闭服务倒是没问题，但是启动php就不行了。操作完之后，我的lnmp即时重启也再也解析不了php了（囧）。为啥子咧？一个方面我的php.ini不是在上述的<code>/usr/local/php/lib/php.ini</code>，在命令行查找<code>php.ini</code>,结果如下<img src="image-20200503123513378.png" alt="image-20200503123513378"></p>
+<p>不同开发者的环境一般都不一样，照搬别人的文件路径是不对的。我一开始就意识到这点了，然后我把路径换成了截图的最后一条，但这不是我GG的真正原因，问题的关键在于<code>-b 127.0.0.1:9000</code></p>
+<p>nginx与php-fpm通讯有两种方式，一种是监听TCP端口进行通讯，一种是socket链接。但是在php-fpm.conf没有手动设置过的情况下php-fpm监听的是<code>/tmp/php-cgi.sock</code>,把<code>-b 127.0.0.1:9000</code>改成<code>/tmp/php-cgi.sock</code>运行一遍就好了，即<code>/usr/local/php/bin/php-cgi -b /tmp/php-cgi.sock -c /usr/local/php/etc/php.ini &amp;</code>（注意php.ini路径改成你自己实际存在的路径）</p>
+
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">部署</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="2020/05/一条命令开启lnmp/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+
+  <div class="mod-side-operation">
+    
+    <div class="jump-container" id="js-jump-container" style="display:none;">
+      <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+        <i class="icon-font icon-back"></i>
+      </a>
+      <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+        <i class="icon-font icon-plane jump-plane"></i>
+      </div>
+    </div>
+    
+    
+  </div>
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
+    src="//music.163.com/outchain/player?type=2&id=531679262&auto=1&height=66"></iframe>
+</aside>
+
+
+
+
+
+  
+    <article id="post-install-sogou-im" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2020/04/install-sogou-im/">ubuntu18.04下安装搜狗输入法</a>
+    </h1>
+  
+
+  
+  <a href="2020/04/install-sogou-im/" class="archive-article-date">
+  	<time datetime="2020-04-10T09:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="ubuntu18.04安装搜狗输入法"># ubuntu18.04安装搜狗输入法</h2>
+<p>在overview界面的搜索框无法使用，其余地方均可正常使用。overview界面指的是按super键（也叫win键）调出的界面。好在使用overview的搜索是为了启动应用程序，我可以用它的英文名检索，所以影响不大。另外我的语言是中文的 ##</p>
+<ol type="1">
+<li><p>去官网下载deb包<a href="https://pinyin.sogou.com/linux/" class="uri" target="_blank" rel="noopener">https://pinyin.sogou.com/linux/</a></p></li>
+<li><p>安装fcitx：<code>sudo apt install fcitx</code></p></li>
+<li><p>Keyboard input method system选择fcitx</p>
+<figure>
+<img src="image-20200410180619277.png" alt="image-20200410180619277"><figcaption>image-20200410180619277</figcaption>
+</figure></li>
+<li><p>打开Fcitx Configuration（在overview界面搜索fcitx）,添加Keyboard和input method</p></li>
+</ol>
+<figure>
+<img src="image-20200410180731317.png" alt="image-20200410180731317"><figcaption>image-20200410180731317</figcaption>
+</figure>
+<ol start="6" type="1">
+<li><p>Only Show Current Language取消打勾，搜索sogou，添加搜狗输入法和Keyboard-English（US）<img src="image-20200410180925645.png" alt="image-20200410180925645"></p></li>
+<li><p>如果没有Keyboard-English（US）将无法切换到英文状态，如果有Keyboard-English（US）但不是在第一位，则中文输入法的候选词会出现乱码（切换到英文再切换到搜狗输入法可以暂时回复正常）</p>
+<figure>
+<img src="image-20200410181734045.png" alt="image-20200410181734045"><figcaption>image-20200410181734045</figcaption>
+</figure></li>
+</ol>
+<figure>
+<img src="image-20200410181812074.png" alt="image-20200410181812074"><figcaption>image-20200410181812074</figcaption>
+</figure>
+<p>选中Keyboard，点击图中红色矩形区域所示的按钮上移一位即可正常</p>
+<p>理论上昨晚以上步骤就可以使用搜狗输入法了，下面是安装字体的步骤，有需要的可以继续往下看</p>
+<p>字体文件的常见后缀有<code>.otf</code>、<code>.ttf</code>、<code>.ttc</code>等，将字体文件所在文件夹移动到<code>/usr/share/fonts</code></p>
+<p>目录下，然后更新字体索引和缓存即可.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv myfonts /usr/share/fonts <span class="comment">#假设myfonts文件夹存放即将要装的字体文件</span></span><br><span class="line"><span class="built_in">cd</span> /usr/share/fonts</span><br><span class="line"><span class="built_in">fc</span>-cache<span class="comment"># 建立字体信息缓存文件，这个才是关键。</span></span><br><span class="line"><span class="built_in">fc</span>-list :lang-zh <span class="comment"># 查看可用字体（限制范围是中文字体）</span></span><br></pre></td></tr></table></figure>
+
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="2020/04/install-sogou-im/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+
+  <div class="mod-side-operation">
+    
+    <div class="jump-container" id="js-jump-container" style="display:none;">
+      <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+        <i class="icon-font icon-back"></i>
+      </a>
+      <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+        <i class="icon-font icon-plane jump-plane"></i>
+      </div>
+    </div>
+    
+    
+  </div>
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
+    src="//music.163.com/outchain/player?type=2&id=531679262&auto=1&height=66"></iframe>
+</aside>
+
+
+
+
+
+  
     <article id="post-2020-03-25-requirements-pool" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -782,166 +973,6 @@
 
 
   
-    <article id="post-ratton的工具箱APP软件需求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class=" article-header">
-  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2020/02/ratton的工具箱APP软件需求/">ratton的工具箱APP软件需求</a>
-    </h1>
-  
-
-  
-  <a href="2020/02/ratton的工具箱APP软件需求/" class="archive-article-date">
-  	<time datetime="2020-02-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
-</a>
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="ratton的工具箱app软件需求">ratton的工具箱APP软件需求</h1>
-    
-    <a class="article-more-a" href="2020/02/ratton的工具箱APP软件需求/#more">more >></a>
-    
-    
-
-    
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">产品</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="2020/02/ratton的工具箱APP软件需求/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-
-  <div class="mod-side-operation">
-    
-    <div class="jump-container" id="js-jump-container" style="display:none;">
-      <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-        <i class="icon-font icon-back"></i>
-      </a>
-      <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-        <i class="icon-font icon-plane jump-plane"></i>
-      </div>
-    </div>
-    
-    
-  </div>
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
-    src="//music.163.com/outchain/player?type=2&id=531679262&auto=1&height=66"></iframe>
-</aside>
-
-
-
-
-
-  
-    <article id="post-apache服务器配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class=" article-header">
-  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2020/02/apache服务器配置/">apache服务器配置</a>
-    </h1>
-  
-
-  
-  <a href="2020/02/apache服务器配置/" class="archive-article-date">
-  	<time datetime="2020-02-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
-</a>
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="apache服务器路由配置">apache服务器路由配置</h1>
-    
-    <a class="article-more-a" href="2020/02/apache服务器配置/#more">more >></a>
-    
-    
-
-    
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="2020/02/apache服务器配置/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-
-  <div class="mod-side-operation">
-    
-    <div class="jump-container" id="js-jump-container" style="display:none;">
-      <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-        <i class="icon-font icon-back"></i>
-      </a>
-      <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-        <i class="icon-font icon-plane jump-plane"></i>
-      </div>
-    </div>
-    
-    
-  </div>
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
-    src="//music.163.com/outchain/player?type=2&id=531679262&auto=1&height=66"></iframe>
-</aside>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><a class="page-number" href="page/4/">4</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
@@ -1076,11 +1107,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">qt</a>
+                <a href="javascript:void(0)" class="js-tag color3">产品</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">产品</a>
+                <a href="javascript:void(0)" class="js-tag color3">qt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,6 +1139,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工程</a>
               </li>
              
@@ -1116,15 +1151,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1132,7 +1159,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1149,6 +1184,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">编译原理语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">部署</a>
               </li>
             
             <div class="clearfix"></div>
